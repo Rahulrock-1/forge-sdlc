@@ -1,4 +1,4 @@
-﻿# ⚡ Forge SDLC
+# ⚡ Forge SDLC
 
 > **Universal Capability-Oriented SDLC Framework & Autonomous Multi-Agent Orchestrator**  
 > Run the best agentic engineering skills across **BMAD**, **GitHub Spec Kit**, and **Internal Engines** through a single unified CLI and native IDE slash commands.
@@ -164,35 +164,6 @@ Forge organizes all agent outputs into self-contained **Functionality / Feature 
          ▼
 13. CONVERGENCE (/converge) ──► 14. RELEASE (/release)
 ```
-
----
-
-## 🚢 Publishing to NPM & CI/CD Setup
-
-Forge SDLC includes pre-configured **GitHub Actions CI/CD workflows** for automated testing and zero-downtime npm releases.
-
-### 1. Set Up Your NPM Authentication Token
-1. Go to [npmjs.com](https://www.npmjs.com) $\rightarrow$ Profile $\rightarrow$ **Access Tokens** $\rightarrow$ Generate New Token (**Automation** or **Granular Access Token** with publish rights to `forge-sdlc`).
-2. Go to your GitHub repository: **Settings** $\rightarrow$ **Secrets and variables** $\rightarrow$ **Actions**.
-3. Click **New repository secret**:
-   - **Name:** `NPM_TOKEN`
-   - **Value:** `<your-npm-token>`
-
-### 2. Automatic Release on Git Tag / GitHub Release
-Pushing a SemVer git tag automatically runs the full test matrix on Node.js 18, 20, 22 (Ubuntu & Windows) and publishes the package with OIDC provenance:
-
-```bash
-# Bump version and tag:
-git tag v1.2.0
-git push origin v1.2.0
-```
-
-Or draft and publish a release in GitHub Releases.
-
-### 3. Manual Publish via GitHub Actions UI
-1. In your GitHub repository, navigate to **Actions** $\rightarrow$ **Publish to NPM**.
-2. Click **Run workflow**.
-3. Select version bump (`skip`, `patch`, `minor`, `major`) and click **Run workflow**.
 
 ---
 
