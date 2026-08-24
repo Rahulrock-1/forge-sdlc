@@ -1,4 +1,4 @@
-﻿name: Publish to NPM
+name: Publish to NPM
 
 on:
   release:
@@ -27,6 +27,9 @@ jobs:
   publish:
     name: Build, Test & Publish to NPM
     runs-on: ubuntu-latest
+    environment:
+      name: npm-production
+      url: https://www.npmjs.com/package/forge-sdlc
 
     steps:
       - name: Checkout Repository
