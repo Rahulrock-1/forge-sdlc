@@ -1,0 +1,31 @@
+{
+  "runId": "iteration-11",
+  "functionality": "auth-module",
+  "iteration": 11,
+  "timestamp": "2026-08-24T19:00:09.958Z",
+  "updatedAt": "2026-08-24T19:00:09.977Z",
+  "artifactCount": 3,
+  "artifacts": [
+    {
+      "name": "test-spec.md",
+      "path": ".forge\\iterations\\iteration-11\\test-spec.md",
+      "summary": "test-spec.md for core (iteration 11)",
+      "authorProvider": "speckit",
+      "sizeBytes": 31
+    },
+    {
+      "name": "spec.md",
+      "path": ".forge\\iterations\\iteration-11\\spec.md",
+      "summary": "spec.md for auth-module (iteration 11)",
+      "authorProvider": "bmad",
+      "sizeBytes": 11
+    },
+    {
+      "name": "architecture.md",
+      "path": ".forge\\iterations\\iteration-11\\architecture.md",
+      "summary": "architecture.md for auth-module (iteration 11)",
+      "authorProvider": "bmad",
+      "sizeBytes": 19
+    }
+  ]
+}

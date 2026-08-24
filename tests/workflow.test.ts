@@ -82,7 +82,26 @@ describe('WorkflowEngine', () => {
     const funcs = manager.listFunctionalities();
     expect(funcs.some((f) => f.name === testFunctionality)).toBe(true);
   });
+
+  it('should execute 14-stage full SDLC workflow including constitution stage', async () => {
+    const engine = new WorkflowEngine();
+    const fullSdlc = engine.getAvailableWorkflows().find((w) => w.id === 'full-sdlc');
+    expect(fullSdlc).toBeDefined();
+    expect(fullSdlc?.stages.length).toBe(14);
+    expect(fullSdlc?.stages.some((s) => s.id === 'constitution')).toBe(true);
+
+    const state = await engine.executeWorkflow(fullSdlc!, undefined, { functionality: 'test-14-stage' });
+    expect(state.status).toBe('completed');
+    expect(state.stages.length).toBe(14);
+    expect(state.stages.some((s) => s.stageId === 'constitution' && s.status === 'completed')).toBe(true);
+
+    const funcDir = path.join(process.cwd(), '.forge', 'functionalities', 'test-14-stage');
+    expect(fs.existsSync(path.join(funcDir, 'constitution.md'))).toBe(true);
+    expect(fs.existsSync(path.join(funcDir, 'spec.md'))).toBe(true);
+    expect(fs.existsSync(path.join(funcDir, 'implementation.md'))).toBe(true);
+  });
 });
+
 
 
 

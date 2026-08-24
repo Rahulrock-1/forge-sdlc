@@ -93,6 +93,44 @@ You are the specialized **Autonomous Implementation Agent** (Senior Staff / Prin
 ### 6. Task Burndown Update:
 - Mark executed items in \`.forge/artifacts/tasks.md\` with \`- [x]\`.
 `;
+      } else if (cap.name === 'constitution') {
+        mdcContent = `---
+description: Project Constitution & Engineering Invariants Agent (SPECIFICATION) - Establishes non-negotiable architectural, security, and type-safety rules in constitution.md
+globs: *
+alwaysApply: false
+---
+
+# /constitution - Project Constitution & Architectural Invariants Agent
+
+You are the specialized **Project Constitution & Engineering Invariants Agent** orchestrated by **Forge SDLC**.
+
+## 📥 Required & Recommended File Dependencies:
+- **Mandatory Required Inputs:** Project workspace context & architectural requirements
+- **Target Output Files:** \`.forge/artifacts/constitution.md\`
+- **Recommended Next Step:** Run \`forge specify\` (Given-When-Then Specification).
+
+---
+
+## 🏛️ Constitutional Governance & Invariant Protocols:
+1. **Article I: Supreme Architectural Invariants**
+   - Clean / Hexagonal Layering: Pure domain core decoupled from infrastructure I/O.
+   - Ports & Adapters: Infrastructure adheres to domain interfaces (Ports).
+   - Zero Circular Dependencies.
+2. **Article II: Strict Type-Safety & Validation**
+   - 100% strict TypeScript typing. Zero \`any\` escape hatches.
+   - Boundary validation for all incoming DTOs using runtime Zod/Valibot schemas.
+3. **Article III: Resiliency, Fault-Tolerance & Concurrency**
+   - Idempotency keys on state mutations.
+   - Exponential backoff with randomized jitter for all external I/O.
+   - Circuit breaker isolation.
+4. **Article IV: Security & Zero-Trust Invariants**
+   - OWASP Top 10 defenses, zero hardcoded secrets, input sanitization, least privilege.
+5. **Article V: Telemetry & Observability**
+   - Structured JSON logs with Correlation IDs (\`traceId\`, \`spanId\`).
+   - OpenTelemetry spans for service entrypoints.
+6. **Article VI: TDD & Quality Gate Compliance**
+   - Minimum 90% test coverage; mandatory negative/edge-case tests.
+`;
       } else if (cap.name === 'tasks') {
         mdcContent = `---
 description: Task Decomposition Agent (PLANNING) - Decomposes architecture and plans into atomic, DAG-ordered developer tasks
@@ -327,7 +365,7 @@ You are the specialized **${cap.displayName} Agent** orchestrated by **Forge SDL
 
     // Install Master SDLC Orchestrator Cursor Rule (/sdlc & /workflow)
     const sdlcMdcContent = `---
-description: Full SDLC Master Orchestrator - Runs the complete 13-stage autonomous lifecycle with functionality folders & quality gates
+description: Full SDLC Master Orchestrator - Runs the complete 14-stage autonomous lifecycle with functionality folders & quality gates
 globs: *
 alwaysApply: false
 ---
@@ -337,24 +375,25 @@ alwaysApply: false
 You are the **Master SDLC Orchestrator Agent** powered by **Forge SDLC**.
 
 ## 🚀 Mission
-Drive the end-to-end software development lifecycle sequentially across all 13 specialized capabilities with automated dependency validation and structured functionality folder organization.
+Drive the end-to-end software development lifecycle sequentially across all 14 specialized capabilities with automated dependency validation, constitutional governance, and structured functionality folder organization.
 
-## 🔄 End-to-End Pipeline Stages & Ingestion Matrix:
+## 🔄 End-to-End Pipeline Stages & Ingestion Matrix (14 Stages):
 | Stage # | Agent & Slash Command | Mandatory Required Input Files | Target Generated Artifact |
 | :--- | :--- | :--- | :--- |
 | **1. Discovery** | \`/brd\` (\`forge brd\`) | Workspace Context, Goals | \`discovery.md\`, \`brd.md\` |
-| **2. Specification** | \`/specify\` (\`forge specify\`) | \`discovery.md\`, \`brd.md\` | \`spec.md\`, \`constitution.md\` |
-| **3. Clarification** | \`/clarify\` (\`forge clarify\`) | \`spec.md\` | \`clarifications.md\` |
-| **4. Architecture** | \`/architecture\` (\`forge architecture\`) | \`spec.md\`, \`brd.md\` | \`architecture.md\`, \`data-model.md\` |
-| **5. Planning** | \`/plan\` (\`forge plan\`) | \`spec.md\`, \`architecture.md\` | \`plan.md\` |
-| **6. Tasks** | \`/tasks\` / \`/task\` (\`forge tasks\`) | \`plan.md\`, \`spec.md\`, \`architecture.md\` | \`tasks.md\` |
-| **7. Analysis** | \`/analyze\` (\`forge analyze\`) | \`spec.md\`, \`architecture.md\`, \`tasks.md\` | \`analysis.md\` |
-| **8. Implementation** | \`/implement\` (\`forge implement\`) | \`tasks.md\`, \`spec.md\`, \`architecture.md\` | Source files in \`src/\`, \`implementation.md\` |
-| **9. Testing** | \`/test\` (\`forge test\`) | Source files in \`src/\`, \`spec.md\` | \`test-report.md\`, tests in \`tests/\` |
-| **10. Review** | \`/review\` (\`forge review\`) | Source files in \`src/\`, \`architecture.md\` | \`review.md\` (5-Lens Review) |
-| **11. Security** | \`/security\` (\`forge security\`) | Source files, \`package.json\` | \`security-audit.md\`, \`threat-model.md\` |
-| **12. Convergence** | \`/converge\` (\`forge converge\`) | \`tasks.md\`, \`test-report.md\`, \`review.md\` | \`convergence.md\` |
-| **13. Release** | \`/release\` (\`forge release\`) | \`convergence.md\`, Git commits | \`CHANGELOG.md\`, \`RELEASE_NOTES.md\` |
+| **2. Constitution** | \`/constitution\` (\`forge constitution\`) | Project Requirements | \`constitution.md\` (Non-Negotiable Invariants) |
+| **3. Specification** | \`/specify\` (\`forge specify\`) | \`constitution.md\`, \`brd.md\` | \`spec.md\` (Given-When-Then criteria) |
+| **4. Clarification** | \`/clarify\` (\`forge clarify\`) | \`spec.md\` | \`clarifications.md\` |
+| **5. Architecture** | \`/architecture\` (\`forge architecture\`) | \`spec.md\`, \`constitution.md\` | \`architecture.md\`, \`data-model.md\` |
+| **6. Planning** | \`/plan\` (\`forge plan\`) | \`spec.md\`, \`architecture.md\` | \`plan.md\` |
+| **7. Tasks** | \`/tasks\` / \`/task\` (\`forge tasks\`) | \`plan.md\`, \`spec.md\`, \`constitution.md\` | \`tasks.md\` |
+| **8. Analysis** | \`/analyze\` (\`forge analyze\`) | \`spec.md\`, \`architecture.md\`, \`tasks.md\` | \`analysis.md\` (Drift & Coverage Audit) |
+| **9. Implementation** | \`/implement\` (\`forge implement\`) | \`tasks.md\`, \`spec.md\`, \`constitution.md\` | Source files in \`src/\`, \`implementation.md\` |
+| **10. Testing** | \`/test\` (\`forge test\`) | Source files in \`src/\`, \`constitution.md\` | \`test-report.md\`, tests in \`tests/\` |
+| **11. Review** | \`/review\` (\`forge review\`) | Source files in \`src/\`, \`constitution.md\` | \`review.md\` (5-Lens Review) |
+| **12. Security** | \`/security\` (\`forge security\`) | Source files, \`package.json\` | \`security-audit.md\`, \`threat-model.md\` |
+| **13. Convergence** | \`/converge\` (\`forge converge\`) | \`tasks.md\`, \`test-report.md\`, \`review.md\` | \`convergence.md\` |
+| **14. Release** | \`/release\` (\`forge release\`) | \`convergence.md\`, Git commits | \`CHANGELOG.md\`, \`RELEASE_NOTES.md\` |
 
 ## 💻 CLI Fast-Track:
 \`\`\`bash
@@ -366,7 +405,7 @@ npx forge-sdlc workflow run full-sdlc
     fs.writeFileSync(path.join(cursorDir, 'forge-sdlc.mdc'), sdlcMdcContent, 'utf-8');
     fs.writeFileSync(path.join(cursorDir, 'forge-workflow.mdc'), sdlcMdcContent.replace('/sdlc', '/workflow'), 'utf-8');
     cursorCount += 2;
-    installedPaths.push('.cursor/rules/ (Cursor Slash Commands, /implement, /tasks & /sdlc)');
+    installedPaths.push('.cursor/rules/ (Cursor Slash Commands, /constitution, /implement, /tasks & /sdlc)');
 
     // 2. Install Claude Code Slash Commands (.claude/commands/)
     const claudeDir = path.join(root, '.claude', 'commands');
@@ -394,6 +433,18 @@ Execute Forge capability: **Senior Staff Implementation (/implement)**
 3. Write automated unit and integration tests; run \`npm test\` and \`npm run lint\`.
 4. Update \`.forge/artifacts/tasks.md\` with \`- [x]\`.
 5. Run \`npx forge-sdlc review\` to trigger the 5-Lens Review.
+`;
+      } else if (cap.name === 'constitution') {
+        cmdContent = `---
+description: Project Constitution Agent - Establishes non-negotiable architectural invariants & code guardrails in constitution.md
+---
+
+Execute Forge capability: **Project Constitution (/constitution)**
+
+## 📥 Instructions:
+1. Formulate non-negotiable architectural invariants, type-safety rules, security policies, and testing standards.
+2. Output to \`.forge/artifacts/constitution.md\`.
+3. Proceed to \`npx forge-sdlc specify\`.
 `;
       } else if (cap.name === 'tasks') {
         cmdContent = `---
@@ -435,13 +486,13 @@ Run: \`npx forge-sdlc ${cap.name}\`
 
     // Claude Code /sdlc and /workflow commands
     const claudeSdlcContent = `---
-description: Full SDLC Master Orchestrator - Drives complete 13-stage lifecycle from Discovery to Release
+description: Full SDLC Master Orchestrator - Drives complete 14-stage lifecycle from Discovery to Release
 ---
 
 Execute **Forge Full SDLC Pipeline (/sdlc)**
 
 Run: \`npx forge-sdlc sdlc --functionality core\` or execute sequentially:
-1. \`forge brd\` -> 2. \`forge specify\` -> 3. \`forge clarify\` -> 4. \`forge architecture\` -> 5. \`forge plan\` -> 6. \`forge tasks\` -> 7. \`forge analyze\` -> 8. \`forge implement\` -> 9. \`forge test\` -> 10. \`forge review\` -> 11. \`forge security\` -> 12. \`forge converge\` -> 13. \`forge release\`
+1. \`forge brd\` -> 2. \`forge constitution\` -> 3. \`forge specify\` -> 4. \`forge clarify\` -> 5. \`forge architecture\` -> 6. \`forge plan\` -> 7. \`forge tasks\` -> 8. \`forge analyze\` -> 9. \`forge implement\` -> 10. \`forge test\` -> 11. \`forge review\` -> 12. \`forge security\` -> 13. \`forge converge\` -> 14. \`forge release\`
 `;
     fs.writeFileSync(path.join(claudeDir, 'sdlc.md'), claudeSdlcContent, 'utf-8');
     fs.writeFileSync(path.join(claudeDir, 'workflow.md'), claudeSdlcContent, 'utf-8');
@@ -458,18 +509,19 @@ Run: \`npx forge-sdlc sdlc --functionality core\` or execute sequentially:
 
 When working in this repository, you have access to the **Forge SDLC Capability Pipeline**:
 
-## 📋 Agent File Dependency & Ingestion Matrix:
-- \`/sdlc\` / \`/workflow\`: Master SDLC Orchestrator — executes the complete 13-stage pipeline.
-- \`/implement\`: Autonomous Implementation Agent — **Requires:** \`tasks.md\`, \`spec.md\`, \`architecture.md\`. Implements typed code, DDD patterns, resiliency & tests.
+## 📋 Agent File Dependency & Ingestion Matrix (14 Stages):
+- \`/sdlc\` / \`/workflow\`: Master SDLC Orchestrator — executes the complete 14-stage pipeline.
 - \`/brd\`: Business Requirements & ROI Model (\`brd.md\`) via BMAD.
-- \`/specify\`: Given-When-Then functional specification (\`spec.md\`) via Spec Kit.
+- \`/constitution\`: Non-negotiable architectural & security invariants (\`constitution.md\`) via Spec Kit.
+- \`/specify\`: Given-When-Then functional specification (\`spec.md\`) via Spec Kit. **Requires:** \`constitution.md\`.
 - \`/clarify\`: Probes ambiguities & edge cases (\`clarifications.md\`) via BMAD.
-- \`/architecture\`: C4 System Architecture & ADRs (\`architecture.md\`) via BMAD. **Requires:** \`spec.md\`.
+- \`/architecture\`: C4 System Architecture & ADRs (\`architecture.md\`) via BMAD. **Requires:** \`spec.md\`, \`constitution.md\`.
 - \`/plan\`: Phased technical roadmap (\`plan.md\`) via Spec Kit. **Requires:** \`spec.md\`, \`architecture.md\`.
-- \`/tasks\` (or \`/task\`): Atomic task checklist (\`tasks.md\`) via Spec Kit. **Requires:** \`plan.md\`, \`spec.md\`, \`architecture.md\`.
+- \`/tasks\` (or \`/task\`): Atomic task checklist (\`tasks.md\`) via Spec Kit. **Requires:** \`plan.md\`, \`spec.md\`, \`constitution.md\`.
 - \`/analyze\`: Cross-artifact consistency & drift analytics (\`analysis.md\`) via Spec Kit. **Requires:** \`spec.md\`, \`tasks.md\`.
+- \`/implement\`: Autonomous Implementation Agent — **Requires:** \`tasks.md\`, \`spec.md\`, \`architecture.md\`, \`constitution.md\`. Implements typed code, DDD patterns, resiliency & tests.
 - \`/test\`: Automated unit/integration test suites (\`test-report.md\`) via Internal. **Requires:** Source code in \`src/\`.
-- \`/review\`: 5-Lens code review (\`review.md\`) via BMAD. **Requires:** Source code & \`architecture.md\`.
+- \`/review\`: 5-Lens code review (\`review.md\`) via BMAD. **Requires:** Source code, \`architecture.md\`, \`constitution.md\`.
 - \`/security\`: STRIDE & OWASP SAST Threat Audit (\`security-audit.md\`) via Forge Internal.
 - \`/converge\`: Task burndown and release readiness certification (\`convergence.md\`) via Spec Kit.
 - \`/release\`: KeepAChangelog notes and SemVer release notes (\`CHANGELOG.md\`, \`RELEASE_NOTES.md\`).
@@ -484,18 +536,19 @@ Artifacts are located in \`.forge/artifacts/\` and \`.forge/functionalities/<fea
     const geminiSkillsDir = path.join(root, '.gemini', 'skills');
 
     const keyCapabilities = [
-      { id: 'sdlc', name: 'sdlc', title: 'Full SDLC Master Orchestrator', desc: 'Execute end-to-end 13-stage SDLC workflow from discovery to release' },
-      { id: 'implement', name: 'implement', title: 'Autonomous Senior Staff Implementation Agent', desc: 'Implement production code and tests adhering to spec.md, architecture.md, and tasks.md' },
-      { id: 'tasks', name: 'tasks', title: 'Task Decomposition', desc: 'Generate atomic developer checklist (tasks.md)' },
-      { id: 'task', name: 'task', title: 'Task Decomposition', desc: 'Generate atomic developer checklist (tasks.md)' },
+      { id: 'sdlc', name: 'sdlc', title: 'Full SDLC Master Orchestrator', desc: 'Execute end-to-end 14-stage SDLC workflow from discovery to release' },
       { id: 'brd', name: 'brd', title: 'Business Requirements (BRD)', desc: 'Formulate Business Requirements Document (brd.md) and ROI models' },
+      { id: 'constitution', name: 'constitution', title: 'Constitution & Principles', desc: 'Formulate non-negotiable architectural invariants and code guardrails (constitution.md)' },
       { id: 'specify', name: 'specify', title: 'Software Specification (SDD)', desc: 'Formulate Given-When-Then specification (spec.md)' },
       { id: 'clarify', name: 'clarify', title: 'Ambiguity Clarification', desc: 'Probe hidden assumptions and edge-cases' },
       { id: 'architecture', name: 'architecture', title: 'Technical Architecture', desc: 'Design C4 system architecture diagrams and ADRs' },
       { id: 'data-model', name: 'data-model', title: 'Data Modeling & Schema', desc: 'Design ERD diagrams and database schemas' },
       { id: 'api-design', name: 'api-design', title: 'API Contract Design', desc: 'Design OpenAPI 3.1 contracts and error envelopes' },
       { id: 'plan', name: 'plan', title: 'Technical Execution Plan', desc: 'Synthesize phased milestone roadmap (plan.md)' },
+      { id: 'tasks', name: 'tasks', title: 'Task Decomposition', desc: 'Generate atomic developer checklist (tasks.md)' },
+      { id: 'task', name: 'task', title: 'Task Decomposition', desc: 'Generate atomic developer checklist (tasks.md)' },
       { id: 'analyze', name: 'analyze', title: 'Cross-Artifact Analysis', desc: 'Audit consistency across spec, arch, and tasks' },
+      { id: 'implement', name: 'implement', title: 'Autonomous Senior Staff Implementation Agent', desc: 'Implement production code and tests adhering to spec.md, architecture.md, and tasks.md' },
       { id: 'test', name: 'test', title: 'Automated Testing & QA', desc: 'Synthesize test suites and coverage reports' },
       { id: 'review', name: 'review', title: 'Multi-Lens Review', desc: '5-Perspective code review (bmad-review)' },
       { id: 'security', name: 'security', title: 'Security & Threat Audit', desc: 'STRIDE threat model and OWASP SAST scan' },
@@ -536,6 +589,23 @@ Use this skill when the user requests \`/implement\`, \`implement\`, or asks to 
 5. **Testing (TDD):** Automated unit and integration tests with >90% coverage.
 6. **Task Update:** Check off items in \`.forge/artifacts/tasks.md\` (\`- [x]\`).
 7. **Downstream Next:** Trigger \`npx forge-sdlc review\` for 5-Lens Multi-Perspective Review.
+`;
+        } else if (cap.id === 'constitution') {
+          skillBody = `---
+name: ${cap.id}
+description: ${cap.desc}
+---
+
+# ${cap.title} Agent (Forge SDLC)
+
+Use this skill when the user requests \`/constitution\`, \`constitution\`, or asks to define project-wide engineering standards and architectural invariants.
+
+## 🏛️ Invariant Directives:
+1. Define Hexagonal boundaries and dependency inversion principles.
+2. Mandate 100% strict TypeScript types and runtime Zod validation schemas.
+3. Enforce idempotency and exponential backoff retry policies.
+4. Establish OWASP Top 10 security guardrails and telemetry standards.
+5. Output to \`.forge/artifacts/constitution.md\`.
 `;
         } else if (cap.id === 'tasks' || cap.id === 'task') {
           skillBody = `---

@@ -1,9 +1,10 @@
 ---
-description: Define core project principles, non-negotiable standards, architectural invariants, and governance rules.
+description: Project Constitution Agent - Establishes non-negotiable architectural invariants & code guardrails in constitution.md
 ---
 
-Execute Forge capability: **Constitution & Principles**
-- Required Inputs: project_guidelines
-- Target Output: `.forge/artifacts/constitution.md`
+Execute Forge capability: **Project Constitution (/constitution)**
 
-Run: `npx forge-sdlc constitution`
+## 📥 Instructions:
+1. Formulate non-negotiable architectural invariants, type-safety rules, security policies, and testing standards.
+2. Output to `.forge/artifacts/constitution.md`.
+3. Proceed to `npx forge-sdlc specify`.

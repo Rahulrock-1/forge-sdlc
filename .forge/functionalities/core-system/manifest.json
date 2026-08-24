@@ -1,0 +1,115 @@
+{
+  "runId": "func-core-system",
+  "functionality": "core-system",
+  "iteration": 13,
+  "timestamp": "2026-08-24T19:00:29.162Z",
+  "updatedAt": "2026-08-24T19:00:29.551Z",
+  "artifactCount": 15,
+  "artifacts": [
+    {
+      "name": "discovery.md",
+      "path": ".forge\\functionalities\\core-system\\discovery.md",
+      "summary": "BMAD Domain Discovery & Bounded Context Map",
+      "authorProvider": "bmad",
+      "sizeBytes": 507
+    },
+    {
+      "name": "constitution.md",
+      "path": ".forge\\functionalities\\core-system\\constitution.md",
+      "summary": "Project Constitution with non-negotiable architectural invariants and engineering standards",
+      "authorProvider": "speckit",
+      "sizeBytes": 3531
+    },
+    {
+      "name": "spec.md",
+      "path": ".forge\\functionalities\\core-system\\spec.md",
+      "summary": "Definitive Software Specification Document (spec.md) with user stories and testable acceptance scenarios",
+      "authorProvider": "speckit",
+      "sizeBytes": 2110
+    },
+    {
+      "name": "clarifications.md",
+      "path": ".forge\\functionalities\\core-system\\clarifications.md",
+      "summary": "Spec Kit Structured Clarification and Decision Records",
+      "authorProvider": "speckit",
+      "sizeBytes": 712
+    },
+    {
+      "name": "architecture.md",
+      "path": ".forge\\functionalities\\core-system\\architecture.md",
+      "summary": "BMAD Technical Architecture Document with C4 diagrams and trade-off matrices",
+      "authorProvider": "bmad",
+      "sizeBytes": 4719
+    },
+    {
+      "name": "plan.md",
+      "path": ".forge\\functionalities\\core-system\\plan.md",
+      "summary": "Spec Kit Technical Execution Plan (plan.md) with phase milestones and input/output contracts",
+      "authorProvider": "speckit",
+      "sizeBytes": 1290
+    },
+    {
+      "name": "tasks.md",
+      "path": ".forge\\functionalities\\core-system\\tasks.md",
+      "summary": "Spec Kit Actionable Developer Tasks Breakdown (tasks.md) ready for agentic execution",
+      "authorProvider": "speckit",
+      "sizeBytes": 1972
+    },
+    {
+      "name": "analysis.md",
+      "path": ".forge\\functionalities\\core-system\\analysis.md",
+      "summary": "Spec Kit Cross-Artifact Consistency Analysis & Drift Detection Report",
+      "authorProvider": "speckit",
+      "sizeBytes": 1066
+    },
+    {
+      "name": "implementation.md",
+      "path": ".forge\\functionalities\\core-system\\implementation.md",
+      "summary": "BMAD Implementation Architecture & Component Synthesis Report",
+      "authorProvider": "bmad",
+      "sizeBytes": 3404
+    },
+    {
+      "name": "test-report.md",
+      "path": ".forge\\functionalities\\core-system\\test-report.md",
+      "summary": "Forge Automated Test Suite & Coverage Verification Report",
+      "authorProvider": "internal",
+      "sizeBytes": 545
+    },
+    {
+      "name": "review.md",
+      "path": ".forge\\functionalities\\core-system\\review.md",
+      "summary": "BMAD Multi-Lens Code & Architecture Review Report",
+      "authorProvider": "bmad",
+      "sizeBytes": 1934
+    },
+    {
+      "name": "security-audit.md",
+      "path": ".forge\\functionalities\\core-system\\security-audit.md",
+      "summary": "Forge Security Audit & Vulnerability Assessment Report",
+      "authorProvider": "internal",
+      "sizeBytes": 1077
+    },
+    {
+      "name": "convergence.md",
+      "path": ".forge\\functionalities\\core-system\\convergence.md",
+      "summary": "Spec Kit Convergence & Release Readiness Audit",
+      "authorProvider": "speckit",
+      "sizeBytes": 709
+    },
+    {
+      "name": "CHANGELOG.md",
+      "path": ".forge\\functionalities\\core-system\\CHANGELOG.md",
+      "summary": "KeepAChangelog formatted release history",
+      "authorProvider": "internal",
+      "sizeBytes": 687
+    },
+    {
+      "name": "RELEASE_NOTES.md",
+      "path": ".forge\\functionalities\\core-system\\RELEASE_NOTES.md",
+      "summary": "User-facing release highlights and release summary",
+      "authorProvider": "internal",
+      "sizeBytes": 597
+    }
+  ]
+}

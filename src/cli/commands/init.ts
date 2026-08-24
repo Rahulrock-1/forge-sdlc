@@ -73,9 +73,10 @@ export function handleInitCommand(options: { workspace?: string; name?: string }
   const slashBox = boxen(
     `${chalk.bold.hex('#F59E0B')('✨ Slash Commands (/agent) Ready in your IDE!')}\n\n` +
     `${chalk.white('Open your AI Chat (Cursor, Antigravity, Claude Code, Copilot) and type ')}${chalk.cyan.bold('/')}${chalk.white(':\n\n')}` +
-    `  ${chalk.bold.yellow('/sdlc')}            ${chalk.green('★ Full SDLC Master Orchestrator (End-to-End 13 Stages)')}\n` +
+    `  ${chalk.bold.yellow('/sdlc')}            ${chalk.green('★ Full SDLC Master Orchestrator (End-to-End 14 Stages)')}\n` +
     `  ${chalk.bold.yellow('/implement')}       ${chalk.green('★ Autonomous Implementation Agent (Code & Tests)')}\n` +
     `  ${chalk.yellow('/brd')}            ${chalk.dim('→ Formulates Business Requirements Document & ROI (BMAD)')}\n` +
+    `  ${chalk.yellow('/constitution')}   ${chalk.dim('→ Establishes non-negotiable architectural invariants (Spec Kit)')}\n` +
     `  ${chalk.yellow('/specify')}        ${chalk.dim('→ Formulates Given-When-Then specification (Spec Kit)')}\n` +
     `  ${chalk.yellow('/clarify')}        ${chalk.dim('→ Probes ambiguities & hidden assumptions (BMAD)')}\n` +
     `  ${chalk.yellow('/architecture')}   ${chalk.dim('→ Designs C4 technical architecture & ADRs (BMAD)')}\n` +

@@ -1,6 +1,6 @@
 ---
 name: sdlc
-description: Execute end-to-end 13-stage SDLC workflow from discovery to release
+description: Execute end-to-end 14-stage SDLC workflow from discovery to release
 ---
 
 # Full SDLC Master Orchestrator (Forge SDLC)

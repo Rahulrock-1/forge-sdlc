@@ -203,6 +203,21 @@ export class InternalProvider extends BaseProvider {
         break;
       }
 
+      case 'constitution': {
+        logs.push('[Forge Internal Governance] Formulating non-negotiable architectural invariants and code guardrails...');
+        const content = this.generateInternalConstitutionDoc(context);
+        artifacts.push({
+          name: 'constitution.md',
+          path: 'constitution.md',
+          content,
+          format: 'markdown',
+          summary: 'Forge Internal Project Constitution & Architectural Invariants (constitution.md)',
+        });
+        summary = 'Forge Project Constitution established. Non-negotiable invariants and security rules codified.';
+        nextCap = 'forge.specify';
+        break;
+      }
+
       default: {
         logs.push(`[Forge Internal] Synthesizing artifact for capability ${cap}...`);
         const content = `# Forge Internal Artifact: ${cap.toUpperCase()}\n\n**Project:** ${context.projectContext.projectName}\n**Capability:** ${context.capabilityId}\n**Generated:** ${new Date().toISOString()}\n\n## 1. Overview\nExecuted using Forge Internal Engine.\n\n## 2. Details\n- Automated deterministic synthesis completed.\n- Meets baseline quality standards.`;
@@ -447,6 +462,34 @@ Execute \`forge test\` to run Vitest suites across all synthesized modules, foll
 - [ ] **Task 3.1: Unit & Integration Test Suites**  
   *Files:* \`tests/*.test.ts\`  
   *Verification:* 100% test pass rate with coverage assertions.
+`;
+  }
+
+  private generateInternalConstitutionDoc(context: ProviderExecutionContext): string {
+    const pName = context.projectContext.projectName || 'Software System';
+    return `# Project Constitution & Engineering Invariants (constitution.md)
+
+**Project:** ${pName}  
+**Governing Engine:** Forge Built-in Constitution (v1.2.0)  
+**Status:** Approved & Enforced  
+**Generated At:** ${new Date().toISOString()}  
+
+---
+
+## 1. Architectural Guardrails
+- **Clean Decoupling:** Business domain logic isolated from third-party frameworks and persistent storage.
+- **Dependency Inversion:** Consumers define typed interfaces; providers implement adapters.
+- **Deterministic State:** State machines and workflows must have reproducible, deterministic transitions.
+
+## 2. Code Quality & Type Safety
+- **Strict TypeScript:** No implicit \`any\`, strict null checks, and comprehensive generics.
+- **Boundary Validation:** Ingested payloads parsed through runtime schema validators (Zod).
+- **Error Handling:** Structured error envelopes with actionable error codes.
+
+## 3. Security & Operational Standards
+- **Zero Secrets in Git:** Secrets strictly injected via environment variables.
+- **OWASP Compliance:** Automated SAST scans on every pull request.
+- **Telemetry:** Structured JSON logging with Correlation IDs (\`traceId\`, \`spanId\`).
 `;
   }
 }

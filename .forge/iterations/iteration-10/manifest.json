@@ -1,0 +1,24 @@
+{
+  "runId": "iteration-10",
+  "functionality": "core",
+  "iteration": 10,
+  "timestamp": "2026-08-24T19:00:09.953Z",
+  "updatedAt": "2026-08-24T19:00:09.953Z",
+  "artifactCount": 2,
+  "artifacts": [
+    {
+      "name": "test-spec.md",
+      "path": ".forge\\iterations\\iteration-10\\test-spec.md",
+      "summary": "test-spec.md for core (iteration 10)",
+      "authorProvider": "speckit",
+      "sizeBytes": 17
+    },
+    {
+      "name": "test-arch.md",
+      "path": ".forge\\iterations\\iteration-10\\test-arch.md",
+      "summary": "test-arch.md for core (iteration 10)",
+      "authorProvider": "speckit",
+      "sizeBytes": 17
+    }
+  ]
+}

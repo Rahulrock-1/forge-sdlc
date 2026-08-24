@@ -1,0 +1,38 @@
+{
+  "runId": "run-2026-08-24T19-00-09",
+  "functionality": "auth-module",
+  "iteration": 10,
+  "timestamp": "2026-08-24T19:00:09.954Z",
+  "updatedAt": "2026-08-24T19:00:09.978Z",
+  "artifactCount": 4,
+  "artifacts": [
+    {
+      "name": "test-spec.md",
+      "path": ".forge\\runs\\run-2026-08-24T19-00-09\\test-spec.md",
+      "summary": "test-spec.md for core (iteration 11)",
+      "authorProvider": "speckit",
+      "sizeBytes": 31
+    },
+    {
+      "name": "test-arch.md",
+      "path": ".forge\\runs\\run-2026-08-24T19-00-09\\test-arch.md",
+      "summary": "test-arch.md for core (iteration 10)",
+      "authorProvider": "speckit",
+      "sizeBytes": 17
+    },
+    {
+      "name": "spec.md",
+      "path": ".forge\\runs\\run-2026-08-24T19-00-09\\spec.md",
+      "summary": "spec.md for auth-module (iteration 11)",
+      "authorProvider": "bmad",
+      "sizeBytes": 11
+    },
+    {
+      "name": "architecture.md",
+      "path": ".forge\\runs\\run-2026-08-24T19-00-09\\architecture.md",
+      "summary": "architecture.md for auth-module (iteration 11)",
+      "authorProvider": "bmad",
+      "sizeBytes": 19
+    }
+  ]
+}
