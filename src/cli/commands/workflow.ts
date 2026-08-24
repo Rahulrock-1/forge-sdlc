@@ -73,10 +73,11 @@ export async function handleWorkflowCommand(
     });
 
     if (state.status === 'completed') {
-      spinner.succeed(chalk.green.bold('🎉 Full SDLC Workflow Completed Successfully!'));
-      console.log(chalk.bold.cyan('\n📁 Separated Run Artifacts: ') + chalk.yellow(`.forge/runs/${state.runId}/`));
+      spinner.succeed(chalk.green.bold(`🎉 Full SDLC Iteration ${state.iteration || 1} Completed Successfully!`));
+      console.log(chalk.bold.cyan(`\n📁 Full Iteration Folder: `) + chalk.bold.yellow(`.forge/iterations/iteration-${state.iteration || 1}/`) + chalk.dim(' (All 14 Full Agent Documents)'));
       console.log(chalk.bold.cyan('📄 Active Workspace Artifacts: ') + chalk.yellow('.forge/artifacts/'));
-      console.log(chalk.bold.cyan('📜 Run Manifest & State: ') + chalk.yellow(`.forge/runs/${state.runId}/manifest.json\n`));
+      console.log(chalk.bold.cyan('📜 Iteration Manifest: ') + chalk.yellow(`.forge/iterations/iteration-${state.iteration || 1}/manifest.json`));
+      console.log(chalk.bold.cyan('📦 Run Snapshot: ') + chalk.yellow(`.forge/runs/${state.runId}/\n`));
     } else {
       spinner.fail(chalk.red('Workflow stopped due to stage failure.'));
     }

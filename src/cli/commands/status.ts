@@ -78,15 +78,41 @@ export async function handleStatusCommand(options: { workspace?: string } = {}):
   const pct = Math.round((completedCount / pipelineArtifacts.length) * 100);
   console.log(`\nPipeline Progress: ${chalk.bold.cyan(`${completedCount}/${pipelineArtifacts.length}`)} artifacts (${pct}% complete)\n`);
 
+  // Check full iterations in .forge/iterations/
+  const iterations = artifactManager.listIterations();
+  if (iterations.length > 0) {
+    console.log(chalk.bold('📁 Full Agent Iteration Runs (.forge/iterations/):'));
+    const iterTable = new Table({
+      head: [
+        chalk.dim('Iteration'),
+        chalk.dim('Agent Documents'),
+        chalk.dim('Directory'),
+        chalk.dim('Last Modified'),
+      ],
+      style: { head: [], border: [] },
+    });
+
+    iterations.forEach((iter) => {
+      iterTable.push([
+        chalk.bold.yellow(`Iteration ${iter.iteration}`),
+        chalk.green(`${iter.artifactCount} documents`),
+        chalk.cyan(`.forge/iterations/${iter.name}/`),
+        iter.manifest ? chalk.dim(new Date(iter.manifest.updatedAt || iter.manifest.timestamp).toLocaleTimeString()) : '—',
+      ]);
+    });
+
+    console.log(iterTable.toString());
+    console.log('');
+  }
+
   // Check historical runs in .forge/runs/
   const runs = artifactManager.listRuns();
   if (runs.length > 0) {
-    console.log(chalk.bold('📁 Separated Runs History (.forge/runs/):'));
+    console.log(chalk.bold('📦 Execution Run Snapshots (.forge/runs/):'));
     const runsTable = new Table({
       head: [
         chalk.dim('Run ID'),
         chalk.dim('Artifacts'),
-        chalk.dim('Iterations'),
         chalk.dim('Timestamp'),
       ],
       style: { head: [], border: [] },
@@ -95,8 +121,7 @@ export async function handleStatusCommand(options: { workspace?: string } = {}):
     runs.slice(0, 5).forEach((r) => {
       runsTable.push([
         chalk.cyan(r.runId),
-        r.manifest ? `${r.manifest.artifacts.length} files` : '—',
-        r.manifest ? `${r.manifest.iterationCount} iter` : '1 iter',
+        r.manifest ? `${r.manifest.artifactCount || r.manifest.artifacts.length} files` : '—',
         r.manifest ? chalk.dim(new Date(r.manifest.timestamp).toLocaleTimeString()) : '—',
       ]);
     });
@@ -112,6 +137,7 @@ export async function handleStatusCommand(options: { workspace?: string } = {}):
       const state: WorkflowExecutionState = JSON.parse(fs.readFileSync(statePath, 'utf-8'));
       console.log(chalk.bold('Last Workflow State:'));
       console.log(`  Workflow: ${chalk.cyan(state.workflowId)}`);
+      if (state.iteration) console.log(`  Iteration: ${chalk.bold.yellow(`Iteration ${state.iteration}`)} (.forge/iterations/iteration-${state.iteration}/)`);
       if (state.runId) console.log(`  Run ID: ${chalk.yellow(state.runId)}`);
       console.log(`  Status: ${state.status === 'completed' ? chalk.green('COMPLETED') : chalk.red('FAILED')}`);
       console.log(`  Stages Executed: ${state.stages.length}\n`);

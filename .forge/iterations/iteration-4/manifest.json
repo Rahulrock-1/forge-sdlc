@@ -1,0 +1,16 @@
+{
+  "runId": "iteration-4",
+  "iteration": 4,
+  "timestamp": "2026-08-24T18:40:04.501Z",
+  "updatedAt": "2026-08-24T18:40:04.501Z",
+  "artifactCount": 1,
+  "artifacts": [
+    {
+      "name": "test-spec.md",
+      "path": ".forge\\iterations\\iteration-4\\test-spec.md",
+      "summary": "test-spec.md for iteration 4",
+      "authorProvider": "speckit",
+      "sizeBytes": 31
+    }
+  ]
+}

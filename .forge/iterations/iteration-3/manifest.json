@@ -1,0 +1,23 @@
+{
+  "runId": "iteration-3",
+  "iteration": 3,
+  "timestamp": "2026-08-24T18:40:04.495Z",
+  "updatedAt": "2026-08-24T18:40:04.495Z",
+  "artifactCount": 2,
+  "artifacts": [
+    {
+      "name": "test-spec.md",
+      "path": ".forge\\iterations\\iteration-3\\test-spec.md",
+      "summary": "test-spec.md for iteration 3",
+      "authorProvider": "speckit",
+      "sizeBytes": 17
+    },
+    {
+      "name": "test-arch.md",
+      "path": ".forge\\iterations\\iteration-3\\test-arch.md",
+      "summary": "test-arch.md for iteration 3",
+      "authorProvider": "speckit",
+      "sizeBytes": 17
+    }
+  ]
+}

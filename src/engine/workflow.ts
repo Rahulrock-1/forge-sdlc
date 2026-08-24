@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { CapabilityRouter } from './router.js';
+import { ArtifactManager } from './artifacts.js';
 import { WorkflowDefinition, WorkflowExecutionState, WorkflowStageExecution } from '../types/workflow.js';
 
 export const DEFAULT_SDLC_WORKFLOW: WorkflowDefinition = {
@@ -30,10 +31,12 @@ export const DEFAULT_SDLC_WORKFLOW: WorkflowDefinition = {
 
 export class WorkflowEngine {
   private router: CapabilityRouter;
+  private artifactManager: ArtifactManager;
   private workspaceRoot: string;
 
   constructor(workspaceRoot: string = process.cwd()) {
     this.router = new CapabilityRouter();
+    this.artifactManager = new ArtifactManager(workspaceRoot);
     this.workspaceRoot = path.resolve(workspaceRoot);
   }
 
@@ -58,15 +61,19 @@ export class WorkflowEngine {
   }
 
   /**
-   * Run a workflow definition step-by-step with separated run folders and iteration tracking
+   * Run a workflow definition step-by-step with dedicated iteration folders (.forge/iterations/iteration-N/)
+   * and separated run logs (.forge/runs/run-...)
    */
   public async executeWorkflow(
     workflow: WorkflowDefinition,
-    onStageProgress?: (stage: WorkflowStageExecution, index: number, total: number) => void
+    onStageProgress?: (stage: WorkflowStageExecution, index: number, total: number) => void,
+    options?: { iteration?: number }
   ): Promise<WorkflowExecutionState> {
+    const iteration = options?.iteration ?? this.artifactManager.getNextIterationNumber();
     const runTimestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const runId = `run-${runTimestamp}-${workflow.id}`;
     const runDir = path.join(this.workspaceRoot, '.forge', 'runs', runId);
+    const iterationDir = path.join(this.workspaceRoot, '.forge', 'iterations', `iteration-${iteration}`);
 
     const state: WorkflowExecutionState = {
       workflowId: workflow.id,
@@ -77,6 +84,8 @@ export class WorkflowEngine {
       currentStageIndex: 0,
       runId,
       runDir,
+      iteration,
+      iterationDir,
     };
 
     for (let i = 0; i < workflow.stages.length; i++) {
@@ -100,7 +109,7 @@ export class WorkflowEngine {
           providerOverride: stageDef.preferredProvider,
           workspaceRoot: this.workspaceRoot,
           runId,
-          iteration: i + 1,
+          iteration,
         });
 
         stageExec.providerId = outcome.selectedProviderId;
@@ -124,7 +133,7 @@ export class WorkflowEngine {
     }
     state.completedAt = new Date().toISOString();
 
-    // Save state to active .forge and separated run folder
+    // Save state to active .forge, iteration folder, and run snapshot
     this.saveWorkflowState(state);
     return state;
   }
@@ -144,7 +153,19 @@ export class WorkflowEngine {
       'utf-8'
     );
 
-    // 2. Save inside separated run directory
+    // 2. Save inside full iteration directory (.forge/iterations/iteration-N/workflow-state.json)
+    if (state.iterationDir) {
+      if (!fs.existsSync(state.iterationDir)) {
+        fs.mkdirSync(state.iterationDir, { recursive: true });
+      }
+      fs.writeFileSync(
+        path.join(state.iterationDir, 'workflow-state.json'),
+        stateJson,
+        'utf-8'
+      );
+    }
+
+    // 3. Save inside separated run directory (.forge/runs/run-.../workflow-state.json)
     if (state.runDir) {
       if (!fs.existsSync(state.runDir)) {
         fs.mkdirSync(state.runDir, { recursive: true });

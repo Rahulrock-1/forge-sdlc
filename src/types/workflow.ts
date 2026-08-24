@@ -46,4 +46,6 @@ export interface WorkflowExecutionState {
   currentStageIndex: number;
   runId?: string;
   runDir?: string;
+  iteration?: number;
+  iterationDir?: string;
 }

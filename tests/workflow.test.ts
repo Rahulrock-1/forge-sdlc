@@ -22,34 +22,46 @@ describe('WorkflowEngine', () => {
     expect(res.geminiSkillConfigured).toBe(true);
   });
 
-  it('should create separated run folder, iteration files, and archive modified versions', async () => {
+  it('should create dedicated iteration folder and archive modified versions', async () => {
     const manager = new ArtifactManager();
-    const testRunId = `test-run-${Date.now()}`;
+    const iterNum = manager.getNextIterationNumber();
 
     // 1. First iteration
     await manager.saveArtifacts(
-      [{ name: 'test-spec.md', path: 'test-spec.md', content: '# Initial Spec v1', format: 'markdown' }],
-      { providerId: 'speckit', runId: testRunId, iteration: 1 }
+      [
+        { name: 'test-spec.md', path: 'test-spec.md', content: '# Initial Spec v1', format: 'markdown' },
+        { name: 'test-arch.md', path: 'test-arch.md', content: '# Initial Arch v1', format: 'markdown' },
+      ],
+      { providerId: 'speckit', iteration: iterNum }
     );
 
-    const runDir = path.join(process.cwd(), '.forge', 'runs', testRunId);
-    expect(fs.existsSync(path.join(runDir, 'test-spec.md'))).toBe(true);
-    expect(fs.existsSync(path.join(runDir, 'manifest.json'))).toBe(true);
+    const iterDir = path.join(process.cwd(), '.forge', 'iterations', `iteration-${iterNum}`);
+    expect(fs.existsSync(path.join(iterDir, 'test-spec.md'))).toBe(true);
+    expect(fs.existsSync(path.join(iterDir, 'test-arch.md'))).toBe(true);
+    expect(fs.existsSync(path.join(iterDir, 'manifest.json'))).toBe(true);
 
-    // 2. Second iteration with modification
+    // 2. Next iteration with modification
+    const nextIterNum = iterNum + 1;
     await manager.saveArtifacts(
-      [{ name: 'test-spec.md', path: 'test-spec.md', content: '# Modified Spec v2 with new features', format: 'markdown' }],
-      { providerId: 'speckit', runId: testRunId, iteration: 2 }
+      [
+        { name: 'test-spec.md', path: 'test-spec.md', content: '# Modified Spec v2 with changes', format: 'markdown' },
+      ],
+      { providerId: 'speckit', iteration: nextIterNum }
     );
+
+    const nextIterDir = path.join(process.cwd(), '.forge', 'iterations', `iteration-${nextIterNum}`);
+    expect(fs.existsSync(path.join(nextIterDir, 'test-spec.md'))).toBe(true);
 
     // Check version archiving in history
     const history = manager.getArtifactHistory('test-spec.md');
     expect(history.length).toBeGreaterThanOrEqual(1);
 
-    // Check iteration files in separated run directory
-    expect(fs.existsSync(path.join(runDir, 'iterations', 'iteration-2', 'test-spec.md'))).toBe(true);
-    expect(fs.existsSync(path.join(runDir, 'test-spec.iter2.md'))).toBe(true);
+    // Check listIterations
+    const allIters = manager.listIterations();
+    expect(allIters.some((i) => i.iteration === iterNum)).toBe(true);
+    expect(allIters.some((i) => i.iteration === nextIterNum)).toBe(true);
   });
 });
+
 
 
