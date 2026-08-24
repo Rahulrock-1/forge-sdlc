@@ -1,6 +1,6 @@
 {
   "name": "forge-sdlc",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Universal Capability-Oriented SDLC Framework & Intelligent Provider Router",
   "type": "module",
   "main": "./dist/index.js",
