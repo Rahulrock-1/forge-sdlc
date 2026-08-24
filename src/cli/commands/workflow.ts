@@ -74,9 +74,12 @@ export async function handleWorkflowCommand(
 
     if (state.status === 'completed') {
       spinner.succeed(chalk.green.bold('🎉 Full SDLC Workflow Completed Successfully!'));
-      console.log(chalk.dim(`\nArtifacts and state saved to .forge/artifacts/ and .forge/workflow-state.json\n`));
+      console.log(chalk.bold.cyan('\n📁 Separated Run Artifacts: ') + chalk.yellow(`.forge/runs/${state.runId}/`));
+      console.log(chalk.bold.cyan('📄 Active Workspace Artifacts: ') + chalk.yellow('.forge/artifacts/'));
+      console.log(chalk.bold.cyan('📜 Run Manifest & State: ') + chalk.yellow(`.forge/runs/${state.runId}/manifest.json\n`));
     } else {
       spinner.fail(chalk.red('Workflow stopped due to stage failure.'));
     }
   }
 }
+

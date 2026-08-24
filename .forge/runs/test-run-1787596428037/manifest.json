@@ -1,0 +1,16 @@
+{
+  "runId": "test-run-1787596428037",
+  "timestamp": "2026-08-24T18:33:48.038Z",
+  "updatedAt": "2026-08-24T18:33:48.041Z",
+  "iterationCount": 2,
+  "artifacts": [
+    {
+      "name": "test-spec.md",
+      "path": ".forge\\runs\\test-run-1787596428037\\test-spec.md",
+      "summary": "test-spec.md generated during test-run-1787596428037",
+      "authorProvider": "speckit",
+      "iteration": 2,
+      "sizeBytes": 36
+    }
+  ]
+}

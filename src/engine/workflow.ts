@@ -19,7 +19,7 @@ export const DEFAULT_SDLC_WORKFLOW: WorkflowDefinition = {
     { id: 'plan', capabilityId: 'forge.plan', name: 'Planning', description: 'Technical Execution Plan (plan.md)', requiredInputs: ['spec.md', 'architecture.md'], expectedOutputs: ['plan.md'] },
     { id: 'tasks', capabilityId: 'forge.task-decomposition', name: 'Task Decomposition', description: 'Atomic Developer Tasks (tasks.md)', requiredInputs: ['plan.md'], expectedOutputs: ['tasks.md'] },
     { id: 'analyze', capabilityId: 'forge.analyze', name: 'Cross-Artifact Analysis', description: 'Consistency & Drift Audit', requiredInputs: ['spec.md', 'tasks.md'], expectedOutputs: ['analysis.md'] },
-    { id: 'implement', capabilityId: 'forge.implement', name: 'Implementation', description: 'Agentic Code Implementation', requiredInputs: ['tasks.md'], expectedOutputs: [] },
+    { id: 'implement', capabilityId: 'forge.implement', name: 'Implementation', description: 'Agentic Code Implementation', requiredInputs: ['tasks.md'], expectedOutputs: ['implementation.md'] },
     { id: 'test', capabilityId: 'forge.test', name: 'Testing', description: 'Automated Test Suite Synthesis', requiredInputs: [], expectedOutputs: ['test-report.md'] },
     { id: 'review', capabilityId: 'forge.review', name: 'Multi-Lens Review', description: '5-Perspective Code & Architecture Review', requiredInputs: [], expectedOutputs: ['review.md'] },
     { id: 'security', capabilityId: 'forge.security-review', name: 'Security Audit', description: 'OWASP & STRIDE Threat Verification', requiredInputs: [], expectedOutputs: ['security-audit.md'] },
@@ -58,12 +58,16 @@ export class WorkflowEngine {
   }
 
   /**
-   * Run a workflow definition step-by-step
+   * Run a workflow definition step-by-step with separated run folders and iteration tracking
    */
   public async executeWorkflow(
     workflow: WorkflowDefinition,
     onStageProgress?: (stage: WorkflowStageExecution, index: number, total: number) => void
   ): Promise<WorkflowExecutionState> {
+    const runTimestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+    const runId = `run-${runTimestamp}-${workflow.id}`;
+    const runDir = path.join(this.workspaceRoot, '.forge', 'runs', runId);
+
     const state: WorkflowExecutionState = {
       workflowId: workflow.id,
       projectName: path.basename(this.workspaceRoot),
@@ -71,6 +75,8 @@ export class WorkflowEngine {
       status: 'running',
       stages: [],
       currentStageIndex: 0,
+      runId,
+      runDir,
     };
 
     for (let i = 0; i < workflow.stages.length; i++) {
@@ -93,6 +99,8 @@ export class WorkflowEngine {
           capabilityId: stageDef.capabilityId,
           providerOverride: stageDef.preferredProvider,
           workspaceRoot: this.workspaceRoot,
+          runId,
+          iteration: i + 1,
         });
 
         stageExec.providerId = outcome.selectedProviderId;
@@ -116,7 +124,7 @@ export class WorkflowEngine {
     }
     state.completedAt = new Date().toISOString();
 
-    // Save state
+    // Save state to active .forge and separated run folder
     this.saveWorkflowState(state);
     return state;
   }
@@ -126,10 +134,27 @@ export class WorkflowEngine {
     if (!fs.existsSync(forgeDir)) {
       fs.mkdirSync(forgeDir, { recursive: true });
     }
+
+    const stateJson = JSON.stringify(state, null, 2);
+
+    // 1. Save global active state
     fs.writeFileSync(
       path.join(forgeDir, 'workflow-state.json'),
-      JSON.stringify(state, null, 2),
+      stateJson,
       'utf-8'
     );
+
+    // 2. Save inside separated run directory
+    if (state.runDir) {
+      if (!fs.existsSync(state.runDir)) {
+        fs.mkdirSync(state.runDir, { recursive: true });
+      }
+      fs.writeFileSync(
+        path.join(state.runDir, 'workflow-state.json'),
+        stateJson,
+        'utf-8'
+      );
+    }
   }
 }
+

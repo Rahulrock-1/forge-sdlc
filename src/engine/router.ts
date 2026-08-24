@@ -21,6 +21,8 @@ export interface RouteExecutionOptions {
   writeToRoot?: boolean;
   inputParams?: Record<string, unknown>;
   workspaceRoot?: string;
+  runId?: string;
+  iteration?: number;
 }
 
 export interface RouteExecutionOutcome {
@@ -164,11 +166,12 @@ export class CapabilityRouter {
       const postCheck = QualityGateEngine.validateStageOutput(executionResult, manifest);
 
       if (executionResult.generatedArtifacts.length > 0) {
-        await artifactManager.saveArtifacts(
-          executionResult.generatedArtifacts,
-          selectedProviderId,
-          options.writeToRoot
-        );
+        await artifactManager.saveArtifacts(executionResult.generatedArtifacts, {
+          providerId: selectedProviderId,
+          runId: options.runId,
+          iteration: options.iteration,
+          writeToRoot: options.writeToRoot,
+        });
       }
 
       return {

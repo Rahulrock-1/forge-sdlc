@@ -44,4 +44,6 @@ export interface WorkflowExecutionState {
   status: 'running' | 'completed' | 'failed' | 'paused';
   stages: WorkflowStageExecution[];
   currentStageIndex: number;
+  runId?: string;
+  runDir?: string;
 }

@@ -1,0 +1,120 @@
+{
+  "runId": "run-2026-08-24T18-32-28-full-sdlc",
+  "timestamp": "2026-08-24T18:32:28.993Z",
+  "updatedAt": "2026-08-24T18:32:29.258Z",
+  "iterationCount": 13,
+  "artifacts": [
+    {
+      "name": "discovery.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\discovery.md",
+      "summary": "BMAD Domain Discovery & Bounded Context Map",
+      "authorProvider": "bmad",
+      "iteration": 1,
+      "sizeBytes": 507
+    },
+    {
+      "name": "spec.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\spec.md",
+      "summary": "Definitive Software Specification Document (spec.md) with user stories and testable acceptance scenarios",
+      "authorProvider": "speckit",
+      "iteration": 2,
+      "sizeBytes": 2110
+    },
+    {
+      "name": "clarifications.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\clarifications.md",
+      "summary": "Spec Kit Structured Clarification and Decision Records",
+      "authorProvider": "speckit",
+      "iteration": 3,
+      "sizeBytes": 712
+    },
+    {
+      "name": "architecture.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\architecture.md",
+      "summary": "BMAD Technical Architecture Document with C4 diagrams and trade-off matrices",
+      "authorProvider": "bmad",
+      "iteration": 4,
+      "sizeBytes": 4719
+    },
+    {
+      "name": "plan.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\plan.md",
+      "summary": "Spec Kit Technical Execution Plan (plan.md) with phase milestones and input/output contracts",
+      "authorProvider": "speckit",
+      "iteration": 5,
+      "sizeBytes": 1290
+    },
+    {
+      "name": "tasks.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\tasks.md",
+      "summary": "Spec Kit Actionable Developer Tasks Breakdown (tasks.md) ready for agentic execution",
+      "authorProvider": "speckit",
+      "iteration": 6,
+      "sizeBytes": 1972
+    },
+    {
+      "name": "analysis.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\analysis.md",
+      "summary": "Spec Kit Cross-Artifact Consistency Analysis & Drift Detection Report",
+      "authorProvider": "speckit",
+      "iteration": 7,
+      "sizeBytes": 1066
+    },
+    {
+      "name": "implementation.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\implementation.md",
+      "summary": "BMAD Implementation Architecture & Component Synthesis Report",
+      "authorProvider": "bmad",
+      "iteration": 8,
+      "sizeBytes": 1926
+    },
+    {
+      "name": "test-report.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\test-report.md",
+      "summary": "Forge Automated Test Suite & Coverage Verification Report",
+      "authorProvider": "internal",
+      "iteration": 9,
+      "sizeBytes": 545
+    },
+    {
+      "name": "review.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\review.md",
+      "summary": "BMAD Multi-Lens Code & Architecture Review Report",
+      "authorProvider": "bmad",
+      "iteration": 10,
+      "sizeBytes": 1934
+    },
+    {
+      "name": "security-audit.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\security-audit.md",
+      "summary": "Forge Security Audit & Vulnerability Assessment Report",
+      "authorProvider": "internal",
+      "iteration": 11,
+      "sizeBytes": 1077
+    },
+    {
+      "name": "convergence.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\convergence.md",
+      "summary": "Spec Kit Convergence & Release Readiness Audit",
+      "authorProvider": "speckit",
+      "iteration": 12,
+      "sizeBytes": 709
+    },
+    {
+      "name": "CHANGELOG.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\CHANGELOG.md",
+      "summary": "KeepAChangelog formatted release history",
+      "authorProvider": "internal",
+      "iteration": 13,
+      "sizeBytes": 687
+    },
+    {
+      "name": "RELEASE_NOTES.md",
+      "path": ".forge\\runs\\run-2026-08-24T18-32-28-full-sdlc\\RELEASE_NOTES.md",
+      "summary": "User-facing release highlights and release summary",
+      "authorProvider": "internal",
+      "iteration": 13,
+      "sizeBytes": 597
+    }
+  ]
+}
