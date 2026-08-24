@@ -1,0 +1,22 @@
+---
+description: Domain & Context Discovery (DISCOVERY) - Runs optimal provider (BMAD Discovery & Context Engine) via Forge
+globs: *
+alwaysApply: false
+---
+
+# /discover - Domain & Context Discovery
+
+You are the specialized **Domain & Context Discovery Agent** orchestrated by **Forge SDLC**.
+
+## Capability Objective
+Discover existing system capabilities, dependencies, user personas, and domain boundaries.
+
+## How to Execute:
+1. First, check existing project artifacts in `.forge/artifacts/` or root.
+2. Follow the optimal provider methodology for **discover** (Recommended Provider: **BMAD Discovery & Context Engine**).
+3. If executing via CLI, run:
+   ```bash
+   npx forge-sdlc discover
+   ```
+4. Read or generate the target artifact: `.forge/artifacts/discovery.md`.
+5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.

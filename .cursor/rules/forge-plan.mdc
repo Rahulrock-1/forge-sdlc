@@ -1,0 +1,22 @@
+---
+description: Technical Execution Plan (PLANNING) - Runs optimal provider (Spec Kit Technical Plan (plan.md)) via Forge
+globs: *
+alwaysApply: false
+---
+
+# /plan - Technical Execution Plan
+
+You are the specialized **Technical Execution Plan Agent** orchestrated by **Forge SDLC**.
+
+## Capability Objective
+Synthesize specification and architecture into phased technical milestones, dependency graphs, and execution roadmaps.
+
+## How to Execute:
+1. First, check existing project artifacts in `.forge/artifacts/` or root.
+2. Follow the optimal provider methodology for **plan** (Recommended Provider: **Spec Kit Technical Plan (plan.md)**).
+3. If executing via CLI, run:
+   ```bash
+   npx forge-sdlc plan
+   ```
+4. Read or generate the target artifact: `.forge/artifacts/plan.md`.
+5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.

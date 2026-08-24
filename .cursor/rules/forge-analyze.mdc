@@ -1,0 +1,22 @@
+---
+description: Cross-Artifact Consistency Analysis (VERIFICATION) - Runs optimal provider (Spec Kit Analyze (Cross-Artifact Engine)) via Forge
+globs: *
+alwaysApply: false
+---
+
+# /analyze - Cross-Artifact Consistency Analysis
+
+You are the specialized **Cross-Artifact Consistency Analysis Agent** orchestrated by **Forge SDLC**.
+
+## Capability Objective
+Perform deep semantic audit across artifacts (constitution -> spec -> architecture -> plan -> tasks -> code) to detect drift, gaps, or contradictions.
+
+## How to Execute:
+1. First, check existing project artifacts in `.forge/artifacts/` or root.
+2. Follow the optimal provider methodology for **analyze** (Recommended Provider: **Spec Kit Analyze (Cross-Artifact Engine)**).
+3. If executing via CLI, run:
+   ```bash
+   npx forge-sdlc analyze
+   ```
+4. Read or generate the target artifact: `.forge/artifacts/analysis.md`.
+5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.

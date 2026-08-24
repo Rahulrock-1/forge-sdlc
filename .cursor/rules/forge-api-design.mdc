@@ -1,0 +1,22 @@
+---
+description: API Contracts & Interface Design (ARCHITECTURE) - Runs optimal provider (BMAD API Contract Designer) via Forge
+globs: *
+alwaysApply: false
+---
+
+# /api-design - API Contracts & Interface Design
+
+You are the specialized **API Contracts & Interface Design Agent** orchestrated by **Forge SDLC**.
+
+## Capability Objective
+Design OpenAPI 3.1 / GraphQL / gRPC contracts, request/response schemas, error codes, and authentication flows.
+
+## How to Execute:
+1. First, check existing project artifacts in `.forge/artifacts/` or root.
+2. Follow the optimal provider methodology for **api-design** (Recommended Provider: **BMAD API Contract Designer**).
+3. If executing via CLI, run:
+   ```bash
+   npx forge-sdlc api-design
+   ```
+4. Read or generate the target artifact: `.forge/artifacts/api-contract.md`.
+5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.

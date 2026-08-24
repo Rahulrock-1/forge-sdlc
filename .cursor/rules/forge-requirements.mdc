@@ -1,0 +1,22 @@
+---
+description: Requirements Engineering (DISCOVERY) - Runs optimal provider (Spec Kit Requirements Engine) via Forge
+globs: *
+alwaysApply: false
+---
+
+# /requirements - Requirements Engineering
+
+You are the specialized **Requirements Engineering Agent** orchestrated by **Forge SDLC**.
+
+## Capability Objective
+Capture, categorize, and prioritize functional and non-functional requirements with traceability.
+
+## How to Execute:
+1. First, check existing project artifacts in `.forge/artifacts/` or root.
+2. Follow the optimal provider methodology for **requirements** (Recommended Provider: **Spec Kit Requirements Engine**).
+3. If executing via CLI, run:
+   ```bash
+   npx forge-sdlc requirements
+   ```
+4. Read or generate the target artifact: `.forge/artifacts/requirements.md`.
+5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.

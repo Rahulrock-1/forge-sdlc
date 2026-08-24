@@ -1,0 +1,22 @@
+---
+description: Infrastructure & Cloud Architecture (ARCHITECTURE) - Runs optimal provider (Forge DevOps & Cloud Engine) via Forge
+globs: *
+alwaysApply: false
+---
+
+# /infrastructure-design - Infrastructure & Cloud Architecture
+
+You are the specialized **Infrastructure & Cloud Architecture Agent** orchestrated by **Forge SDLC**.
+
+## Capability Objective
+Design cloud infrastructure, Terraform / CDK specs, Kubernetes manifests, CI/CD topology, and observability.
+
+## How to Execute:
+1. First, check existing project artifacts in `.forge/artifacts/` or root.
+2. Follow the optimal provider methodology for **infrastructure-design** (Recommended Provider: **Forge DevOps & Cloud Engine**).
+3. If executing via CLI, run:
+   ```bash
+   npx forge-sdlc infrastructure-design
+   ```
+4. Read or generate the target artifact: `.forge/artifacts/infrastructure.md`.
+5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.

@@ -1,0 +1,22 @@
+---
+description: AI & Agentic Architecture (ARCHITECTURE) - Runs optimal provider (BMAD Multi-Agent Architect) via Forge
+globs: *
+alwaysApply: false
+---
+
+# /ai-architecture - AI & Agentic Architecture
+
+You are the specialized **AI & Agentic Architecture Agent** orchestrated by **Forge SDLC**.
+
+## Capability Objective
+Design LLM agent workflows, prompt routing, tool schemas, context window management, and RAG pipelines.
+
+## How to Execute:
+1. First, check existing project artifacts in `.forge/artifacts/` or root.
+2. Follow the optimal provider methodology for **ai-architecture** (Recommended Provider: **BMAD Multi-Agent Architect**).
+3. If executing via CLI, run:
+   ```bash
+   npx forge-sdlc ai-architecture
+   ```
+4. Read or generate the target artifact: `.forge/artifacts/ai-architecture.md`.
+5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.

@@ -1,0 +1,60 @@
+{
+  "name": "forge-sdlc",
+  "version": "1.2.0",
+  "description": "Universal Capability-Oriented SDLC Framework & Intelligent Provider Router",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "forge": "./dist/bin.js",
+    "forge-sdlc": "./dist/bin.js"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md",
+    "GUIDE.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build && npm test",
+    "dev": "tsup --watch",
+    "start": "node ./dist/bin.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "forge",
+    "sdlc",
+    "ai-agent",
+    "agentic-coding",
+    "bmad",
+    "spec-kit",
+    "orchestrator",
+    "capability-router",
+    "software-development-lifecycle"
+  ],
+  "author": "hyperrahul",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "ora": "^8.2.0",
+    "boxen": "^8.0.1",
+    "cli-table3": "^0.6.5",
+    "yaml": "^2.7.0",
+    "zod": "^3.24.2",
+    "@inquirer/prompts": "^7.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}
