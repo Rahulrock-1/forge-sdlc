@@ -60,13 +60,24 @@ export function createCliApp(): Command {
       handleMatrixCommand(options);
     });
 
-  // 3. forge workflow [action] [id]
+  // 3. forge workflow [action] [id] / forge sdlc
   program
     .command('workflow [action] [id]')
     .description('Manage and run multi-stage SDLC workflows (e.g. "workflow run full-sdlc" or "workflow list")')
     .option('-w, --workspace <path>', 'Target workspace root')
     .action(async (action, id, options) => {
       await handleWorkflowCommand(action as any, id, options);
+    });
+
+  program
+    .command('sdlc [action] [id]')
+    .alias('run-sdlc')
+    .description('Execute full end-to-end SDLC pipeline across all 13 stages')
+    .option('-w, --workspace <path>', 'Target workspace root')
+    .action(async (action, id, options) => {
+      const act = action || 'run';
+      const targetId = id || 'full-sdlc';
+      await handleWorkflowCommand(act as any, targetId, options);
     });
 
   // 4. forge skills [action] [query]

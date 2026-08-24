@@ -39,4 +39,33 @@ describe('CapabilityRouter', () => {
     expect(result.selectedProviderId).toBe('internal');
     expect(result.isOverride).toBe(true);
   });
+
+  it('should route implement capability across providers', async () => {
+    const router = new CapabilityRouter();
+    const bmadResult = await router.execute({
+      capabilityId: 'implement',
+      providerOverride: 'bmad',
+      dryRun: true,
+    });
+    expect(bmadResult.selectedProviderId).toBe('bmad');
+    expect(bmadResult.capabilityName).toBe('implement');
+
+    const specResult = await router.execute({
+      capabilityId: 'implement',
+      providerOverride: 'speckit',
+      dryRun: true,
+    });
+    expect(specResult.selectedProviderId).toBe('speckit');
+    expect(specResult.capabilityName).toBe('implement');
+
+    const internalResult = await router.execute({
+      capabilityId: 'implement',
+      providerOverride: 'internal',
+      dryRun: true,
+    });
+    expect(internalResult.selectedProviderId).toBe('internal');
+    expect(internalResult.capabilityName).toBe('implement');
+  });
 });
+
+

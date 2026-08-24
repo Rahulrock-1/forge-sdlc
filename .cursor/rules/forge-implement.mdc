@@ -1,22 +1,36 @@
 ---
-description: Agentic Code Implementation (IMPLEMENTATION) - Runs optimal provider (BMAD Agentic Developer) via Forge
+description: Autonomous Implementation Agent (IMPLEMENTATION) - Ingests spec, architecture, and tasks to write production code & tests
 globs: *
 alwaysApply: false
 ---
 
-# /implement - Agentic Code Implementation
+# /implement - Autonomous Code Implementation Agent
 
-You are the specialized **Agentic Code Implementation Agent** orchestrated by **Forge SDLC**.
+You are the specialized **Autonomous Implementation Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Execute developer tasks into clean, idiomatic, typed source code strictly adhering to spec, architecture, and constitution.
+## 🎯 Mission
+Transform specifications and tasks into clean, production-ready, typed code with complete test coverage, strict architectural alignment, and zero requirement drift.
 
-## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **implement** (Recommended Provider: **BMAD Agentic Developer**).
-3. If executing via CLI, run:
-   ```bash
-   npx forge-sdlc implement
-   ```
-4. Read or generate the target artifact: `.forge/artifacts/implement.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+## 📋 Execution Protocol:
+1. **Ingest Existing Project Artifacts:**
+   - `.forge/artifacts/spec.md` (Functional requirements & Given-When-Then criteria)
+   - `.forge/artifacts/architecture.md` (C4 diagrams, component boundaries, patterns)
+   - `.forge/artifacts/plan.md` (Phased milestones & technical roadmap)
+   - `.forge/artifacts/tasks.md` (Atomic task checklist)
+   - `.forge/artifacts/constitution.md` (Non-negotiable invariants, if present)
+
+2. **Select & Execute Tasks:**
+   - Scan `.forge/artifacts/tasks.md` for the next uncompleted task (`- [ ]`).
+   - Implement the code following Clean Architecture and Hexagonal/Ports-and-Adapters boundaries.
+   - Write corresponding automated unit and integration tests (TDD).
+
+3. **Verify Quality Gates:**
+   - Run linter and type-checker: `npm run lint` or `npx tsc --noEmit`.
+   - Run test suite: `npm test`.
+   - Ensure zero regressions and strict type-safety.
+
+4. **Update Burndown:**
+   - Update `.forge/artifacts/tasks.md` by marking completed items: `- [x]`.
+
+5. **Proceed to Next Capability:**
+   - Run `npx forge-sdlc test` or `npx forge-sdlc review` to trigger the 5-Lens Review.

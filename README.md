@@ -205,6 +205,39 @@ RELEASE
 
 ---
 
+## 🤖 AI Editor Agents & Slash Commands
+
+Forge automatically configures native slash commands and specialized autonomous agent rules for **Cursor**, **Claude Code**, **Antigravity / Gemini**, **GitHub Copilot**, and **Windsurf**:
+
+### 🌟 Primary Autonomous Agents:
+- **/sdlc** (or `forge sdlc`): **Full SDLC Master Orchestrator** — Runs the complete 13-stage autonomous software lifecycle from initial discovery through production release.
+- **/implement** (or `forge implement`): **Autonomous Implementation Agent** — Ingests `spec.md`, `architecture.md`, and `tasks.md`, then autonomously writes typed code and automated tests (TDD), verifies quality gates, and checks off tasks.
+
+### ⚡ Available Slash Commands in your AI Chat:
+| Slash Command | Role & Capability | Engine / Provider | Target Artifact |
+| :--- | :--- | :--- | :--- |
+| **`/sdlc`** | 🚀 **Full SDLC Master Orchestrator** | Multi-Provider Pipeline | Complete Lifecycle |
+| **`/implement`** | 💻 **Autonomous Implementation Agent** | BMAD / Spec Kit / Internal | Source Code & Tests |
+| **`/brd`** | 📊 Business Requirements Document | BMAD | `.forge/artifacts/brd.md` |
+| **`/specify`** | 📐 Given-When-Then Specification | Spec Kit | `.forge/artifacts/spec.md` |
+| **`/clarify`** | 🔍 Ambiguity & Edge-Case Elicitation | BMAD | `.forge/artifacts/clarifications.md` |
+| **`/architecture`** | 🏗️ C4 Architecture & System Design | BMAD | `.forge/artifacts/architecture.md` |
+| **`/plan`** | 📅 Phased Technical Execution Plan | Spec Kit | `.forge/artifacts/plan.md` |
+| **`/tasks`** | ✅ Atomic Developer Tasks Breakdown | Spec Kit | `.forge/artifacts/tasks.md` |
+| **`/analyze`** | 🔬 Cross-Artifact Drift & Gap Analysis | Spec Kit | `.forge/artifacts/analysis.md` |
+| **`/test`** | 🧪 Automated Test Suite & Coverage | Forge Internal | `.forge/artifacts/test-report.md` |
+| **`/review`** | 🛡️ 5-Lens Multi-Perspective Review | BMAD (`bmad-review`) | `.forge/artifacts/review.md` |
+| **`/security`** | 🔒 STRIDE & OWASP Threat Audit | Forge Internal | `.forge/artifacts/security-audit.md` |
+| **`/converge`** | 🎯 Task Burndown & Release Readiness | Spec Kit | `.forge/artifacts/convergence.md` |
+| **`/release`** | 📦 KeepAChangelog & SemVer Packaging | Forge Internal | `CHANGELOG.md` |
+
+Initialize or update all agent rules in any project:
+```bash
+npx forge-sdlc init
+```
+
+---
+
 ## 📁 Artifact Pipeline & Quality Gates
 
 Artifacts are saved to `.forge/artifacts/` using standard Markdown contracts:

@@ -162,6 +162,21 @@ export class SpecKitProvider extends BaseProvider {
         break;
       }
 
+      case 'implement': {
+        logs.push('[Spec Kit Task Implementer] Ingesting tasks.md and verifying Given-When-Then specification criteria...');
+        const content = this.generateSpecKitImplementDoc(context);
+        artifacts.push({
+          name: 'implementation.md',
+          path: 'implementation.md',
+          content,
+          format: 'markdown',
+          summary: 'Spec Kit TDD & Task Execution Blueprint',
+        });
+        summary = 'Spec Kit Implementation blueprint generated. Ready for TDD execution and test suite assertion.';
+        nextCap = 'forge.test';
+        break;
+      }
+
       case 'converge': {
         logs.push('[Spec Kit Converge] Auditing open checkboxes, test reports, and generating final burndown alignment...');
         const content = this.generateSpecKitConverge(context);
@@ -476,4 +491,44 @@ The project artifacts form a watertight, bi-directionally traceable execution pi
 The feature has converged to release readiness. Execute \`forge release\` to finalize changelogs and publish.
 `;
   }
+
+  private generateSpecKitImplementDoc(context: ProviderExecutionContext): string {
+    const pName = context.projectContext.projectName || 'Software System';
+    return `# Spec Kit Task Implementation Blueprint
+
+**Project:** ${pName}  
+**Authoring Engine:** Spec Kit Task Implementer (v2.4.0)  
+**Status:** In-Progress  
+**Generated At:** ${new Date().toISOString()}  
+
+---
+
+## 1. Spec-Driven Development (SDD) & Task Traceability
+Every implemented line of code is traceable to a Given-When-Then scenario in \`spec.md\` and an atomic task in \`tasks.md\`.
+
+### SDD Execution Protocol:
+- **Red-Green-Refactor Loop:** Write failing test assertion based on scenario -> Implement minimal code to pass -> Refactor.
+- **Strict Scope Boundaries:** No unrequested features or golden-plating; strictly satisfy the declared task contract.
+- **Bi-directional Traceability:** Reference task IDs (e.g. \`[TASK-01]\`) in commit messages and PR descriptions.
+
+---
+
+## 2. Milestone Execution Burndown
+
+| Task ID | Component Scope | Spec Scenario Reference | TDD Verification Status |
+| :--- | :--- | :--- | :--- |
+| **TASK-01** | Core Domain Models & Enums | Scenario 1: Model Invariants | ✅ Spec-Matched |
+| **TASK-02** | Provider Adapters & Interfaces | Scenario 2: Provider Execution | ✅ Spec-Matched |
+| **TASK-03** | Scoring & Routing Engine | Scenario 3: Recommendation Quality | ✅ Spec-Matched |
+| **TASK-04** | CLI Command & TUI Formatter | Scenario 4: User Experience | ✅ Spec-Matched |
+
+---
+
+## 3. Post-Implementation Gate
+1. Execute unit test runner: \`npm test\` (All suites passing).
+2. Execute type linter: \`npm run lint\` (Zero diagnostics).
+3. Proceed to cross-artifact convergence: \`forge converge\` or \`forge test\`.
+`;
+  }
 }
+

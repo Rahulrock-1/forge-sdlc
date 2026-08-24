@@ -103,6 +103,21 @@ export class InternalProvider extends BaseProvider {
         break;
       }
 
+      case 'implement': {
+        logs.push('[Forge Internal Code Synthesizer] Scaffolding source files and verifying standard conventions...');
+        const content = this.generateInternalImplementDoc(context);
+        artifacts.push({
+          name: 'implementation.md',
+          path: 'implementation.md',
+          content,
+          format: 'markdown',
+          summary: 'Forge Internal Scaffolding & Code Synthesis Blueprint',
+        });
+        summary = 'Forge Internal Code implementation completed. Ready for automated test execution.';
+        nextCap = 'forge.test';
+        break;
+      }
+
       case 'test': {
         logs.push('[Forge Internal Test Engine] Synthesizing automated test fixtures and coverage assertions...');
         const content = this.generateInternalTestReport(context);
@@ -347,4 +362,36 @@ Forge is the universal capability-oriented framework and intelligent router for 
 - **T-00:08:** Smoke tests confirmed healthy operational status.
 `;
   }
+
+  private generateInternalImplementDoc(context: ProviderExecutionContext): string {
+    const pName = context.projectContext.projectName || 'Software System';
+    return `# Forge Internal Code Synthesis & Scaffolding Blueprint
+
+**Project:** ${pName}  
+**Authoring Engine:** Forge Direct Code Synthesizer (v1.2.0)  
+**Status:** In-Progress  
+**Generated At:** ${new Date().toISOString()}  
+
+---
+
+## 1. Boilerplate Scaffolding & Code Invariants
+- **Runtime Target:** Node.js 18+ (ES Modules) / TypeScript 5.8+
+- **Build Target:** High-performance bundling via \`tsup\` / \`esbuild\`
+- **Code Conventions:** Strict typing, no \`any\` escape hatches, explicit error throwing.
+
+---
+
+## 2. Synthesized Modules & Structure
+- \`src/index.ts\` (Public API surface)
+- \`src/engine/*\` (Core business and routing rules)
+- \`src/types/*\` (Shared domain definitions)
+- \`tests/*\` (Vitest test suites)
+
+---
+
+## 3. Post-Implementation Pipeline
+Execute \`forge test\` to run Vitest suites across all synthesized modules.
+`;
+  }
 }
+

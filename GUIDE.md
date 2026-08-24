@@ -65,6 +65,8 @@ Open your AI Chat in your favorite editor and type **`/`**:
 ```
 Type "/" in AI Chat:
 ──────────────────────────────────────────────────────────────────────────────
+/sdlc           ★ Full SDLC Master Orchestrator (Complete 13-stage lifecycle)
+/implement      ★ Autonomous Implementation Agent (Writes code & TDD tests)
 /brd            → Formulates Business Requirements Document & ROI (BMAD)
 /specify        → Formulates Given-When-Then specification (Spec Kit)
 /clarify        → Probes hidden ambiguities & edge cases (BMAD)
@@ -74,9 +76,11 @@ Type "/" in AI Chat:
 /plan           → Generates phased execution milestones (Spec Kit)
 /tasks          → Generates atomic developer task checklist (Spec Kit)
 /analyze        → Audits cross-artifact consistency & drift (Spec Kit)
+/test           → Synthesizes automated test suites & coverage (Internal)
 /review         → Runs 5-Lens code review (bmad-review) (BMAD)
 /security       → Runs STRIDE & OWASP threat audit (Internal)
 /converge       → Certifies release candidate readiness (Spec Kit)
+/release        → Generates KeepAChangelog notes & SemVer bump (Internal)
 ──────────────────────────────────────────────────────────────────────────────
 ```
 

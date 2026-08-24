@@ -73,15 +73,20 @@ export function handleInitCommand(options: { workspace?: string; name?: string }
   const slashBox = boxen(
     `${chalk.bold.hex('#F59E0B')('✨ Slash Commands (/agent) Ready in your IDE!')}\n\n` +
     `${chalk.white('Open your AI Chat (Cursor, Antigravity, Claude Code, Copilot) and type ')}${chalk.cyan.bold('/')}${chalk.white(':\n\n')}` +
+    `  ${chalk.bold.yellow('/sdlc')}            ${chalk.green('★ Full SDLC Master Orchestrator (End-to-End 13 Stages)')}\n` +
+    `  ${chalk.bold.yellow('/implement')}       ${chalk.green('★ Autonomous Implementation Agent (Code & Tests)')}\n` +
     `  ${chalk.yellow('/brd')}            ${chalk.dim('→ Formulates Business Requirements Document & ROI (BMAD)')}\n` +
     `  ${chalk.yellow('/specify')}        ${chalk.dim('→ Formulates Given-When-Then specification (Spec Kit)')}\n` +
-    `  ${chalk.yellow('/architecture')}   ${chalk.dim('→ Designs C4 technical architecture (BMAD)')}\n` +
-    `  ${chalk.yellow('/review')}         ${chalk.dim('→ Runs 5-Lens code review (bmad-review)')}\n` +
+    `  ${chalk.yellow('/clarify')}        ${chalk.dim('→ Probes ambiguities & hidden assumptions (BMAD)')}\n` +
+    `  ${chalk.yellow('/architecture')}   ${chalk.dim('→ Designs C4 technical architecture & ADRs (BMAD)')}\n` +
     `  ${chalk.yellow('/plan')}           ${chalk.dim('→ Generates phased execution milestones (Spec Kit)')}\n` +
     `  ${chalk.yellow('/tasks')}          ${chalk.dim('→ Generates atomic developer checklist (Spec Kit)')}\n` +
     `  ${chalk.yellow('/analyze')}        ${chalk.dim('→ Audits cross-artifact consistency (Spec Kit)')}\n` +
+    `  ${chalk.yellow('/test')}           ${chalk.dim('→ Synthesizes automated test suites & QA (Internal)')}\n` +
+    `  ${chalk.yellow('/review')}         ${chalk.dim('→ Runs 5-Lens code review (bmad-review)')}\n` +
     `  ${chalk.yellow('/security')}       ${chalk.dim('→ Runs STRIDE & OWASP threat audit (Internal)')}\n` +
-    `  ${chalk.yellow('/converge')}       ${chalk.dim('→ Certifies release candidate readiness (Spec Kit)')}`,
+    `  ${chalk.yellow('/converge')}       ${chalk.dim('→ Certifies release candidate readiness (Spec Kit)')}\n` +
+    `  ${chalk.yellow('/release')}        ${chalk.dim('→ Generates KeepAChangelog notes & SemVer bump (Internal)')}`,
     {
       padding: 1,
       borderStyle: 'round',
