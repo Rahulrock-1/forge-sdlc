@@ -132,7 +132,8 @@ export class SpecKitProvider extends BaseProvider {
       }
 
       case 'task-decomposition':
-      case 'tasks': {
+      case 'tasks':
+      case 'task': {
         logs.push('[Spec Kit Tasks] Decomposing execution plan into atomic developer tasks with explicit file paths (tasks.md)...');
         const content = this.generateSpecKitTasks(context);
         artifacts.push({

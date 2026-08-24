@@ -1,5 +1,5 @@
 ---
-name: tasks
+name: task
 description: Generate atomic developer checklist (tasks.md)
 ---
 

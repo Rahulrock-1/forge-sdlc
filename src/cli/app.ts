@@ -181,9 +181,19 @@ export function createCliApp(): Command {
   // e.g. forge architecture, forge specify, forge review, etc.
   // ==========================================
   for (const cap of CAPABILITY_CATALOG) {
-    program
+    const cmd = program
       .command(cap.name)
-      .description(`${cap.displayName} (${cap.group.toUpperCase()})`)
+      .description(`${cap.displayName} (${cap.group.toUpperCase()})`);
+
+    if (cap.name === 'tasks') {
+      cmd.alias('task').alias('task-decomposition');
+    } else if (cap.name === 'architecture') {
+      cmd.alias('arch');
+    } else if (cap.name === 'specify') {
+      cmd.alias('spec');
+    }
+
+    cmd
       .option('-p, --provider <name>', 'Override provider (bmad, speckit, internal)')
       .option('-m, --model <model>', 'AI model to use (e.g. gpt-4o, claude-3-7-sonnet, deepseek-chat)')
       .option('-t, --token <token>', 'API Key / Token')

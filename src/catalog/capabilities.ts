@@ -1516,17 +1516,22 @@ export function getCapabilityById(id: string): CapabilityManifest | undefined {
   let normalized = id.toLowerCase().trim().replace(/^forge\./, '');
   if (normalized === 'brd' || normalized === 'business-analysis') {
     normalized = 'business-requirements';
-  } else if (normalized === 'tasks' || normalized === 'task') {
+  } else if (normalized === 'tasks' || normalized === 'task' || normalized === 'task-decomposition') {
     normalized = 'tasks';
-  } else if (normalized === 'security') {
+  } else if (normalized === 'security' || normalized === 'sec') {
     normalized = 'security';
+  } else if (normalized === 'spec' || normalized === 'specify') {
+    normalized = 'specify';
+  } else if (normalized === 'arch' || normalized === 'architecture') {
+    normalized = 'architecture';
   }
 
   return CAPABILITY_CATALOG.find(
     (c) => c.id.toLowerCase() === `forge.${normalized}` ||
            c.id.toLowerCase() === normalized ||
            c.name.toLowerCase() === normalized ||
-           c.tags.includes(normalized)
+           c.tags.includes(normalized) ||
+           (normalized === 'tasks' && (c.id === 'forge.task-decomposition' || c.name === 'tasks'))
   );
 }
 

@@ -10,7 +10,7 @@ When working in this repository, you have access to the **Forge SDLC Capability 
 - `/clarify`: Probes ambiguities & edge cases (`clarifications.md`) via BMAD.
 - `/architecture`: Designs C4 system architecture & ADRs (`architecture.md`) via BMAD.
 - `/plan`: Synthesizes phased technical execution milestones (`plan.md`) via Spec Kit.
-- `/tasks`: Decomposes plan into atomic checklist items (`tasks.md`) via Spec Kit.
+- `/tasks` (or `/task`): Decomposes plan into atomic checklist items (`tasks.md`) via Spec Kit.
 - `/analyze`: Performs cross-artifact consistency & drift audit (`analysis.md`) via Spec Kit.
 - `/test`: Synthesizes automated unit/integration test suites (`test-report.md`) via Internal.
 - `/review`: Runs 5-Lens code review (`review.md`) via BMAD.

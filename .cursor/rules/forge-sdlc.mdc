@@ -17,7 +17,7 @@ Drive the end-to-end software development lifecycle sequentially across all 13 s
 3. **Clarification** (`/clarify` or `forge clarify`): Deep ambiguity & edge-case elicitation (`clarifications.md`)
 4. **Architecture** (`/architecture` or `forge architecture`): C4 design & ADRs (`architecture.md`)
 5. **Planning** (`/plan` or `forge plan`): Phased milestone execution roadmap (`plan.md`)
-6. **Tasks** (`/tasks` or `forge tasks`): Atomic developer task checklist (`tasks.md`)
+6. **Tasks** (`/tasks` or `/task` or `forge tasks`): Atomic developer task checklist (`tasks.md`)
 7. **Analysis** (`/analyze` or `forge analyze`): Cross-artifact consistency & drift audit (`analysis.md`)
 8. **Implementation** (`/implement` or `forge implement`): Autonomous coding adhering to spec & architecture
 9. **Testing** (`/test` or `forge test`): Automated test synthesis & coverage verification (`test-report.md`)

@@ -70,6 +70,50 @@ Transform specifications and tasks into clean, production-ready, typed code with
 5. **Proceed to Next Capability:**
    - Run \`npx forge-sdlc test\` or \`npx forge-sdlc review\` to trigger the 5-Lens Review.
 `;
+      } else if (cap.name === 'tasks') {
+        mdcContent = `---
+description: Task Decomposition & Work Breakdown Agent (PLANNING) - Decomposes plan and spec into atomic developer tasks in tasks.md
+globs: *
+alwaysApply: false
+---
+
+# /tasks - Task Decomposition & Work Breakdown Agent
+
+You are the specialized **Task Decomposition & Work Breakdown Agent** orchestrated by **Forge SDLC**.
+
+## 🎯 Mission
+Decompose the technical execution plan (\`plan.md\`), functional specification (\`spec.md\`), and architecture (\`architecture.md\`) into granular, atomic, test-verified developer tasks with explicit file paths and acceptance criteria in \`.forge/artifacts/tasks.md\`.
+
+## 📋 Task Decomposition Protocol:
+1. **Ingest Existing Project Artifacts:**
+   - \`.forge/artifacts/plan.md\` (Phased technical roadmap & milestones)
+   - \`.forge/artifacts/spec.md\` (Functional requirements & Given-When-Then scenarios)
+   - \`.forge/artifacts/architecture.md\` (C4 components & design patterns)
+   - \`.forge/artifacts/constitution.md\` (Architectural invariants)
+
+2. **Structure Atomic Developer Tasks:**
+   - Group tasks by Phase / Milestone matching \`plan.md\`.
+   - Each task item MUST follow this exact format:
+     \`\`\`markdown
+     - [ ] **Task X.Y: <Actionable Title>**
+       *Files:* \`<explicit file paths to create/modify>\`
+       *Given-When-Then:* \`<Scenario ID or acceptance criteria reference>\`
+       *Verification:* \`<explicit command or test assertion, e.g. npm test>\`
+     \`\`\`
+
+3. **Enforce Atomicity & Quality Gates:**
+   - Tasks must be small enough for an AI coding agent to execute in a single focused pass.
+   - Every task must declare target files and concrete verification criteria.
+   - Zero orphaned requirements; 100% of \`spec.md\` criteria must map to at least one task.
+
+4. **Output Target Artifact:**
+   - Write or update: \`.forge/artifacts/tasks.md\` (and optionally \`tasks.md\` in project root).
+   - If executing via CLI: run \`npx forge-sdlc tasks\`.
+
+5. **Downstream Next Steps:**
+   - Run \`npx forge-sdlc analyze\` to verify cross-artifact consistency with 0 drift.
+   - Hand off to \`/implement\` (Autonomous Implementation Agent).
+`;
       } else {
         mdcContent = `---
 description: ${cap.displayName} (${cap.group.toUpperCase()}) - Runs optimal provider (${bestProv}) via Forge
@@ -110,6 +154,10 @@ ${cap.description}
       } else if (cap.name === 'specify') {
         fs.writeFileSync(path.join(cursorDir, 'forge-spec.mdc'), mdcContent.replace('/specify', '/spec'), 'utf-8');
         cursorCount++;
+      } else if (cap.name === 'tasks') {
+        fs.writeFileSync(path.join(cursorDir, 'forge-task.mdc'), mdcContent.replace('# /tasks', '# /task'), 'utf-8');
+        fs.writeFileSync(path.join(cursorDir, 'forge-task-decomposition.mdc'), mdcContent.replace('# /tasks', '# /task-decomposition'), 'utf-8');
+        cursorCount += 2;
       }
     }
 
@@ -133,7 +181,7 @@ Drive the end-to-end software development lifecycle sequentially across all 13 s
 3. **Clarification** (\`/clarify\` or \`forge clarify\`): Deep ambiguity & edge-case elicitation (\`clarifications.md\`)
 4. **Architecture** (\`/architecture\` or \`forge architecture\`): C4 design & ADRs (\`architecture.md\`)
 5. **Planning** (\`/plan\` or \`forge plan\`): Phased milestone execution roadmap (\`plan.md\`)
-6. **Tasks** (\`/tasks\` or \`forge tasks\`): Atomic developer task checklist (\`tasks.md\`)
+6. **Tasks** (\`/tasks\` or \`/task\` or \`forge tasks\`): Atomic developer task checklist (\`tasks.md\`)
 7. **Analysis** (\`/analyze\` or \`forge analyze\`): Cross-artifact consistency & drift audit (\`analysis.md\`)
 8. **Implementation** (\`/implement\` or \`forge implement\`): Autonomous coding adhering to spec & architecture
 9. **Testing** (\`/test\` or \`forge test\`): Automated test synthesis & coverage verification (\`test-report.md\`)
@@ -152,7 +200,7 @@ npx forge-sdlc sdlc
     fs.writeFileSync(path.join(cursorDir, 'forge-sdlc.mdc'), sdlcMdcContent, 'utf-8');
     fs.writeFileSync(path.join(cursorDir, 'forge-workflow.mdc'), sdlcMdcContent.replace('/sdlc', '/workflow'), 'utf-8');
     cursorCount += 2;
-    installedPaths.push('.cursor/rules/ (Cursor Slash Commands & /sdlc)');
+    installedPaths.push('.cursor/rules/ (Cursor Slash Commands, /task & /sdlc)');
 
     // 2. Install Claude Code Slash Commands (.claude/commands/)
     const claudeDir = path.join(root, '.claude', 'commands');
@@ -177,6 +225,19 @@ Execute Forge capability: **Agentic Code Implementation (/implement)**
 4. Update \`.forge/artifacts/tasks.md\` with \`- [x]\` upon completion.
 5. Run \`npx forge-sdlc implement\` or proceed to \`npx forge-sdlc review\`.
 `;
+      } else if (cap.name === 'tasks') {
+        cmdContent = `---
+description: Task Decomposition Agent - Decomposes plan and spec into atomic developer tasks in tasks.md
+---
+
+Execute Forge capability: **Task Decomposition (/tasks, /task)**
+
+## Instructions:
+1. Read \`.forge/artifacts/plan.md\`, \`.forge/artifacts/spec.md\`, and \`.forge/artifacts/architecture.md\`.
+2. Decompose milestones into atomic tasks with target file paths and explicit verification steps.
+3. Output to \`.forge/artifacts/tasks.md\`.
+4. Run \`npx forge-sdlc tasks\` or proceed to \`npx forge-sdlc analyze\`.
+`;
       } else {
         cmdContent = `---
 description: ${cap.description}
@@ -189,6 +250,12 @@ Run: \`npx forge-sdlc ${cap.name}\` and synthesize target artifact \`${cap.outpu
       const filePath = path.join(claudeDir, `${cap.name}.md`);
       fs.writeFileSync(filePath, cmdContent, 'utf-8');
       claudeCount++;
+
+      if (cap.name === 'tasks') {
+        fs.writeFileSync(path.join(claudeDir, 'task.md'), cmdContent, 'utf-8');
+        fs.writeFileSync(path.join(claudeDir, 'task-decomposition.md'), cmdContent, 'utf-8');
+        claudeCount += 2;
+      }
     }
 
     // Claude Code /sdlc and /workflow commands
@@ -204,7 +271,7 @@ Run: \`npx forge-sdlc workflow run full-sdlc\` or execute sequentially:
     fs.writeFileSync(path.join(claudeDir, 'sdlc.md'), claudeSdlcContent, 'utf-8');
     fs.writeFileSync(path.join(claudeDir, 'workflow.md'), claudeSdlcContent, 'utf-8');
     claudeCount += 2;
-    installedPaths.push('.claude/commands/ (Claude Code Slash Commands & /sdlc)');
+    installedPaths.push('.claude/commands/ (Claude Code Slash Commands, /task & /sdlc)');
 
     // 3. Install GitHub Copilot Instructions (.github/copilot-instructions.md)
     const githubDir = path.join(root, '.github');
@@ -224,7 +291,7 @@ When working in this repository, you have access to the **Forge SDLC Capability 
 - \`/clarify\`: Probes ambiguities & edge cases (\`clarifications.md\`) via BMAD.
 - \`/architecture\`: Designs C4 system architecture & ADRs (\`architecture.md\`) via BMAD.
 - \`/plan\`: Synthesizes phased technical execution milestones (\`plan.md\`) via Spec Kit.
-- \`/tasks\`: Decomposes plan into atomic checklist items (\`tasks.md\`) via Spec Kit.
+- \`/tasks\` (or \`/task\`): Decomposes plan into atomic checklist items (\`tasks.md\`) via Spec Kit.
 - \`/analyze\`: Performs cross-artifact consistency & drift audit (\`analysis.md\`) via Spec Kit.
 - \`/test\`: Synthesizes automated unit/integration test suites (\`test-report.md\`) via Internal.
 - \`/review\`: Runs 5-Lens code review (\`review.md\`) via BMAD.
@@ -244,6 +311,8 @@ Artifacts are located in \`.forge/artifacts/\`. Always align implementations wit
     const keyCapabilities = [
       { id: 'sdlc', name: 'sdlc', title: 'Full SDLC Master Orchestrator', desc: 'Execute end-to-end 13-stage SDLC workflow from discovery to release' },
       { id: 'implement', name: 'implement', title: 'Autonomous Implementation Agent', desc: 'Implement production code and tests adhering to spec.md, architecture.md, and tasks.md' },
+      { id: 'tasks', name: 'tasks', title: 'Task Decomposition', desc: 'Generate atomic developer checklist (tasks.md)' },
+      { id: 'task', name: 'task', title: 'Task Decomposition', desc: 'Generate atomic developer checklist (tasks.md)' },
       { id: 'brd', name: 'brd', title: 'Business Requirements (BRD)', desc: 'Formulate Business Requirements Document (brd.md) and ROI models' },
       { id: 'specify', name: 'specify', title: 'Software Specification (SDD)', desc: 'Formulate Given-When-Then specification (spec.md)' },
       { id: 'clarify', name: 'clarify', title: 'Ambiguity Clarification', desc: 'Probe hidden assumptions and edge-cases' },
@@ -251,7 +320,6 @@ Artifacts are located in \`.forge/artifacts/\`. Always align implementations wit
       { id: 'data-model', name: 'data-model', title: 'Data Modeling & Schema', desc: 'Design ERD diagrams and database schemas' },
       { id: 'api-design', name: 'api-design', title: 'API Contract Design', desc: 'Design OpenAPI 3.1 contracts and error envelopes' },
       { id: 'plan', name: 'plan', title: 'Technical Execution Plan', desc: 'Synthesize phased milestone roadmap (plan.md)' },
-      { id: 'tasks', name: 'tasks', title: 'Task Decomposition', desc: 'Generate atomic developer checklist (tasks.md)' },
       { id: 'analyze', name: 'analyze', title: 'Cross-Artifact Analysis', desc: 'Audit consistency across spec, arch, and tasks' },
       { id: 'test', name: 'test', title: 'Automated Testing & QA', desc: 'Synthesize test suites and coverage reports' },
       { id: 'review', name: 'review', title: 'Multi-Lens Review', desc: '5-Perspective code review (bmad-review)' },
@@ -294,6 +362,33 @@ Use this skill when the user requests \`/implement\`, \`implement\`, or asks to 
    - Check off completed items in \`.forge/artifacts/tasks.md\` (\`- [x]\`).
 4. **Trigger Review:**
    - Run \`npx forge-sdlc review\` to trigger the 5-Lens Multi-Perspective Review.
+`;
+        } else if (cap.id === 'tasks' || cap.id === 'task') {
+          skillBody = `---
+name: ${cap.id}
+description: ${cap.desc}
+---
+
+# Task Decomposition Agent (Forge SDLC)
+
+Use this skill when the user requests \`/tasks\`, \`/task\`, or asks to decompose plans or specifications into atomic developer tasks.
+
+## Task Decomposition Guidelines:
+1. **Ingest Existing Artifacts:**
+   - Read \`.forge/artifacts/plan.md\` (Technical roadmap)
+   - Read \`.forge/artifacts/spec.md\` (Given-When-Then criteria)
+   - Read \`.forge/artifacts/architecture.md\` (C4 components & patterns)
+2. **Generate Atomic Tasks:**
+   - Group tasks by milestone/phase.
+   - Format each task item:
+     \`\`\`markdown
+     - [ ] **Task X.Y: Title**
+       *Files:* \`path/to/file.ts\`
+       *Verification:* \`npm test\`
+     \`\`\`
+3. **Save Output:**
+   - Save to \`.forge/artifacts/tasks.md\` (and optionally \`tasks.md\`).
+   - Run: \`npx forge-sdlc tasks\`.
 `;
         } else if (cap.id === 'sdlc') {
           skillBody = `---
@@ -345,6 +440,7 @@ Use this skill when the user requests \`${cap.id}\`, \`/${cap.id}\`, or ${cap.de
         fs.writeFileSync(path.join(capSkillDir, 'SKILL.md'), skillBody, 'utf-8');
       }
     }
+
 
     // Also install master forge skill in .gemini/skills/forge/SKILL.md
     const forgeMasterSkillDir = path.join(geminiSkillsDir, 'forge');

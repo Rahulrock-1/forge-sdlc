@@ -103,6 +103,23 @@ export class InternalProvider extends BaseProvider {
         break;
       }
 
+      case 'task-decomposition':
+      case 'tasks':
+      case 'task': {
+        logs.push('[Forge Internal Task Engine] Generating modular developer tasks and quality checklists...');
+        const content = this.generateInternalTasksDoc(context);
+        artifacts.push({
+          name: 'tasks.md',
+          path: 'tasks.md',
+          content,
+          format: 'markdown',
+          summary: 'Forge Internal Modular Tasks Checklist (tasks.md)',
+        });
+        summary = 'Forge Internal Tasks breakdown completed. Produced structured developer tasks in tasks.md.';
+        nextCap = 'forge.analyze';
+        break;
+      }
+
       case 'implement': {
         logs.push('[Forge Internal Code Synthesizer] Scaffolding source files and verifying standard conventions...');
         const content = this.generateInternalImplementDoc(context);
@@ -393,5 +410,42 @@ Forge is the universal capability-oriented framework and intelligent router for 
 Execute \`forge test\` to run Vitest suites across all synthesized modules.
 `;
   }
+
+  private generateInternalTasksDoc(context: ProviderExecutionContext): string {
+    const pName = context.projectContext.projectName || 'Software System';
+    return `# Forge Internal Tasks Breakdown (tasks.md)
+
+**Project:** ${pName}  
+**Authoring Engine:** Forge Internal Task Engine (v1.2.0)  
+**Status:** Ready for Execution  
+**Generated At:** ${new Date().toISOString()}  
+
+---
+
+## Phase 1: Core Scaffolding & Setup
+- [ ] **Task 1.1: Project Configuration & Tooling**  
+  *Files:* \`package.json\`, \`tsconfig.json\`, \`tsup.config.ts\`  
+  *Verification:* Build pipeline compiles without errors.
+
+- [ ] **Task 1.2: Core Domain Interfaces & Type Registry**  
+  *Files:* \`src/types/index.ts\`  
+  *Verification:* \`npm run lint\` passes with 0 diagnostics.
+
+## Phase 2: Engine Implementations
+- [ ] **Task 2.1: Router & Workflow Engine**  
+  *Files:* \`src/engine/router.ts\`, \`src/engine/workflow.ts\`  
+  *Verification:* Vitest tests pass for router orchestration.
+
+- [ ] **Task 2.2: Provider Adapters**  
+  *Files:* \`src/providers/base.ts\`, \`src/providers/registry.ts\`  
+  *Verification:* Provider registry resolves all enabled providers.
+
+## Phase 3: Verification & Quality Assurance
+- [ ] **Task 3.1: Unit & Integration Test Suites**  
+  *Files:* \`tests/*.test.ts\`  
+  *Verification:* 100% test pass rate with coverage assertions.
+`;
+  }
 }
+
 

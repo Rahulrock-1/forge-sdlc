@@ -4,7 +4,7 @@ globs: *
 alwaysApply: false
 ---
 
-# /tasks - Task Decomposition & Work Breakdown Agent
+# /task-decomposition - Task Decomposition & Work Breakdown Agent
 
 You are the specialized **Task Decomposition & Work Breakdown Agent** orchestrated by **Forge SDLC**.
 

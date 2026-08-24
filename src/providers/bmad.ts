@@ -181,6 +181,23 @@ export class BmadProvider extends BaseProvider {
         break;
       }
 
+      case 'task-decomposition':
+      case 'tasks':
+      case 'task': {
+        logs.push('[BMAD Tasks] Decomposing architecture and milestone plans into domain-aligned developer tasks...');
+        const content = this.generateBmadTasksDoc(context);
+        artifacts.push({
+          name: 'tasks.md',
+          path: 'tasks.md',
+          content,
+          format: 'markdown',
+          summary: 'BMAD Domain-Aligned Developer Tasks Breakdown (tasks.md)',
+        });
+        summary = 'BMAD Task Decomposition completed. Produced structured developer tasks in tasks.md.';
+        nextCap = 'forge.analyze';
+        break;
+      }
+
       case 'implement': {
         logs.push('[BMAD Agentic Developer] Ingesting architecture.md, tasks.md, and synthesizing domain-aligned implementation...');
         const content = this.generateBmadImplementDoc(context);
@@ -642,6 +659,48 @@ The implementation strictly follows the domain boundaries, C4 component models, 
 4. **Next Recommended Step:** Proceed to \`forge test\` and \`forge review\` (5-Lens Multi-Perspective Review).
 `;
   }
+
+  private generateBmadTasksDoc(context: ProviderExecutionContext): string {
+    const pName = context.projectContext.projectName || 'Software System';
+    return `# BMAD Developer Tasks Breakdown (tasks.md)
+
+**Project:** ${pName}  
+**Authoring Engine:** BMAD Workflow Task Decomposition (v2.4.0)  
+**Status:** Ready for Execution  
+**Generated At:** ${new Date().toISOString()}  
+
+---
+
+## Phase 1: Domain Models & Core Boundaries
+- [ ] **Task 1.1: Core Types & Entity Interfaces**  
+  *Files:* \`src/types/index.ts\`  
+  *Verification:* \`npm run lint\` passes with 0 diagnostics.
+
+- [ ] **Task 1.2: Domain Contracts & Service Interfaces**  
+  *Files:* \`src/types/capability.ts\`, \`src/types/provider.ts\`  
+  *Verification:* Type contracts fully cover architectural models.
+
+## Phase 2: Engine Strategy & Routing Services
+- [ ] **Task 2.1: Router & Strategy Resolution**  
+  *Files:* \`src/engine/router.ts\`, \`src/scoring/engine.ts\`  
+  *Verification:* Unit tests pass for routing and scoring algorithms.
+
+- [ ] **Task 2.2: Context Analysis & Artifact State Store**  
+  *Files:* \`src/engine/context.ts\`, \`src/engine/artifacts.ts\`  
+  *Verification:* Artifact persistence and sync verified.
+
+## Phase 3: Provider Adapters & Integrations
+- [ ] **Task 3.1: Provider Adapters (BMAD, Spec Kit, Internal)**  
+  *Files:* \`src/providers/bmad.ts\`, \`src/providers/speckit.ts\`, \`src/providers/internal.ts\`  
+  *Verification:* Adapter test suite passes with 100% method coverage.
+
+## Phase 4: CLI Interface & AI Agent Rules
+- [ ] **Task 4.1: CLI Commands & Slash Command Integrations**  
+  *Files:* \`src/cli/app.ts\`, \`src/engine/agents.ts\`  
+  *Verification:* Interactive CLI commands and IDE slash rules verified.
+`;
+  }
 }
+
 
 
