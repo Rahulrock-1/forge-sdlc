@@ -1,0 +1,108 @@
+{
+  "runId": "iteration-9",
+  "functionality": "authentication",
+  "iteration": 9,
+  "timestamp": "2026-08-24T18:51:32.040Z",
+  "updatedAt": "2026-08-24T18:51:32.388Z",
+  "artifactCount": 14,
+  "artifacts": [
+    {
+      "name": "discovery.md",
+      "path": ".forge\\iterations\\iteration-9\\discovery.md",
+      "summary": "BMAD Domain Discovery & Bounded Context Map",
+      "authorProvider": "bmad",
+      "sizeBytes": 507
+    },
+    {
+      "name": "spec.md",
+      "path": ".forge\\iterations\\iteration-9\\spec.md",
+      "summary": "Definitive Software Specification Document (spec.md) with user stories and testable acceptance scenarios",
+      "authorProvider": "speckit",
+      "sizeBytes": 2110
+    },
+    {
+      "name": "clarifications.md",
+      "path": ".forge\\iterations\\iteration-9\\clarifications.md",
+      "summary": "Spec Kit Structured Clarification and Decision Records",
+      "authorProvider": "speckit",
+      "sizeBytes": 712
+    },
+    {
+      "name": "architecture.md",
+      "path": ".forge\\iterations\\iteration-9\\architecture.md",
+      "summary": "BMAD Technical Architecture Document with C4 diagrams and trade-off matrices",
+      "authorProvider": "bmad",
+      "sizeBytes": 4719
+    },
+    {
+      "name": "plan.md",
+      "path": ".forge\\iterations\\iteration-9\\plan.md",
+      "summary": "Spec Kit Technical Execution Plan (plan.md) with phase milestones and input/output contracts",
+      "authorProvider": "speckit",
+      "sizeBytes": 1290
+    },
+    {
+      "name": "tasks.md",
+      "path": ".forge\\iterations\\iteration-9\\tasks.md",
+      "summary": "Spec Kit Actionable Developer Tasks Breakdown (tasks.md) ready for agentic execution",
+      "authorProvider": "speckit",
+      "sizeBytes": 1972
+    },
+    {
+      "name": "analysis.md",
+      "path": ".forge\\iterations\\iteration-9\\analysis.md",
+      "summary": "Spec Kit Cross-Artifact Consistency Analysis & Drift Detection Report",
+      "authorProvider": "speckit",
+      "sizeBytes": 1066
+    },
+    {
+      "name": "implementation.md",
+      "path": ".forge\\iterations\\iteration-9\\implementation.md",
+      "summary": "BMAD Implementation Architecture & Component Synthesis Report",
+      "authorProvider": "bmad",
+      "sizeBytes": 3404
+    },
+    {
+      "name": "test-report.md",
+      "path": ".forge\\iterations\\iteration-9\\test-report.md",
+      "summary": "Forge Automated Test Suite & Coverage Verification Report",
+      "authorProvider": "internal",
+      "sizeBytes": 545
+    },
+    {
+      "name": "review.md",
+      "path": ".forge\\iterations\\iteration-9\\review.md",
+      "summary": "BMAD Multi-Lens Code & Architecture Review Report",
+      "authorProvider": "bmad",
+      "sizeBytes": 1934
+    },
+    {
+      "name": "security-audit.md",
+      "path": ".forge\\iterations\\iteration-9\\security-audit.md",
+      "summary": "Forge Security Audit & Vulnerability Assessment Report",
+      "authorProvider": "internal",
+      "sizeBytes": 1077
+    },
+    {
+      "name": "convergence.md",
+      "path": ".forge\\iterations\\iteration-9\\convergence.md",
+      "summary": "Spec Kit Convergence & Release Readiness Audit",
+      "authorProvider": "speckit",
+      "sizeBytes": 709
+    },
+    {
+      "name": "CHANGELOG.md",
+      "path": ".forge\\iterations\\iteration-9\\CHANGELOG.md",
+      "summary": "KeepAChangelog formatted release history",
+      "authorProvider": "internal",
+      "sizeBytes": 687
+    },
+    {
+      "name": "RELEASE_NOTES.md",
+      "path": ".forge\\iterations\\iteration-9\\RELEASE_NOTES.md",
+      "summary": "User-facing release highlights and release summary",
+      "authorProvider": "internal",
+      "sizeBytes": 597
+    }
+  ]
+}

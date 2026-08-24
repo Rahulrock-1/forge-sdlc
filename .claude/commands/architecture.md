@@ -3,4 +3,7 @@ description: Design robust technical architecture, system components, data flows
 ---
 
 Execute Forge capability: **Technical Architecture & System Design**
-Run: `npx forge-sdlc architecture` and synthesize target artifact `architecture.md`.
+- Required Inputs: spec.md, constitution.md, existing_codebase
+- Target Output: `.forge/artifacts/architecture.md`
+
+Run: `npx forge-sdlc architecture`

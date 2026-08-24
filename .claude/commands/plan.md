@@ -3,4 +3,7 @@ description: Synthesize specification and architecture into phased technical mil
 ---
 
 Execute Forge capability: **Technical Execution Plan**
-Run: `npx forge-sdlc plan` and synthesize target artifact `plan.md`.
+- Required Inputs: spec.md, architecture.md, constitution.md
+- Target Output: `.forge/artifacts/plan.md`
+
+Run: `npx forge-sdlc plan`

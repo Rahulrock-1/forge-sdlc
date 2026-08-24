@@ -78,6 +78,33 @@ export async function handleStatusCommand(options: { workspace?: string } = {}):
   const pct = Math.round((completedCount / pipelineArtifacts.length) * 100);
   console.log(`\nPipeline Progress: ${chalk.bold.cyan(`${completedCount}/${pipelineArtifacts.length}`)} artifacts (${pct}% complete)\n`);
 
+  // Check functionality folders in .forge/functionalities/
+  const functionalities = artifactManager.listFunctionalities();
+  if (functionalities.length > 0) {
+    console.log(chalk.bold('📦 Functionality Modules (.forge/functionalities/):'));
+    const funcTable = new Table({
+      head: [
+        chalk.dim('Functionality'),
+        chalk.dim('Agent Documents'),
+        chalk.dim('Directory'),
+        chalk.dim('Last Modified'),
+      ],
+      style: { head: [], border: [] },
+    });
+
+    functionalities.forEach((func) => {
+      funcTable.push([
+        chalk.bold.hex('#10B981')(func.name),
+        chalk.green(`${func.artifactCount} documents`),
+        chalk.cyan(`.forge/functionalities/${func.name}/`),
+        func.manifest ? chalk.dim(new Date(func.manifest.updatedAt || func.manifest.timestamp).toLocaleTimeString()) : '—',
+      ]);
+    });
+
+    console.log(funcTable.toString());
+    console.log('');
+  }
+
   // Check full iterations in .forge/iterations/
   const iterations = artifactManager.listIterations();
   if (iterations.length > 0) {

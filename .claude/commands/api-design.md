@@ -3,4 +3,7 @@ description: Design OpenAPI 3.1 / GraphQL / gRPC contracts, request/response sch
 ---
 
 Execute Forge capability: **API Contracts & Interface Design**
-Run: `npx forge-sdlc api-design` and synthesize target artifact `api-contract.md`.
+- Required Inputs: spec.md, architecture.md
+- Target Output: `.forge/artifacts/api-contract.md`
+
+Run: `npx forge-sdlc api-design`

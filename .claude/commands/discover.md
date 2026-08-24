@@ -3,4 +3,7 @@ description: Discover existing system capabilities, dependencies, user personas,
 ---
 
 Execute Forge capability: **Domain & Context Discovery**
-Run: `npx forge-sdlc discover` and synthesize target artifact `discovery.md`.
+- Required Inputs: existing_codebase, user_goals
+- Target Output: `.forge/artifacts/discovery.md`
+
+Run: `npx forge-sdlc discover`

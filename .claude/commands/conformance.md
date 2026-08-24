@@ -3,4 +3,7 @@ description: Audit code and artifacts against non-negotiable constitution invari
 ---
 
 Execute Forge capability: **Standards & Constitution Conformance**
-Run: `npx forge-sdlc conformance` and synthesize target artifact `conformance-report.md`.
+- Required Inputs: constitution.md, existing_codebase
+- Target Output: `.forge/artifacts/conformance-report.md`
+
+Run: `npx forge-sdlc conformance`

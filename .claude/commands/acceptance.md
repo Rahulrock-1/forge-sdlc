@@ -3,4 +3,7 @@ description: Formulate exhaustive Gherkin/Cucumber acceptance criteria and bound
 ---
 
 Execute Forge capability: **Acceptance Criteria & Scenarios**
-Run: `npx forge-sdlc acceptance` and synthesize target artifact `acceptance.md`.
+- Required Inputs: spec.md
+- Target Output: `.forge/artifacts/acceptance.md`
+
+Run: `npx forge-sdlc acceptance`

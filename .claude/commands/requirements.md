@@ -3,4 +3,7 @@ description: Capture, categorize, and prioritize functional and non-functional r
 ---
 
 Execute Forge capability: **Requirements Engineering**
-Run: `npx forge-sdlc requirements` and synthesize target artifact `requirements.md`.
+- Required Inputs: discovery.md, user_input
+- Target Output: `.forge/artifacts/requirements.md`
+
+Run: `npx forge-sdlc requirements`

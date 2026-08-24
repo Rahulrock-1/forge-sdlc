@@ -1,11 +1,13 @@
 ---
-description: Task Decomposition Agent - Decomposes plan and spec into atomic developer tasks in tasks.md
+description: Task Decomposition Agent - Decomposes plan & spec into atomic developer tasks in tasks.md
 ---
 
 Execute Forge capability: **Task Decomposition (/tasks, /task)**
 
-## Instructions:
-1. Read `.forge/artifacts/plan.md`, `.forge/artifacts/spec.md`, and `.forge/artifacts/architecture.md`.
-2. Decompose milestones into atomic tasks with target file paths and explicit verification steps.
-3. Output to `.forge/artifacts/tasks.md`.
-4. Run `npx forge-sdlc tasks` or proceed to `npx forge-sdlc analyze`.
+## 📥 Required Files Checklist:
+- Mandatory: `.forge/artifacts/plan.md`, `.forge/artifacts/spec.md`, `.forge/artifacts/architecture.md`
+
+## 🛠️ Instructions:
+1. Decompose milestones into atomic tasks with explicit target file paths and test verifications.
+2. Output to `.forge/artifacts/tasks.md`.
+3. Run `npx forge-sdlc analyze` or proceed to `/implement`.

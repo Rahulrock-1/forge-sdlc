@@ -67,13 +67,15 @@ export class WorkflowEngine {
   public async executeWorkflow(
     workflow: WorkflowDefinition,
     onStageProgress?: (stage: WorkflowStageExecution, index: number, total: number) => void,
-    options?: { iteration?: number }
+    options?: { iteration?: number; functionality?: string }
   ): Promise<WorkflowExecutionState> {
+    const functionality = options?.functionality || 'core';
     const iteration = options?.iteration ?? this.artifactManager.getNextIterationNumber();
     const runTimestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const runId = `run-${runTimestamp}-${workflow.id}`;
     const runDir = path.join(this.workspaceRoot, '.forge', 'runs', runId);
     const iterationDir = path.join(this.workspaceRoot, '.forge', 'iterations', `iteration-${iteration}`);
+    const functionalityDir = path.join(this.workspaceRoot, '.forge', 'functionalities', functionality);
 
     const state: WorkflowExecutionState = {
       workflowId: workflow.id,
@@ -86,6 +88,8 @@ export class WorkflowEngine {
       runDir,
       iteration,
       iterationDir,
+      functionality,
+      functionalityDir,
     };
 
     for (let i = 0; i < workflow.stages.length; i++) {
@@ -110,6 +114,7 @@ export class WorkflowEngine {
           workspaceRoot: this.workspaceRoot,
           runId,
           iteration,
+          functionality,
         });
 
         stageExec.providerId = outcome.selectedProviderId;
@@ -133,7 +138,7 @@ export class WorkflowEngine {
     }
     state.completedAt = new Date().toISOString();
 
-    // Save state to active .forge, iteration folder, and run snapshot
+    // Save state to active .forge, functionality folder, iteration folder, and run snapshot
     this.saveWorkflowState(state);
     return state;
   }
@@ -153,7 +158,19 @@ export class WorkflowEngine {
       'utf-8'
     );
 
-    // 2. Save inside full iteration directory (.forge/iterations/iteration-N/workflow-state.json)
+    // 2. Save inside Functionality folder (.forge/functionalities/<feature>/workflow-state.json)
+    if (state.functionalityDir) {
+      if (!fs.existsSync(state.functionalityDir)) {
+        fs.mkdirSync(state.functionalityDir, { recursive: true });
+      }
+      fs.writeFileSync(
+        path.join(state.functionalityDir, 'workflow-state.json'),
+        stateJson,
+        'utf-8'
+      );
+    }
+
+    // 3. Save inside full iteration directory (.forge/iterations/iteration-N/workflow-state.json)
     if (state.iterationDir) {
       if (!fs.existsSync(state.iterationDir)) {
         fs.mkdirSync(state.iterationDir, { recursive: true });
@@ -165,7 +182,7 @@ export class WorkflowEngine {
       );
     }
 
-    // 3. Save inside separated run directory (.forge/runs/run-.../workflow-state.json)
+    // 4. Save inside separated run directory (.forge/runs/run-.../workflow-state.json)
     if (state.runDir) {
       if (!fs.existsSync(state.runDir)) {
         fs.mkdirSync(state.runDir, { recursive: true });

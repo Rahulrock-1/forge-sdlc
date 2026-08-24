@@ -8,15 +8,16 @@ alwaysApply: false
 
 You are the specialized **Performance Profiling & Bottleneck Analysis Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Analyze time/space complexity, database query N+1 issues, memory leaks, event-loop blocking, and network payload sizes.
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** existing_codebase
+- **Target Output Artifact:** `.forge/artifacts/performance-report.md`
+- **Recommended Provider:** **Forge Performance Profiler**
 
 ## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **performance** (Recommended Provider: **Forge Performance Profiler**).
-3. If executing via CLI, run:
+1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
+2. Execute the Forge capability:
    ```bash
    npx forge-sdlc performance
    ```
-4. Read or generate the target artifact: `.forge/artifacts/performance-report.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+3. Inspect and verify generated artifact: `.forge/artifacts/performance-report.md`.
+4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.

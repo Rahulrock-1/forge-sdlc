@@ -8,15 +8,16 @@ alwaysApply: false
 
 You are the specialized **Standards & Constitution Conformance Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Audit code and artifacts against non-negotiable constitution invariants and corporate compliance standards.
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** constitution.md, existing_codebase
+- **Target Output Artifact:** `.forge/artifacts/conformance-report.md`
+- **Recommended Provider:** **Spec Kit Constitution Guard**
 
 ## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **conformance** (Recommended Provider: **Spec Kit Constitution Guard**).
-3. If executing via CLI, run:
+1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
+2. Execute the Forge capability:
    ```bash
    npx forge-sdlc conformance
    ```
-4. Read or generate the target artifact: `.forge/artifacts/conformance-report.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+3. Inspect and verify generated artifact: `.forge/artifacts/conformance-report.md`.
+4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.

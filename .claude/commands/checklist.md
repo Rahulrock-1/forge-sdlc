@@ -3,4 +3,7 @@ description: Generate verification checklists covering security, UX, performance
 ---
 
 Execute Forge capability: **Quality & Completeness Checklist**
-Run: `npx forge-sdlc checklist` and synthesize target artifact `checklist.md`.
+- Required Inputs: spec.md, constitution.md
+- Target Output: `.forge/artifacts/checklist.md`
+
+Run: `npx forge-sdlc checklist`

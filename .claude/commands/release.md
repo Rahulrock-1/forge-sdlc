@@ -3,4 +3,7 @@ description: Generate changelogs, bump semantic versions, prepare release notes,
 ---
 
 Execute Forge capability: **Release Packaging & Semantic Versioning**
-Run: `npx forge-sdlc release` and synthesize target artifact `CHANGELOG.md`.
+- Required Inputs: git_history, spec.md
+- Target Output: `.forge/artifacts/CHANGELOG.md`
+
+Run: `npx forge-sdlc release`

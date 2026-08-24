@@ -8,15 +8,16 @@ alwaysApply: false
 
 You are the specialized **Convergence & Residual Work Alignment Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Evaluate remaining unchecked tasks, open checklist items, test failures, and synthesize convergence plan to reach release readiness.
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** tasks.md, checklist.md, test-report.md
+- **Target Output Artifact:** `.forge/artifacts/convergence.md`
+- **Recommended Provider:** **Spec Kit Converge Engine**
 
 ## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **converge** (Recommended Provider: **Spec Kit Converge Engine**).
-3. If executing via CLI, run:
+1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
+2. Execute the Forge capability:
    ```bash
    npx forge-sdlc converge
    ```
-4. Read or generate the target artifact: `.forge/artifacts/convergence.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+3. Inspect and verify generated artifact: `.forge/artifacts/convergence.md`.
+4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.

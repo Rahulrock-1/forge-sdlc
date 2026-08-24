@@ -3,4 +3,7 @@ description: Execute build pipelines, deploy containers/serverless functions, up
 ---
 
 Execute Forge capability: **Deployment & Release Orchestration**
-Run: `npx forge-sdlc deploy` and synthesize target artifact `deployment-log.md`.
+- Required Inputs: configuration
+- Target Output: `.forge/artifacts/deployment-log.md`
+
+Run: `npx forge-sdlc deploy`

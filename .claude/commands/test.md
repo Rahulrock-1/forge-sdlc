@@ -3,4 +3,7 @@ description: Generate comprehensive unit, integration, edge-case, and end-to-end
 ---
 
 Execute Forge capability: **Test Suite Generation & Automation**
-Run: `npx forge-sdlc test` and synthesize target artifact `test.md`.
+- Required Inputs: spec.md, acceptance.md, existing_codebase
+- Target Output: `.forge/artifacts/test.md`
+
+Run: `npx forge-sdlc test`

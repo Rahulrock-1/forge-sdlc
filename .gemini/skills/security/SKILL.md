@@ -8,7 +8,7 @@ description: STRIDE threat model and OWASP SAST scan
 Use this skill when the user requests `security`, `/security`, or stride threat model and owasp sast scan.
 
 ## Execution Guidelines:
-1. Check existing artifacts in `.forge/artifacts/`.
+1. Check existing artifacts in `.forge/artifacts/` or `.forge/functionalities/`.
 2. Execute the Forge capability:
    ```bash
    forge security

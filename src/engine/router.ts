@@ -21,6 +21,7 @@ export interface RouteExecutionOptions {
   writeToRoot?: boolean;
   inputParams?: Record<string, unknown>;
   workspaceRoot?: string;
+  functionality?: string;
   runId?: string;
   iteration?: number;
 }
@@ -168,6 +169,7 @@ export class CapabilityRouter {
       if (executionResult.generatedArtifacts.length > 0) {
         await artifactManager.saveArtifacts(executionResult.generatedArtifacts, {
           providerId: selectedProviderId,
+          functionality: options.functionality,
           runId: options.runId,
           iteration: options.iteration,
           writeToRoot: options.writeToRoot,

@@ -64,6 +64,7 @@ export function createCliApp(): Command {
   program
     .command('workflow [action] [id]')
     .description('Manage and run multi-stage SDLC workflows (e.g. "workflow run full-sdlc" or "workflow list")')
+    .option('-f, --functionality <name>', 'Target functionality folder (e.g. auth, billing, core)')
     .option('-w, --workspace <path>', 'Target workspace root')
     .action(async (action, id, options) => {
       await handleWorkflowCommand(action as any, id, options);
@@ -73,6 +74,7 @@ export function createCliApp(): Command {
     .command('sdlc [action] [id]')
     .alias('run-sdlc')
     .description('Execute full end-to-end SDLC pipeline across all 13 stages')
+    .option('-f, --functionality <name>', 'Target functionality folder (e.g. auth, billing, core)')
     .option('-w, --workspace <path>', 'Target workspace root')
     .action(async (action, id, options) => {
       const act = action || 'run';
@@ -102,13 +104,26 @@ export function createCliApp(): Command {
   // 6. forge status
   program
     .command('status')
-    .description('Inspect existing project artifacts and SDLC pipeline completion state')
+    .description('Inspect existing project artifacts, functionalities, and SDLC pipeline completion state')
     .option('-w, --workspace <path>', 'Target workspace root')
     .action(async (options) => {
       await handleStatusCommand(options);
     });
 
-  // 7. forge doctor / providers
+  // 7. forge agent-rules (or forge cursor)
+  program
+    .command('agent-rules')
+    .alias('cursor')
+    .alias('claude')
+    .alias('copilot')
+    .alias('rules')
+    .description('Regenerate and install slash commands & rules for Cursor, Claude Code, Copilot, Antigravity & Gemini')
+    .option('-w, --workspace <path>', 'Target workspace root')
+    .action((options) => {
+      handleInitCommand(options);
+    });
+
+  // 8. forge doctor / providers
   program
     .command('doctor')
     .alias('providers')
@@ -151,6 +166,7 @@ export function createCliApp(): Command {
     .command('brd')
     .description('Business Requirements & BRD Engineering (DISCOVERY)')
     .option('-p, --provider <name>', 'Override provider (bmad, speckit, internal)')
+    .option('-f, --functionality <name>', 'Target functionality folder (e.g. auth, core)')
     .option('-r, --recommend-only', 'Only show recommendation and scoring without executing')
     .option('-d, --dry-run', 'Perform dry-run without writing artifacts')
     .option('--root', 'Also write generated artifact to project root in addition to .forge/artifacts/')
@@ -158,6 +174,7 @@ export function createCliApp(): Command {
     .action(async (options) => {
       await handleExecuteCapability('business-requirements', {
         provider: options.provider,
+        functionality: options.functionality,
         recommendOnly: options.recommendOnly,
         dryRun: options.dryRun,
         writeToRoot: options.root,
@@ -195,6 +212,7 @@ export function createCliApp(): Command {
 
     cmd
       .option('-p, --provider <name>', 'Override provider (bmad, speckit, internal)')
+      .option('-f, --functionality <name>', 'Target functionality folder (e.g. auth, core)')
       .option('-m, --model <model>', 'AI model to use (e.g. gpt-4o, claude-3-7-sonnet, deepseek-chat)')
       .option('-t, --token <token>', 'API Key / Token')
       .option('-r, --recommend-only', 'Only show recommendation and scoring without executing')
@@ -205,6 +223,7 @@ export function createCliApp(): Command {
       .action(async (options) => {
         await handleExecuteCapability(cap.name, {
           provider: options.provider,
+          functionality: options.functionality,
           recommendOnly: options.recommendOnly,
           dryRun: options.dryRun,
           verbose: options.verbose,

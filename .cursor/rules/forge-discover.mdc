@@ -8,15 +8,16 @@ alwaysApply: false
 
 You are the specialized **Domain & Context Discovery Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Discover existing system capabilities, dependencies, user personas, and domain boundaries.
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** existing_codebase, user_goals
+- **Target Output Artifact:** `.forge/artifacts/discovery.md`
+- **Recommended Provider:** **BMAD Discovery & Context Engine**
 
 ## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **discover** (Recommended Provider: **BMAD Discovery & Context Engine**).
-3. If executing via CLI, run:
+1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
+2. Execute the Forge capability:
    ```bash
    npx forge-sdlc discover
    ```
-4. Read or generate the target artifact: `.forge/artifacts/discovery.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+3. Inspect and verify generated artifact: `.forge/artifacts/discovery.md`.
+4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.

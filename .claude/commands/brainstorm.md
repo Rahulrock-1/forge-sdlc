@@ -3,4 +3,7 @@ description: Explore problem space, generate innovative feature ideas, and evalu
 ---
 
 Execute Forge capability: **Brainstorm & Ideation**
-Run: `npx forge-sdlc brainstorm` and synthesize target artifact `brainstorm.md`.
+- Required Inputs: problem_statement, constraints
+- Target Output: `.forge/artifacts/brainstorm.md`
+
+Run: `npx forge-sdlc brainstorm`

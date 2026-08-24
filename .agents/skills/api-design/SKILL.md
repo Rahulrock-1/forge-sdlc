@@ -8,7 +8,7 @@ description: Design OpenAPI 3.1 contracts and error envelopes
 Use this skill when the user requests `api-design`, `/api-design`, or design openapi 3.1 contracts and error envelopes.
 
 ## Execution Guidelines:
-1. Check existing artifacts in `.forge/artifacts/`.
+1. Check existing artifacts in `.forge/artifacts/` or `.forge/functionalities/`.
 2. Execute the Forge capability:
    ```bash
    forge api-design

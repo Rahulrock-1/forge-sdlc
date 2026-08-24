@@ -3,4 +3,7 @@ description: Calculate complexity scores, story points, risks, and agent executi
 ---
 
 Execute Forge capability: **Effort Estimation & Complexity Analysis**
-Run: `npx forge-sdlc estimate` and synthesize target artifact `estimates.md`.
+- Required Inputs: tasks.md
+- Target Output: `.forge/artifacts/estimates.md`
+
+Run: `npx forge-sdlc estimate`

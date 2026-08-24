@@ -8,7 +8,7 @@ description: Execute end-to-end 13-stage SDLC workflow from discovery to release
 Use this skill when the user requests `/sdlc`, `/workflow`, or asks to run the complete end-to-end SDLC pipeline.
 
 ## Master SDLC Pipeline Execution:
-Execute the full 13-stage sequential SDLC:
+Execute the full 13-stage sequential SDLC with functionality folder organization:
 1. `forge brd` (Business Requirements Document)
 2. `forge specify` (Given-When-Then Specification)
 3. `forge clarify` (Ambiguity Elicitation)
@@ -23,4 +23,4 @@ Execute the full 13-stage sequential SDLC:
 12. `forge converge` (Task Burndown & Release Readiness)
 13. `forge release` (KeepAChangelog & Release Notes)
 
-Fast CLI run: `npx forge-sdlc workflow run full-sdlc` or `npx forge-sdlc sdlc`
+Fast CLI run: `npx forge-sdlc sdlc --functionality core`

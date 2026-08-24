@@ -48,4 +48,6 @@ export interface WorkflowExecutionState {
   runDir?: string;
   iteration?: number;
   iterationDir?: string;
+  functionality?: string;
+  functionalityDir?: string;
 }

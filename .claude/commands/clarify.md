@@ -3,4 +3,7 @@ description: Interrogate ambiguous requirements, resolve edge cases, and elimina
 ---
 
 Execute Forge capability: **Requirements Clarification & Ambiguity Elicitation**
-Run: `npx forge-sdlc clarify` and synthesize target artifact `clarifications.md`.
+- Required Inputs: requirements.md, user_input
+- Target Output: `.forge/artifacts/clarifications.md`
+
+Run: `npx forge-sdlc clarify`

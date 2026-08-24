@@ -3,4 +3,7 @@ description: Design cloud infrastructure, Terraform / CDK specs, Kubernetes mani
 ---
 
 Execute Forge capability: **Infrastructure & Cloud Architecture**
-Run: `npx forge-sdlc infrastructure-design` and synthesize target artifact `infrastructure.md`.
+- Required Inputs: architecture.md
+- Target Output: `.forge/artifacts/infrastructure.md`
+
+Run: `npx forge-sdlc infrastructure-design`

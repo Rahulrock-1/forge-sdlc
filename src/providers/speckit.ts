@@ -495,7 +495,7 @@ The feature has converged to release readiness. Execute \`forge release\` to fin
 
   private generateSpecKitImplementDoc(context: ProviderExecutionContext): string {
     const pName = context.projectContext.projectName || 'Software System';
-    return `# Spec Kit Task Implementation Blueprint
+    return `# Spec Kit Autonomous Implementation Blueprint (TDD & High-Fidelity)
 
 **Project:** ${pName}  
 **Authoring Engine:** Spec Kit Task Implementer (v2.4.0)  
@@ -504,32 +504,32 @@ The feature has converged to release readiness. Execute \`forge release\` to fin
 
 ---
 
-## 1. Spec-Driven Development (SDD) & Task Traceability
-Every implemented line of code is traceable to a Given-When-Then scenario in \`spec.md\` and an atomic task in \`tasks.md\`.
+## 1. Spec-Driven Development (SDD) & Invariant Mapping
+Every implemented line of code is directly traceable to a Given-When-Then scenario in \`spec.md\` and an atomic task in \`tasks.md\`.
 
-### SDD Execution Protocol:
-- **Red-Green-Refactor Loop:** Write failing test assertion based on scenario -> Implement minimal code to pass -> Refactor.
-- **Strict Scope Boundaries:** No unrequested features or golden-plating; strictly satisfy the declared task contract.
-- **Bi-directional Traceability:** Reference task IDs (e.g. \`[TASK-01]\`) in commit messages and PR descriptions.
+### Advanced Engineering Standards:
+- **Red-Green-Refactor TDD Protocol:** Synthesize failing test asserting Given-When-Then boundary conditions -> Implement minimal typed domain logic -> Refactor for clean code and $O(N)$ efficiency.
+- **Type-Safety & Input Parsing:** All external DTOs validated via Zod schemas. Strict null checking and immutability enforced.
+- **Resiliency & Fault-Tolerance:** Idempotent operations, retry loops with randomized jitter, and graceful failure envelopes.
+- **Observability:** Metric instrumentation and structured JSON trace logging for all business transactions.
 
 ---
 
-## 2. Milestone Execution Burndown
+## 2. Milestone Execution Burndown Matrix
 
-| Task ID | Component Scope | Spec Scenario Reference | TDD Verification Status |
-| :--- | :--- | :--- | :--- |
-| **TASK-01** | Core Domain Models & Enums | Scenario 1: Model Invariants | ✅ Spec-Matched |
-| **TASK-02** | Provider Adapters & Interfaces | Scenario 2: Provider Execution | ✅ Spec-Matched |
-| **TASK-03** | Scoring & Routing Engine | Scenario 3: Recommendation Quality | ✅ Spec-Matched |
-| **TASK-04** | CLI Command & TUI Formatter | Scenario 4: User Experience | ✅ Spec-Matched |
+| Task ID | Component Scope | Given-When-Then Scenario | Resiliency & Validation | Verification Command |
+| :--- | :--- | :--- | :--- | :--- |
+| **TASK-01** | Core Domain Models & Enums | Scenario 1: Model Invariants | Runtime Zod Schemas | \`npx vitest run tests/models\` |
+| **TASK-02** | Provider Adapters & Interfaces | Scenario 2: Provider Execution | Circuit Breaker & Retries | \`npx vitest run tests/providers\` |
+| **TASK-03** | Scoring & Routing Engine | Scenario 3: Recommendation | Algorithmic Purity | \`npx vitest run tests/scoring\` |
+| **TASK-04** | CLI Command & TUI Formatter | Scenario 4: User Experience | Typed Error Envelopes | \`npx vitest run tests/cli\` |
 
 ---
 
 ## 3. Post-Implementation Gate
-1. Execute unit test runner: \`npm test\` (All suites passing).
+1. Execute unit test runner: \`npm test\` (100% suites passing).
 2. Execute type linter: \`npm run lint\` (Zero diagnostics).
 3. Proceed to cross-artifact convergence: \`forge converge\` or \`forge test\`.
 `;
   }
 }
-

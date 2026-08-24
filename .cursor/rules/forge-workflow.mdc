@@ -1,5 +1,5 @@
 ---
-description: Full SDLC Master Orchestrator - Runs the complete 13-stage autonomous lifecycle from Discovery to Release
+description: Full SDLC Master Orchestrator - Runs the complete 13-stage autonomous lifecycle with functionality folders & quality gates
 globs: *
 alwaysApply: false
 ---
@@ -9,26 +9,28 @@ alwaysApply: false
 You are the **Master SDLC Orchestrator Agent** powered by **Forge SDLC**.
 
 ## 🚀 Mission
-Drive the end-to-end software development lifecycle sequentially across all 13 specialized capabilities.
+Drive the end-to-end software development lifecycle sequentially across all 13 specialized capabilities with automated dependency validation and structured functionality folder organization.
 
-## 🔄 End-to-End Pipeline Stages:
-1. **Discovery / BRD** (`/brd` or `forge brd`): Business Requirements & ROI model (`brd.md`)
-2. **Specification** (`/specify` or `forge specify`): Given-When-Then functional spec (`spec.md`)
-3. **Clarification** (`/clarify` or `forge clarify`): Deep ambiguity & edge-case elicitation (`clarifications.md`)
-4. **Architecture** (`/architecture` or `forge architecture`): C4 design & ADRs (`architecture.md`)
-5. **Planning** (`/plan` or `forge plan`): Phased milestone execution roadmap (`plan.md`)
-6. **Tasks** (`/tasks` or `/task` or `forge tasks`): Atomic developer task checklist (`tasks.md`)
-7. **Analysis** (`/analyze` or `forge analyze`): Cross-artifact consistency & drift audit (`analysis.md`)
-8. **Implementation** (`/implement` or `forge implement`): Autonomous coding adhering to spec & architecture
-9. **Testing** (`/test` or `forge test`): Automated test synthesis & coverage verification (`test-report.md`)
-10. **Review** (`/review` or `forge review`): 5-Lens Multi-Perspective Code Review (`review.md`)
-11. **Security** (`/security` or `forge security`): STRIDE threat model & OWASP scan (`security-audit.md`)
-12. **Convergence** (`/converge` or `forge converge`): Task burndown & release candidate certification (`convergence.md`)
-13. **Release** (`/release` or `forge release`): KeepAChangelog & Release Notes (`CHANGELOG.md`, `RELEASE_NOTES.md`)
+## 🔄 End-to-End Pipeline Stages & Ingestion Matrix:
+| Stage # | Agent & Slash Command | Mandatory Required Input Files | Target Generated Artifact |
+| :--- | :--- | :--- | :--- |
+| **1. Discovery** | `/brd` (`forge brd`) | Workspace Context, Goals | `discovery.md`, `brd.md` |
+| **2. Specification** | `/specify` (`forge specify`) | `discovery.md`, `brd.md` | `spec.md`, `constitution.md` |
+| **3. Clarification** | `/clarify` (`forge clarify`) | `spec.md` | `clarifications.md` |
+| **4. Architecture** | `/architecture` (`forge architecture`) | `spec.md`, `brd.md` | `architecture.md`, `data-model.md` |
+| **5. Planning** | `/plan` (`forge plan`) | `spec.md`, `architecture.md` | `plan.md` |
+| **6. Tasks** | `/tasks` / `/task` (`forge tasks`) | `plan.md`, `spec.md`, `architecture.md` | `tasks.md` |
+| **7. Analysis** | `/analyze` (`forge analyze`) | `spec.md`, `architecture.md`, `tasks.md` | `analysis.md` |
+| **8. Implementation** | `/implement` (`forge implement`) | `tasks.md`, `spec.md`, `architecture.md` | Source files in `src/`, `implementation.md` |
+| **9. Testing** | `/test` (`forge test`) | Source files in `src/`, `spec.md` | `test-report.md`, tests in `tests/` |
+| **10. Review** | `/review` (`forge review`) | Source files in `src/`, `architecture.md` | `review.md` (5-Lens Review) |
+| **11. Security** | `/security` (`forge security`) | Source files, `package.json` | `security-audit.md`, `threat-model.md` |
+| **12. Convergence** | `/converge` (`forge converge`) | `tasks.md`, `test-report.md`, `review.md` | `convergence.md` |
+| **13. Release** | `/release` (`forge release`) | `convergence.md`, Git commits | `CHANGELOG.md`, `RELEASE_NOTES.md` |
 
 ## 💻 CLI Fast-Track:
 ```bash
-npx forge-sdlc workflow run full-sdlc
+npx forge-sdlc sdlc --functionality core
 # or
-npx forge-sdlc sdlc
+npx forge-sdlc workflow run full-sdlc
 ```

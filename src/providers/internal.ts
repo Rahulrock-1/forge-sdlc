@@ -382,7 +382,7 @@ Forge is the universal capability-oriented framework and intelligent router for 
 
   private generateInternalImplementDoc(context: ProviderExecutionContext): string {
     const pName = context.projectContext.projectName || 'Software System';
-    return `# Forge Internal Code Synthesis & Scaffolding Blueprint
+    return `# Forge Enterprise Code Synthesis Blueprint (High-Performance & Typed)
 
 **Project:** ${pName}  
 **Authoring Engine:** Forge Direct Code Synthesizer (v1.2.0)  
@@ -391,23 +391,26 @@ Forge is the universal capability-oriented framework and intelligent router for 
 
 ---
 
-## 1. Boilerplate Scaffolding & Code Invariants
-- **Runtime Target:** Node.js 18+ (ES Modules) / TypeScript 5.8+
-- **Build Target:** High-performance bundling via \`tsup\` / \`esbuild\`
-- **Code Conventions:** Strict typing, no \`any\` escape hatches, explicit error throwing.
+## 1. Enterprise Boilerplate & Architecture Standards
+- **Runtime Target:** Node.js 18+ (Pure ES Modules, modern async/await) / TypeScript 5.8+
+- **Architectural Separation:** Domain logic separated into pure services; infrastructure decoupled into adapters.
+- **Type Safety & Input Guards:** Discriminated unions, branded types, and runtime Zod validation for external payloads.
+- **Resiliency & Fault-Tolerance:** Idempotent operations, retry handlers with exponential backoff, and circuit breakers.
+- **Observability:** Structured JSON correlation logging (\`traceId\`, \`spanId\`) and OpenTelemetry metric points.
 
 ---
 
-## 2. Synthesized Modules & Structure
-- \`src/index.ts\` (Public API surface)
-- \`src/engine/*\` (Core business and routing rules)
-- \`src/types/*\` (Shared domain definitions)
-- \`tests/*\` (Vitest test suites)
+## 2. Synthesized Code Structure & File Targets
+- \`src/index.ts\` (Public API surface and typed exports)
+- \`src/engine/*\` (Core business algorithms, workflow engines, and quality gates)
+- \`src/types/*\` (Immutable domain types, schemas, and error envelopes)
+- \`src/providers/*\` (Hexagonal provider adapters)
+- \`tests/*\` (Vitest unit and integration test suites)
 
 ---
 
 ## 3. Post-Implementation Pipeline
-Execute \`forge test\` to run Vitest suites across all synthesized modules.
+Execute \`forge test\` to run Vitest suites across all synthesized modules, followed by \`forge review\`.
 `;
   }
 

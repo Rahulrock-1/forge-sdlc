@@ -8,15 +8,16 @@ alwaysApply: false
 
 You are the specialized **Dependency & Critical Path Analysis Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Map task dependencies, identify circular dependencies, detect blocking paths, and optimize parallel execution tracks.
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** tasks.md
+- **Target Output Artifact:** `.forge/artifacts/dependency-graph.md`
+- **Recommended Provider:** **Spec Kit Dependency Analyzer**
 
 ## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **dependency-analysis** (Recommended Provider: **Spec Kit Dependency Analyzer**).
-3. If executing via CLI, run:
+1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
+2. Execute the Forge capability:
    ```bash
    npx forge-sdlc dependency-analysis
    ```
-4. Read or generate the target artifact: `.forge/artifacts/dependency-graph.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+3. Inspect and verify generated artifact: `.forge/artifacts/dependency-graph.md`.
+4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.

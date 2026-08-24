@@ -3,4 +3,7 @@ description: Perform deep semantic audit across artifacts (constitution -> spec 
 ---
 
 Execute Forge capability: **Cross-Artifact Consistency Analysis**
-Run: `npx forge-sdlc analyze` and synthesize target artifact `analysis.md`.
+- Required Inputs: all_artifacts, existing_codebase
+- Target Output: `.forge/artifacts/analysis.md`
+
+Run: `npx forge-sdlc analyze`

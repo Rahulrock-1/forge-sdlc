@@ -3,4 +3,7 @@ description: Perform holistic code review evaluating correctness, performance, m
 ---
 
 Execute Forge capability: **Multi-Lens Code & Architecture Review**
-Run: `npx forge-sdlc review` and synthesize target artifact `review.md`.
+- Required Inputs: existing_codebase, spec.md
+- Target Output: `.forge/artifacts/review.md`
+
+Run: `npx forge-sdlc review`

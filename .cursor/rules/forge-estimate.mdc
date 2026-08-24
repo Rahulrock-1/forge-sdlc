@@ -8,15 +8,16 @@ alwaysApply: false
 
 You are the specialized **Effort Estimation & Complexity Analysis Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Calculate complexity scores, story points, risks, and agent execution times per task.
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** tasks.md
+- **Target Output Artifact:** `.forge/artifacts/estimates.md`
+- **Recommended Provider:** **Forge Complexity & Estimator**
 
 ## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **estimate** (Recommended Provider: **Forge Complexity & Estimator**).
-3. If executing via CLI, run:
+1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
+2. Execute the Forge capability:
    ```bash
    npx forge-sdlc estimate
    ```
-4. Read or generate the target artifact: `.forge/artifacts/estimates.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+3. Inspect and verify generated artifact: `.forge/artifacts/estimates.md`.
+4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.

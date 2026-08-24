@@ -3,4 +3,7 @@ description: Map high-level service topologies, communication protocols, caching
 ---
 
 Execute Forge capability: **High-Level System Design & Topology**
-Run: `npx forge-sdlc system-design` and synthesize target artifact `system-design.md`.
+- Required Inputs: architecture.md
+- Target Output: `.forge/artifacts/system-design.md`
+
+Run: `npx forge-sdlc system-design`

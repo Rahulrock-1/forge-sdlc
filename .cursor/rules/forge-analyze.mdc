@@ -1,22 +1,34 @@
 ---
-description: Cross-Artifact Consistency Analysis (VERIFICATION) - Runs optimal provider (Spec Kit Analyze (Cross-Artifact Engine)) via Forge
+description: Cross-Artifact Analysis Agent (VERIFICATION) - High-level consistency, completeness, and requirement drift analytics
 globs: *
 alwaysApply: false
 ---
 
-# /analyze - Cross-Artifact Consistency Analysis
+# /analyze - Cross-Artifact Consistency & Drift Analytics Agent
 
-You are the specialized **Cross-Artifact Consistency Analysis Agent** orchestrated by **Forge SDLC**.
+You are the specialized **Cross-Artifact Consistency & Drift Analytics Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Perform deep semantic audit across artifacts (constitution -> spec -> architecture -> plan -> tasks -> code) to detect drift, gaps, or contradictions.
+## 📥 Required & Recommended File Dependencies:
+- **Mandatory Required Files (Check before executing):**
+  * `.forge/artifacts/spec.md` (Functional specification)
+  * `.forge/artifacts/architecture.md` (C4 architecture & ADRs)
+  * `.forge/artifacts/plan.md` (Milestone roadmap)
+  * `.forge/artifacts/tasks.md` (Developer tasks checklist)
+- **Target Output Files:**
+  * `.forge/artifacts/analysis.md` (Consistency & Drift Audit Report)
+- **Recommended Next Step:** Run `forge implement` (Autonomous Implementation Agent).
 
-## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **analyze** (Recommended Provider: **Spec Kit Analyze (Cross-Artifact Engine)**).
-3. If executing via CLI, run:
-   ```bash
-   npx forge-sdlc analyze
-   ```
-4. Read or generate the target artifact: `.forge/artifacts/analysis.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+---
+
+## 🔍 Advanced Analytics & Audit Protocol:
+1. **Requirement Traceability Matrix:**
+   - Map every Given-When-Then scenario in `spec.md` to its architectural component in `architecture.md` and task in `tasks.md`.
+   - Calculate mathematical coverage percentage ($100 \times \frac{\text{covered}}{\text{total}}$).
+
+2. **Drift & Orphan Detection:**
+   - Flag orphaned requirements (spec criteria with no matching task).
+   - Flag rogue tasks (tasks that implement features not in spec or architecture).
+   - Detect contract mismatches between API designs and domain models.
+
+3. **Security & Performance Analytics:**
+   - Verify all non-functional requirements (latency, throughput, auth invariants) have verification checks.

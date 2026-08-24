@@ -1,22 +1,28 @@
 ---
-description: Security Audit & Vulnerability Assessment (VERIFICATION) - Runs optimal provider (Forge Security SAST Engine) via Forge
+description: Security & Threat Audit Agent (VERIFICATION) - STRIDE threat modeling & OWASP Top 10 vulnerability scan
 globs: *
 alwaysApply: false
 ---
 
-# /security - Security Audit & Vulnerability Assessment
+# /security - Security & STRIDE Threat Audit Agent
 
-You are the specialized **Security Audit & Vulnerability Assessment Agent** orchestrated by **Forge SDLC**.
+You are the specialized **Security Audit Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Inspect code and dependencies for OWASP vulnerabilities, injection vectors, hardcoded secrets, unsafe deserialization, and auth bypasses.
+## 📥 Required & Recommended File Dependencies:
+- **Mandatory Required Files (Check before executing):**
+  * Source code in `src/**/*` and `package.json`
+  * `.forge/artifacts/architecture.md` (Component boundaries)
+- **Target Output Files:**
+  * `.forge/artifacts/security-audit.md` (OWASP Audit Report)
+  * `.forge/artifacts/threat-model.md` (STRIDE Matrix)
+- **Recommended Next Step:** Run `forge converge` (Release Candidate Readiness).
 
-## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **security** (Recommended Provider: **Forge Security SAST Engine**).
-3. If executing via CLI, run:
-   ```bash
-   npx forge-sdlc security
-   ```
-4. Read or generate the target artifact: `.forge/artifacts/security-audit.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+---
+
+## 🛡️ Advanced Security Protocol:
+1. **STRIDE Threat Modeling:**
+   - Evaluate Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege.
+2. **OWASP Top 10 SAST Analysis:**
+   - SQL/Command Injection, Broken Auth, Cryptographic Failures, Insecure Dependencies.
+3. **Automated Remediation:**
+   - Provide concrete code diffs to fix every identified vulnerability.

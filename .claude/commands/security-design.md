@@ -3,4 +3,7 @@ description: STRIDE threat modeling, authentication/authorization architecture (
 ---
 
 Execute Forge capability: **Security Architecture & Threat Modeling**
-Run: `npx forge-sdlc security-design` and synthesize target artifact `threat-model.md`.
+- Required Inputs: architecture.md
+- Target Output: `.forge/artifacts/threat-model.md`
+
+Run: `npx forge-sdlc security-design`

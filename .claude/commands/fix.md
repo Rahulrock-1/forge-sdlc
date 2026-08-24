@@ -3,4 +3,7 @@ description: Diagnose runtime errors, stack traces, race conditions, or broken t
 ---
 
 Execute Forge capability: **Bug Diagnosis & Root Cause Fix**
-Run: `npx forge-sdlc fix` and synthesize target artifact `fix.md`.
+- Required Inputs: error_log, existing_codebase
+- Target Output: `.forge/artifacts/fix.md`
+
+Run: `npx forge-sdlc fix`

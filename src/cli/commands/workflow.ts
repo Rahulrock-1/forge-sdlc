@@ -11,7 +11,7 @@ import { UIFormatter } from '../ui/formatter.js';
 export async function handleWorkflowCommand(
   action: 'run' | 'list' = 'list',
   workflowId?: string,
-  options: { workspace?: string } = {}
+  options: { workspace?: string; functionality?: string; iteration?: number } = {}
 ): Promise<void> {
   const engine = new WorkflowEngine(options.workspace);
   const workflows = engine.getAvailableWorkflows();
@@ -53,30 +53,41 @@ export async function handleWorkflowCommand(
       return;
     }
 
+    const funcName = options.functionality || 'core';
     console.log(
       chalk.bold(`\n🚀 Launching Workflow: `) +
       chalk.bold.cyan(targetWorkflow.name) +
-      chalk.dim(` (${targetWorkflow.stages.length} Stages)\n`)
+      chalk.dim(` (${targetWorkflow.stages.length} Stages) | Target Functionality: `) +
+      chalk.bold.yellow(funcName) +
+      `\n`
     );
 
     const spinner = ora('Initializing workflow execution pipeline...').start();
 
-    const state = await engine.executeWorkflow(targetWorkflow, (stage, idx, total) => {
-      if (stage.status === 'running') {
-        spinner.text = `[Stage ${idx + 1}/${total}] Executing ${chalk.bold(stage.stageId)}...`;
-      } else if (stage.status === 'completed') {
-        spinner.succeed(`[Stage ${idx + 1}/${total}] Completed ${chalk.bold(stage.stageId)} (Provider: ${stage.providerId.toUpperCase()})`);
-        spinner.start();
-      } else if (stage.status === 'failed') {
-        spinner.fail(`[Stage ${idx + 1}/${total}] Failed at stage ${chalk.bold(stage.stageId)}: ${stage.error}`);
+    const state = await engine.executeWorkflow(
+      targetWorkflow,
+      (stage, idx, total) => {
+        if (stage.status === 'running') {
+          spinner.text = `[Stage ${idx + 1}/${total}] Executing ${chalk.bold(stage.stageId)}...`;
+        } else if (stage.status === 'completed') {
+          spinner.succeed(`[Stage ${idx + 1}/${total}] Completed ${chalk.bold(stage.stageId)} (Provider: ${stage.providerId.toUpperCase()})`);
+          spinner.start();
+        } else if (stage.status === 'failed') {
+          spinner.fail(`[Stage ${idx + 1}/${total}] Failed at stage ${chalk.bold(stage.stageId)}: ${stage.error}`);
+        }
+      },
+      {
+        functionality: options.functionality,
+        iteration: options.iteration,
       }
-    });
+    );
 
     if (state.status === 'completed') {
-      spinner.succeed(chalk.green.bold(`🎉 Full SDLC Iteration ${state.iteration || 1} Completed Successfully!`));
-      console.log(chalk.bold.cyan(`\n📁 Full Iteration Folder: `) + chalk.bold.yellow(`.forge/iterations/iteration-${state.iteration || 1}/`) + chalk.dim(' (All 14 Full Agent Documents)'));
+      spinner.succeed(chalk.green.bold(`🎉 Full SDLC Execution Completed Successfully!`));
+      console.log(chalk.bold.cyan(`\n📁 Functionality Folder: `) + chalk.bold.yellow(`.forge/functionalities/${state.functionality || 'core'}/`) + chalk.dim(' (All 14 Full Agent Documents)'));
+      console.log(chalk.bold.cyan('📁 Iteration Folder: ') + chalk.yellow(`.forge/iterations/iteration-${state.iteration || 1}/`));
       console.log(chalk.bold.cyan('📄 Active Workspace Artifacts: ') + chalk.yellow('.forge/artifacts/'));
-      console.log(chalk.bold.cyan('📜 Iteration Manifest: ') + chalk.yellow(`.forge/iterations/iteration-${state.iteration || 1}/manifest.json`));
+      console.log(chalk.bold.cyan('📜 Functionality Manifest: ') + chalk.yellow(`.forge/functionalities/${state.functionality || 'core'}/manifest.json`));
       console.log(chalk.bold.cyan('📦 Run Snapshot: ') + chalk.yellow(`.forge/runs/${state.runId}/\n`));
     } else {
       spinner.fail(chalk.red('Workflow stopped due to stage failure.'));

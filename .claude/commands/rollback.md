@@ -3,4 +3,7 @@ description: Revert broken releases, trigger database migration rollbacks, resto
 ---
 
 Execute Forge capability: **Emergency Rollback & Incident Recovery**
-Run: `npx forge-sdlc rollback` and synthesize target artifact `post-mortem.md`.
+- Required Inputs: deployment-log.md
+- Target Output: `.forge/artifacts/post-mortem.md`
+
+Run: `npx forge-sdlc rollback`

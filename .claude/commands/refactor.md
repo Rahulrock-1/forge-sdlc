@@ -3,4 +3,7 @@ description: Clean up code smells, modularize monolithic components, improve mai
 ---
 
 Execute Forge capability: **Code Refactoring & Technical Debt Cleanup**
-Run: `npx forge-sdlc refactor` and synthesize target artifact `refactor.md`.
+- Required Inputs: existing_codebase, architecture.md
+- Target Output: `.forge/artifacts/refactor.md`
+
+Run: `npx forge-sdlc refactor`

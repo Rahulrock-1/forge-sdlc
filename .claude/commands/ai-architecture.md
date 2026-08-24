@@ -3,4 +3,7 @@ description: Design LLM agent workflows, prompt routing, tool schemas, context w
 ---
 
 Execute Forge capability: **AI & Agentic Architecture**
-Run: `npx forge-sdlc ai-architecture` and synthesize target artifact `ai-architecture.md`.
+- Required Inputs: spec.md
+- Target Output: `.forge/artifacts/ai-architecture.md`
+
+Run: `npx forge-sdlc ai-architecture`

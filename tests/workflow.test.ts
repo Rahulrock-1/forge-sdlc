@@ -61,7 +61,29 @@ describe('WorkflowEngine', () => {
     expect(allIters.some((i) => i.iteration === iterNum)).toBe(true);
     expect(allIters.some((i) => i.iteration === nextIterNum)).toBe(true);
   });
+
+  it('should organize artifacts into dedicated functionality folders', async () => {
+    const manager = new ArtifactManager();
+    const testFunctionality = 'auth-module';
+
+    await manager.saveArtifacts(
+      [
+        { name: 'spec.md', path: 'spec.md', content: '# Auth Spec', format: 'markdown' },
+        { name: 'architecture.md', path: 'architecture.md', content: '# Auth Architecture', format: 'markdown' },
+      ],
+      { providerId: 'bmad', functionality: testFunctionality }
+    );
+
+    const funcDir = path.join(process.cwd(), '.forge', 'functionalities', testFunctionality);
+    expect(fs.existsSync(path.join(funcDir, 'spec.md'))).toBe(true);
+    expect(fs.existsSync(path.join(funcDir, 'architecture.md'))).toBe(true);
+    expect(fs.existsSync(path.join(funcDir, 'manifest.json'))).toBe(true);
+
+    const funcs = manager.listFunctionalities();
+    expect(funcs.some((f) => f.name === testFunctionality)).toBe(true);
+  });
 });
+
 
 
 

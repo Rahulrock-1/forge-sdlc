@@ -3,4 +3,7 @@ description: Investigate technical libraries, protocols, API integrations, bench
 ---
 
 Execute Forge capability: **Technical Research & Spike**
-Run: `npx forge-sdlc research` and synthesize target artifact `research.md`.
+- Required Inputs: research_questions
+- Target Output: `.forge/artifacts/research.md`
+
+Run: `npx forge-sdlc research`

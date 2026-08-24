@@ -9,6 +9,7 @@ import { UIFormatter } from '../ui/formatter.js';
 
 export interface ExecuteCommandOptions {
   provider?: string;
+  functionality?: string;
   recommendOnly?: boolean;
   dryRun?: boolean;
   verbose?: boolean;
@@ -22,6 +23,7 @@ export async function handleExecuteCapability(
 ): Promise<void> {
   const router = new CapabilityRouter();
   const workspaceRoot = options.workspace || process.cwd();
+  const functionality = options.functionality || 'core';
 
   // If user passed --recommend-only, show recommendation card and exit
   if (options.recommendOnly) {
@@ -46,11 +48,12 @@ export async function handleExecuteCapability(
     const providerToRun = options.provider || rec.recommendedProvider.providerId;
     const providerName = options.provider ? options.provider.toUpperCase() : rec.recommendedProvider.providerName;
 
-    const runSpinner = ora(`Executing ${providerName} for capability "${capabilityName}"...`).start();
+    const runSpinner = ora(`Executing ${providerName} for capability "${capabilityName}" [Functionality: ${functionality}]...`).start();
 
     const outcome = await router.execute({
       capabilityId: capabilityName,
       providerOverride: options.provider,
+      functionality,
       dryRun: options.dryRun,
       verbose: options.verbose,
       writeToRoot: options.writeToRoot,

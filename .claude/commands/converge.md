@@ -3,4 +3,7 @@ description: Evaluate remaining unchecked tasks, open checklist items, test fail
 ---
 
 Execute Forge capability: **Convergence & Residual Work Alignment**
-Run: `npx forge-sdlc converge` and synthesize target artifact `convergence.md`.
+- Required Inputs: tasks.md, checklist.md, test-report.md
+- Target Output: `.forge/artifacts/convergence.md`
+
+Run: `npx forge-sdlc converge`

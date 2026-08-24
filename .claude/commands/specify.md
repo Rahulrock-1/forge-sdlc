@@ -3,4 +3,7 @@ description: Generate definitive, complete, testable software specification docu
 ---
 
 Execute Forge capability: **Software Specification (SDD)**
-Run: `npx forge-sdlc specify` and synthesize target artifact `spec.md`.
+- Required Inputs: constitution.md, clarifications.md, user_requirements
+- Target Output: `.forge/artifacts/spec.md`
+
+Run: `npx forge-sdlc specify`

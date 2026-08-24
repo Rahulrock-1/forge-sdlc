@@ -1,6 +1,7 @@
 /**
  * Forge SDLC - Artifact Manager & Pipeline
- * Manages active artifacts, historical versioning, dedicated iteration folders, and run snapshots.
+ * Manages active artifacts, functionality-grouped folders (.forge/functionalities/<feature>/),
+ * historical versioning, and run snapshots.
  */
 
 import fs from 'node:fs';
@@ -10,6 +11,7 @@ import { ExecutionArtifact } from '../types/provider.js';
 
 export interface SaveArtifactOptions {
   providerId: string;
+  functionality?: string;
   runId?: string;
   iteration?: number;
   writeToRoot?: boolean;
@@ -17,6 +19,7 @@ export interface SaveArtifactOptions {
 
 export interface RunManifest {
   runId: string;
+  functionality?: string;
   iteration?: number;
   timestamp: string;
   updatedAt: string;
@@ -34,6 +37,7 @@ export class ArtifactManager {
   private workspaceRoot: string;
   private forgeDir: string;
   private artifactsDir: string;
+  private functionalitiesDir: string;
   private iterationsDir: string;
   private historyDir: string;
   private runsDir: string;
@@ -42,6 +46,7 @@ export class ArtifactManager {
     this.workspaceRoot = path.resolve(workspaceRoot);
     this.forgeDir = path.join(this.workspaceRoot, '.forge');
     this.artifactsDir = path.join(this.forgeDir, 'artifacts');
+    this.functionalitiesDir = path.join(this.forgeDir, 'functionalities');
     this.iterationsDir = path.join(this.forgeDir, 'iterations');
     this.historyDir = path.join(this.artifactsDir, 'history');
     this.runsDir = path.join(this.forgeDir, 'runs');
@@ -50,6 +55,9 @@ export class ArtifactManager {
   public ensureArtifactsDir(): void {
     if (!fs.existsSync(this.artifactsDir)) {
       fs.mkdirSync(this.artifactsDir, { recursive: true });
+    }
+    if (!fs.existsSync(this.functionalitiesDir)) {
+      fs.mkdirSync(this.functionalitiesDir, { recursive: true });
     }
     if (!fs.existsSync(this.iterationsDir)) {
       fs.mkdirSync(this.iterationsDir, { recursive: true });
@@ -103,9 +111,10 @@ export class ArtifactManager {
   /**
    * Save execution artifacts to:
    * 1. Active directory: .forge/artifacts/<name>
-   * 2. Full Iteration folder: .forge/iterations/iteration-<N>/<name>
-   * 3. Run folder: .forge/runs/<runId>/<name>
-   * 4. Version history: .forge/artifacts/history/<name>.v<version>.md (if modified)
+   * 2. Functionality folder: .forge/functionalities/<functionality>/<name>
+   * 3. Full Iteration folder: .forge/iterations/iteration-<N>/<name>
+   * 4. Run folder: .forge/runs/<runId>/<name>
+   * 5. Version history: .forge/artifacts/history/<name>.v<version>.md (if modified)
    */
   public async saveArtifacts(
     artifacts: ExecutionArtifact[],
@@ -120,19 +129,26 @@ export class ArtifactManager {
         : providerOrOptions;
 
     const providerId = options.providerId;
+    const functionality = options.functionality || 'core';
     const iteration = options.iteration ?? this.getCurrentIterationNumber();
     const runId =
       options.runId ||
       `run-${new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)}`;
     const writeToRoot = options.writeToRoot ?? false;
 
-    // 1. Prepare full iteration folder (.forge/iterations/iteration-<N>/)
+    // 1. Prepare Functionality folder (.forge/functionalities/<functionality>/)
+    const functionalityDir = path.join(this.functionalitiesDir, functionality);
+    if (!fs.existsSync(functionalityDir)) {
+      fs.mkdirSync(functionalityDir, { recursive: true });
+    }
+
+    // 2. Prepare full iteration folder (.forge/iterations/iteration-<N>/)
     const iterationDir = path.join(this.iterationsDir, `iteration-${iteration}`);
     if (!fs.existsSync(iterationDir)) {
       fs.mkdirSync(iterationDir, { recursive: true });
     }
 
-    // 2. Prepare run directory (.forge/runs/<runId>/)
+    // 3. Prepare run directory (.forge/runs/<runId>/)
     const runDir = path.join(this.runsDir, runId);
     if (!fs.existsSync(runDir)) {
       fs.mkdirSync(runDir, { recursive: true });
@@ -145,6 +161,7 @@ export class ArtifactManager {
       const mPath = path.join(targetDir, 'manifest.json');
       let manifest: RunManifest = {
         runId: id,
+        functionality,
         iteration,
         timestamp: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -156,6 +173,7 @@ export class ArtifactManager {
         try {
           manifest = JSON.parse(fs.readFileSync(mPath, 'utf-8'));
           manifest.updatedAt = new Date().toISOString();
+          manifest.functionality = functionality;
         } catch {
           // Fallback
         }
@@ -167,7 +185,7 @@ export class ArtifactManager {
         const artEntry = {
           name: art.name,
           path: path.relative(this.workspaceRoot, artPath),
-          summary: art.summary || `${art.name} for iteration ${iteration}`,
+          summary: art.summary || `${art.name} for ${functionality} (iteration ${iteration})`,
           authorProvider: providerId,
           sizeBytes: Buffer.byteLength(art.content, 'utf-8'),
         };
@@ -187,7 +205,7 @@ export class ArtifactManager {
       const activeArtPath = path.join(this.artifactsDir, art.name);
       let version = 1;
 
-      // 3. Check if previous active artifact exists and was modified -> archive previous version
+      // 4. Check if previous active artifact exists and was modified -> archive previous version
       if (fs.existsSync(activeArtPath)) {
         try {
           const oldContent = fs.readFileSync(activeArtPath, 'utf-8');
@@ -208,18 +226,22 @@ export class ArtifactManager {
         }
       }
 
-      // 4. Write active artifact to .forge/artifacts/<name>
+      // 5. Write active artifact to .forge/artifacts/<name>
       fs.writeFileSync(activeArtPath, art.content, 'utf-8');
 
-      // 5. Write full agent document into .forge/iterations/iteration-<N>/<name>
+      // 6. Write into Functionality folder (.forge/functionalities/<functionality>/<name>)
+      const funcArtPath = path.join(functionalityDir, art.name);
+      fs.writeFileSync(funcArtPath, art.content, 'utf-8');
+
+      // 7. Write full agent document into .forge/iterations/iteration-<N>/<name>
       const iterArtPath = path.join(iterationDir, art.name);
       fs.writeFileSync(iterArtPath, art.content, 'utf-8');
 
-      // 6. Write into .forge/runs/<runId>/<name>
+      // 8. Write into .forge/runs/<runId>/<name>
       const runArtPath = path.join(runDir, art.name);
       fs.writeFileSync(runArtPath, art.content, 'utf-8');
 
-      // 7. Write to project root if requested
+      // 9. Write to project root if requested
       if (writeToRoot) {
         const rootPath = path.join(this.workspaceRoot, art.name);
         fs.writeFileSync(rootPath, art.content, 'utf-8');
@@ -239,11 +261,64 @@ export class ArtifactManager {
       });
     }
 
-    // Update manifests in both iteration folder and run directory
+    // Update manifests in functionality folder, iteration folder, and run directory
+    updateManifestFile(functionalityDir, `func-${functionality}`);
     updateManifestFile(iterationDir, `iteration-${iteration}`);
     updateManifestFile(runDir, runId);
 
     return saved;
+  }
+
+  /**
+   * List all functionality folders in .forge/functionalities/
+   */
+  public listFunctionalities(): Array<{
+    name: string;
+    path: string;
+    artifactCount: number;
+    manifest?: RunManifest;
+  }> {
+    this.ensureArtifactsDir();
+    if (!fs.existsSync(this.functionalitiesDir)) return [];
+
+    const entries = fs.readdirSync(this.functionalitiesDir, { withFileTypes: true });
+    const functionalities: Array<{
+      name: string;
+      path: string;
+      artifactCount: number;
+      manifest?: RunManifest;
+    }> = [];
+
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        const funcPath = path.join(this.functionalitiesDir, entry.name);
+        const manifestFile = path.join(funcPath, 'manifest.json');
+        let manifest: RunManifest | undefined = undefined;
+        let artifactCount = 0;
+
+        if (fs.existsSync(manifestFile)) {
+          try {
+            manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf-8'));
+            artifactCount = manifest?.artifacts?.length || 0;
+          } catch {
+            // Ignore
+          }
+        }
+
+        if (artifactCount === 0) {
+          artifactCount = fs.readdirSync(funcPath).filter((f) => f.endsWith('.md')).length;
+        }
+
+        functionalities.push({
+          name: entry.name,
+          path: funcPath,
+          artifactCount,
+          manifest,
+        });
+      }
+    }
+
+    return functionalities.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   /**

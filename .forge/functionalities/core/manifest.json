@@ -1,0 +1,24 @@
+{
+  "runId": "func-core",
+  "functionality": "core",
+  "iteration": 5,
+  "timestamp": "2026-08-24T18:49:59.310Z",
+  "updatedAt": "2026-08-24T18:51:09.936Z",
+  "artifactCount": 2,
+  "artifacts": [
+    {
+      "name": "test-spec.md",
+      "path": ".forge\\functionalities\\core\\test-spec.md",
+      "summary": "test-spec.md for core (iteration 8)",
+      "authorProvider": "speckit",
+      "sizeBytes": 31
+    },
+    {
+      "name": "test-arch.md",
+      "path": ".forge\\functionalities\\core\\test-arch.md",
+      "summary": "test-arch.md for core (iteration 7)",
+      "authorProvider": "speckit",
+      "sizeBytes": 17
+    }
+  ]
+}

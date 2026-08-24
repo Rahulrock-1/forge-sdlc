@@ -8,7 +8,7 @@ description: Formulate Business Requirements Document (brd.md) and ROI models
 Use this skill when the user requests `brd`, `/brd`, or formulate business requirements document (brd.md) and roi models.
 
 ## Execution Guidelines:
-1. Check existing artifacts in `.forge/artifacts/`.
+1. Check existing artifacts in `.forge/artifacts/` or `.forge/functionalities/`.
 2. Execute the Forge capability:
    ```bash
    forge brd

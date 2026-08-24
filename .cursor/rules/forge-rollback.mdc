@@ -8,15 +8,16 @@ alwaysApply: false
 
 You are the specialized **Emergency Rollback & Incident Recovery Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Revert broken releases, trigger database migration rollbacks, restore previous stable states, and generate post-mortem logs.
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** deployment-log.md
+- **Target Output Artifact:** `.forge/artifacts/post-mortem.md`
+- **Recommended Provider:** **Forge Safe Rollback Engine**
 
 ## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **rollback** (Recommended Provider: **Forge Safe Rollback Engine**).
-3. If executing via CLI, run:
+1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
+2. Execute the Forge capability:
    ```bash
    npx forge-sdlc rollback
    ```
-4. Read or generate the target artifact: `.forge/artifacts/post-mortem.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+3. Inspect and verify generated artifact: `.forge/artifacts/post-mortem.md`.
+4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.

@@ -8,15 +8,16 @@ alwaysApply: false
 
 You are the specialized **Data Modeling & Schema Design Agent** orchestrated by **Forge SDLC**.
 
-## Capability Objective
-Design normalized/denormalized database schemas, migrations, ER diagrams, entity relationships, and indexing strategies.
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** spec.md, architecture.md
+- **Target Output Artifact:** `.forge/artifacts/data-model.md`
+- **Recommended Provider:** **BMAD Data & Entity Modeler**
 
 ## How to Execute:
-1. First, check existing project artifacts in `.forge/artifacts/` or root.
-2. Follow the optimal provider methodology for **data-model** (Recommended Provider: **BMAD Data & Entity Modeler**).
-3. If executing via CLI, run:
+1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
+2. Execute the Forge capability:
    ```bash
    npx forge-sdlc data-model
    ```
-4. Read or generate the target artifact: `.forge/artifacts/data-model.md`.
-5. Ensure all requirements, constraints, and non-negotiables from `constitution.md` / `spec.md` are preserved.
+3. Inspect and verify generated artifact: `.forge/artifacts/data-model.md`.
+4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.

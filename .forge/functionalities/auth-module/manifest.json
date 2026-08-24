@@ -1,0 +1,24 @@
+{
+  "runId": "func-auth-module",
+  "functionality": "auth-module",
+  "iteration": 6,
+  "timestamp": "2026-08-24T18:49:59.331Z",
+  "updatedAt": "2026-08-24T18:51:09.952Z",
+  "artifactCount": 2,
+  "artifacts": [
+    {
+      "name": "spec.md",
+      "path": ".forge\\functionalities\\auth-module\\spec.md",
+      "summary": "spec.md for auth-module (iteration 8)",
+      "authorProvider": "bmad",
+      "sizeBytes": 11
+    },
+    {
+      "name": "architecture.md",
+      "path": ".forge\\functionalities\\auth-module\\architecture.md",
+      "summary": "architecture.md for auth-module (iteration 8)",
+      "authorProvider": "bmad",
+      "sizeBytes": 19
+    }
+  ]
+}

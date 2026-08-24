@@ -3,4 +3,7 @@ description: Map task dependencies, identify circular dependencies, detect block
 ---
 
 Execute Forge capability: **Dependency & Critical Path Analysis**
-Run: `npx forge-sdlc dependency-analysis` and synthesize target artifact `dependency-graph.md`.
+- Required Inputs: tasks.md
+- Target Output: `.forge/artifacts/dependency-graph.md`
+
+Run: `npx forge-sdlc dependency-analysis`

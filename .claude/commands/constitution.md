@@ -3,4 +3,7 @@ description: Define core project principles, non-negotiable standards, architect
 ---
 
 Execute Forge capability: **Constitution & Principles**
-Run: `npx forge-sdlc constitution` and synthesize target artifact `constitution.md`.
+- Required Inputs: project_guidelines
+- Target Output: `.forge/artifacts/constitution.md`
+
+Run: `npx forge-sdlc constitution`

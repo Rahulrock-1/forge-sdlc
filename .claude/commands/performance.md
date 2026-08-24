@@ -3,4 +3,7 @@ description: Analyze time/space complexity, database query N+1 issues, memory le
 ---
 
 Execute Forge capability: **Performance Profiling & Bottleneck Analysis**
-Run: `npx forge-sdlc performance` and synthesize target artifact `performance-report.md`.
+- Required Inputs: existing_codebase
+- Target Output: `.forge/artifacts/performance-report.md`
+
+Run: `npx forge-sdlc performance`

@@ -3,4 +3,7 @@ description: Migrate legacy APIs, upgrade library versions, port from JavaScript
 ---
 
 Execute Forge capability: **Migration & Framework Upgrades**
-Run: `npx forge-sdlc migrate` and synthesize target artifact `migrate.md`.
+- Required Inputs: existing_codebase, migration_target
+- Target Output: `.forge/artifacts/migrate.md`
+
+Run: `npx forge-sdlc migrate`

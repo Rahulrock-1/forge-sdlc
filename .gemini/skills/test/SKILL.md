@@ -8,7 +8,7 @@ description: Synthesize test suites and coverage reports
 Use this skill when the user requests `test`, `/test`, or synthesize test suites and coverage reports.
 
 ## Execution Guidelines:
-1. Check existing artifacts in `.forge/artifacts/`.
+1. Check existing artifacts in `.forge/artifacts/` or `.forge/functionalities/`.
 2. Execute the Forge capability:
    ```bash
    forge test

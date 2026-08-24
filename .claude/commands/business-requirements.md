@@ -3,4 +3,7 @@ description: Formulate comprehensive Business Requirements Documents (brd.md), s
 ---
 
 Execute Forge capability: **Business Requirements & BRD Engineering**
-Run: `npx forge-sdlc business-requirements` and synthesize target artifact `brd.md`.
+- Required Inputs: problem_statement, stakeholder_goals
+- Target Output: `.forge/artifacts/brd.md`
+
+Run: `npx forge-sdlc business-requirements`

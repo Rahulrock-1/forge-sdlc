@@ -8,7 +8,7 @@ description: Audit consistency across spec, arch, and tasks
 Use this skill when the user requests `analyze`, `/analyze`, or audit consistency across spec, arch, and tasks.
 
 ## Execution Guidelines:
-1. Check existing artifacts in `.forge/artifacts/`.
+1. Check existing artifacts in `.forge/artifacts/` or `.forge/functionalities/`.
 2. Execute the Forge capability:
    ```bash
    forge analyze

@@ -3,4 +3,7 @@ description: Inspect code and dependencies for OWASP vulnerabilities, injection 
 ---
 
 Execute Forge capability: **Security Audit & Vulnerability Assessment**
-Run: `npx forge-sdlc security` and synthesize target artifact `security-audit.md`.
+- Required Inputs: existing_codebase, threat-model.md
+- Target Output: `.forge/artifacts/security-audit.md`
+
+Run: `npx forge-sdlc security`
