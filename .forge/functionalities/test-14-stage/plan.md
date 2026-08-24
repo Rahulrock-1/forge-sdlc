@@ -2,7 +2,7 @@
 
 **Project:** forge-sdlc  
 **Standard:** Spec Kit SDD Technical Plan  
-**Last Updated:** 2026-08-24T19:00:10.127Z  
+**Last Updated:** 2026-08-24T19:04:55.228Z  
 
 ---
 

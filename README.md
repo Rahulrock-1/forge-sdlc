@@ -1,24 +1,31 @@
-# ⚡ Forge SDLC
+﻿# ⚡ Forge SDLC
 
-> **Universal Capability-Oriented SDLC Framework & Intelligent Provider Router**  
-> Run the best agentic engineering skills across **BMAD**, **GitHub Spec Kit**, and **Internal Engines** through a single unified CLI.
+> **Universal Capability-Oriented SDLC Framework & Autonomous Multi-Agent Orchestrator**  
+> Run the best agentic engineering skills across **BMAD**, **GitHub Spec Kit**, and **Internal Engines** through a single unified CLI and native IDE slash commands.
 
-[![npm version](https://img.shields.io/npm/v/forge-sdlc.svg)](https://www.npmjs.com/package/forge-sdlc)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
+<div align="center">
+
+[![npm version](https://img.shields.io/npm/v/forge-sdlc.svg?style=flat-square&color=cb3837)](https://www.npmjs.com/package/forge-sdlc)
+[![CI](https://github.com/Rahulrock-1/forge-sdlc/actions/workflows/ci.yml/badge.svg)](https://github.com/Rahulrock-1/forge-sdlc/actions/workflows/ci.yml)
+[![Publish](https://github.com/Rahulrock-1/forge-sdlc/actions/workflows/publish.yml/badge.svg)](https://github.com/Rahulrock-1/forge-sdlc/actions/workflows/publish.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg?style=flat-square)](https://nodejs.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Rahulrock-1/forge-sdlc/pulls)
+
+</div>
 
 ---
 
 ## 🎯 The Problem Forge Solves
 
-Modern agentic coding ecosystems force developers to pick a single vendor stack:
-- Use **BMAD** and you're locked into BMAD commands and workflows.
+Modern agentic coding ecosystems force developers into single-vendor silos:
+- Use **BMAD** and you're locked into BMAD commands and prompts.
 - Use **Spec Kit** and you're locked into Spec Kit pipelines.
 
 In reality, **no single framework is best at everything**:
-- **BMAD** provides industry-leading specialized **Architecture & System Design**, **Multi-Lens Code Review (`bmad-review`)**, and **Deep Ambiguity Elicitation**.
-- **Spec Kit** provides industry gold-standard **Spec-Driven Development (`spec.md`)**, **Strict Technical Planning (`plan.md`)**, **Atomic Task Decomposition (`tasks.md`)**, **Cross-Artifact Analysis (`analysis.md`)**, and **Convergence (`convergence.md`)**.
-- **Forge Internal** provides rock-solid **STRIDE Security Audits**, **Test Automation Synthesis**, **Release Management**, and **CI/CD Deployment**.
+- **BMAD** excels in specialized **C4 Technical Architecture**, **Deep Ambiguity Elicitation**, and **5-Lens Code Reviews (`bmad-review`)**.
+- **Spec Kit** excels in **Spec-Driven Development (`spec.md`)**, **Project Constitutions (`constitution.md`)**, **Technical Plans (`plan.md`)**, **Atomic Tasks (`tasks.md`)**, **Consistency Audits (`analysis.md`)**, and **Readiness Convergence (`convergence.md`)**.
+- **Forge Internal** excels in **STRIDE Threat Modeling**, **OWASP SAST Security Audits**, **Test Suite Synthesis**, and **KeepAChangelog Packaging**.
 
 **Forge decouples your intent from vendor tooling.**
 
@@ -28,7 +35,7 @@ Instead of learning vendor-specific commands (`bmad-architecture`, `speckit-plan
 npx forge-sdlc architecture
 ```
 
-Forge dynamically scores all candidate providers based on project context, recommends the best tool with full explainability ("Why"), and executes it seamlessly through a unified artifact pipeline.
+Forge dynamically scores all candidate providers based on project context, recommends the best tool with full explainability ("Why"), and executes it seamlessly through a unified artifact and functionality pipeline.
 
 ---
 
@@ -37,330 +44,208 @@ Forge dynamically scores all candidate providers based on project context, recom
 Run instantly anywhere via `npx`:
 
 ```bash
-# Recommend optimal SDLC workflow for the current project
-npx forge-sdlc recommend
+# 1. Run the Complete 14-Stage SDLC Pipeline for a feature:
+npx forge-sdlc sdlc --functionality auth-module
 
-# Design technical architecture (dynamically routes to BMAD)
+# 2. Establish Non-Negotiable Invariants & Constitution:
+npx forge-sdlc constitution
+
+# 3. Design C4 Technical Architecture (dynamically routes to BMAD):
 npx forge-sdlc architecture
 
-# Generate functional specification (dynamically routes to Spec Kit)
+# 4. Generate Given-When-Then Specification (dynamically routes to Spec Kit):
 npx forge-sdlc specify
 
-# Run multi-lens code & architecture review (dynamically routes to BMAD)
+# 5. Run 5-Lens Multi-Perspective Code Review (dynamically routes to BMAD):
 npx forge-sdlc review
 
-# View full capability matrix across BMAD, Spec Kit, and Internal
-npx forge-sdlc matrix
+# 6. Check 100% Pipeline Artifact Progress:
+npx forge-sdlc status
 ```
 
 Or install globally:
 
 ```bash
 npm install -g forge-sdlc
-forge recommend
+forge sdlc --functionality billing
 ```
 
 ---
 
-## 🧭 Complete Generic Capability Catalog
+## 🤖 15 Active AI Editor Slash Commands & Agents
 
-Forge organizes 30+ generic SDLC capabilities into 7 core stages:
+Forge automatically configures native slash commands and autonomous agent rules for **Cursor**, **Claude Code**, **Antigravity / Gemini**, **GitHub Copilot**, and **Windsurf**:
+
+```bash
+npx forge-sdlc init
+# or
+npx forge-sdlc agent-rules
+```
+
+### 🌟 Active Agents in your AI Chat:
+
+| Slash Command | Agent Role | Specialized Provider | Mandatory Ingestion Files | Target Generated Artifact |
+| :--- | :--- | :---: | :--- | :--- |
+| **`/sdlc`** | 🚀 **Full SDLC Master Orchestrator** | Multi-Provider | Workspace Context | Complete 14-Stage Lifecycle |
+| **`/implement`** | 💻 **Senior Staff Implementation** | BMAD / Spec Kit | `tasks.md`, `spec.md`, `architecture.md` | Source Code in `src/`, `implementation.md` |
+| **`/brd`** | 📊 **Business Requirements & ROI** | BMAD | Goals & Context | `brd.md`, `discovery.md` |
+| **`/constitution`**| 🏛️ **Constitution & Invariants** | Spec Kit | Project Requirements | `constitution.md` |
+| **`/specify`** | 📐 **Given-When-Then Specification**| Spec Kit | `constitution.md`, `brd.md` | `spec.md` |
+| **`/clarify`** | 🔍 **Ambiguity Elicitation** | BMAD | `spec.md` | `clarifications.md` |
+| **`/architecture`**| 🏗️ **C4 System Design & ADRs** | BMAD | `spec.md`, `constitution.md` | `architecture.md`, `data-model.md` |
+| **`/plan`** | 📅 **Phased Milestone Roadmap** | Spec Kit | `spec.md`, `architecture.md` | `plan.md` |
+| **`/tasks`** | ✅ **Atomic Developer Checklist** | Spec Kit | `plan.md`, `spec.md`, `constitution.md`| `tasks.md` |
+| **`/analyze`** | 🔬 **Cross-Artifact Drift Audit** | Spec Kit | `spec.md`, `architecture.md`, `tasks.md`| `analysis.md` |
+| **`/test`** | 🧪 **Automated QA & Test Suites** | Internal | Source Code, `spec.md` | `test-report.md`, tests in `tests/` |
+| **`/review`** | 🛡️ **5-Lens Code Review** | BMAD (`bmad-review`) | Source Code, `architecture.md` | `review.md` |
+| **`/security`** | 🔒 **STRIDE & OWASP SAST Scan** | Internal | Source Code, `package.json` | `security-audit.md`, `threat-model.md` |
+| **`/converge`** | 🎯 **Release Readiness Burndown** | Spec Kit | `tasks.md`, `test-report.md`, `review.md`| `convergence.md` |
+| **`/release`** | 📦 **KeepAChangelog & SemVer Bump** | Internal | `convergence.md`, Git history | `CHANGELOG.md`, `RELEASE_NOTES.md` |
+
+---
+
+## 📁 Functionality Folders Architecture
+
+Forge organizes all agent outputs into self-contained **Functionality / Feature Modules** under `.forge/functionalities/<feature>/`:
 
 ```
-forge/
-├── Discovery
-│   ├── brainstorm          # Lateral ideation & feasibility ranking
-│   ├── discover            # Domain boundaries & actor mapping
-│   ├── brd                 # Business Requirements Document (brd.md) & ROI analysis
-│   ├── research            # Technical spikes & trade-off analysis
-│   ├── requirements        # Requirements engineering (MoSCoW)
-│   └── clarify             # Ambiguity & edge-case elicitation
-├── Specification
-│   ├── constitution        # Architectural invariants & governance
-│   ├── specify             # Software Specification Document (spec.md)
-│   ├── acceptance          # Given-When-Then BDD scenarios
-│   └── checklist           # Quality readiness checklist
-├── Architecture
-│   ├── architecture        # Technical architecture & C4 diagrams
-│   ├── system-design       # Service topology & caching strategies
-│   ├── data-model          # Entity ERD & database schema design
-│   ├── api-design          # OpenAPI 3.1 & API contracts
-│   ├── security-design     # STRIDE threat modeling & auth rules
-│   ├── ai-architecture     # Agentic workflows & RAG pipelines
-│   └── infrastructure-design # Cloud topology & IaC templates
-├── Planning
-│   ├── plan                # Technical execution plan (plan.md)
-│   ├── tasks               # Atomic task decomposition (tasks.md)
-│   ├── estimate            # Complexity & story point sizing
-│   └── dependency-analysis # DAG critical path analysis
-├── Implementation
-│   ├── implement           # Agentic code synthesis
-│   ├── refactor            # Clean code & tech debt cleanup
-│   ├── migrate             # Language & framework upgrades
-│   └── fix                 # Root cause bug fix & regression test
-├── Verification
-│   ├── test                # Automated test suite generation
-│   ├── analyze             # Cross-artifact consistency & drift audit
-│   ├── review              # 5-Lens Code Review (bmad-review)
-│   ├── security            # OWASP SAST & secret scanning
-│   ├── performance         # Profiling & bottleneck analysis
-│   └── conformance         # Constitution invariant audit
-└── Delivery
-    ├── converge            # Task burndown & release readiness
-    ├── release             # KeepAChangelog & SemVer bump
-    ├── deploy              # Deployment & smoke testing
-    └── rollback            # Incident recovery & post-mortem
+.forge/
+├── artifacts/                           # Active workspace artifacts (latest synchronized)
+│   ├── discovery.md
+│   ├── brd.md
+│   ├── constitution.md
+│   ├── spec.md
+│   ├── clarifications.md
+│   ├── architecture.md
+│   ├── plan.md
+│   ├── tasks.md
+│   ├── analysis.md
+│   ├── implementation.md
+│   ├── test-report.md
+│   ├── review.md
+│   ├── security-audit.md
+│   ├── convergence.md
+│   ├── CHANGELOG.md
+│   └── RELEASE_NOTES.md
+│
+├── functionalities/                     # 📂 DEDICATED FUNCTIONALITY MODULES
+│   ├── authentication/                  # Full 14-Agent Suite for 'authentication'
+│   │   ├── constitution.md
+│   │   ├── spec.md
+│   │   ├── architecture.md
+│   │   ├── tasks.md
+│   │   ├── implementation.md
+│   │   ├── manifest.json
+│   │   └── workflow-state.json
+│   │
+│   ├── billing-module/                  # Full 14-Agent Suite for 'billing-module'
+│   └── core/                            # Default core functionality suite
+│
+├── iterations/                          # Historical SDLC iteration snapshots
+└── runs/                                # Execution snapshots & execution logs
 ```
 
 ---
 
-## 📊 Capability Comparison Matrix
+## 🔄 The 14-Stage SDLC Pipeline & 16 Artifacts (100% Complete)
 
-| Generic Capability | BMAD | Spec Kit | Internal | Default Recommendation |
-| :--- | :---: | :---: | :---: | :--- |
-| **Constitution / Invariants** | Partial | ✅ **Strong (98)** | ✅ (88) | **Spec Kit** (Strict SDD governance) |
-| **Requirements / Specification** | ✅ (82) | ✅ **Strong (99)** | ✅ (84) | **Spec Kit** (Given-When-Then criteria) |
-| **Ambiguity Clarification** | ✅ **Strong (96)** | ✅ **Strong (91)** | ✅ (80) | **BMAD** for deep elicitation / **Spec Kit** for structured Q&A |
-| **Brainstorming & Ideation** | ✅ **Strong (95)** | Limited (65) | ✅ (80) | **BMAD** (Multi-perspective exploration) |
-| **Technical Architecture** | ✅ **Strong (97)** | Plan includes arch (76) | ✅ (88) | **BMAD** (Specialized architecture workflows) |
-| **Data Modeling** | ✅ **Strong (94)** | In plan (72) | ✅ (88) | **BMAD** (ERD & relational modeling) |
-| **API Contracts** | ✅ **Strong (95)** | In plan (74) | ✅ (90) | **BMAD** (Formal OpenAPI 3.1 schemas) |
-| **Technical Planning** | ✅ (91) | ✅ **Strong (97)** | ✅ (86) | **Spec Kit** (Phased milestone contracts) |
-| **Task Decomposition** | ✅ (85) | ✅ **Strong (98)** | ✅ (89) | **Spec Kit** (Atomic developer tasks) |
-| **Cross-Artifact Analysis** | ✅ (82) | ✅ **Strong (98)** | ✅ (90) | **Spec Kit** (Zero-drift gap analysis) |
-| **Agentic Implementation** | ✅ **Strong (93)** | ✅ **Strong (92)** | ✅ (88) | **Context-dependent** (BMAD for complex / Spec Kit for TDD) |
-| **Multi-Lens Review** | ✅ **Gold Std (98)** | Less specialized (80) | ✅ (86) | **BMAD** (`bmad-review` 5-lens audit) |
-| **Security & Threat Model** | ✅ (91) | Not core | ✅ **Strong (97)** | **Forge Internal** (STRIDE & SAST) |
-| **Readiness Convergence** | ✅ (82) | ✅ **Strong (98)** | ✅ (88) | **Spec Kit** (Tasks burndown certification) |
-| **Release & Deployment** | ✅ (85) | Not core | ✅ **Strong (96)** | **Forge Internal** (KeepAChangelog & CI/CD) |
+```
+1. DISCOVERY (/brd) ────────► 2. CONSTITUTION (/constitution) ────────► 3. SPECIFICATION (/specify)
+         │                                                                       │
+         ▼                                                                       ▼
+6. PLANNING (/plan) ◄──────── 5. ARCHITECTURE (/architecture) ◄──────── 4. CLARIFICATION (/clarify)
+         │
+         ▼
+7. TASKS (/tasks)   ────────► 8. ANALYSIS (/analyze)         ────────► 9. IMPLEMENTATION (/implement)
+                                                                                 │
+                                                                                 ▼
+12. SECURITY (/security) ◄─── 11. REVIEW (/review)            ◄──────── 10. TESTING (/test)
+         │
+         ▼
+13. CONVERGENCE (/converge) ──► 14. RELEASE (/release)
+```
+
+---
+
+## 🚢 Publishing to NPM & CI/CD Setup
+
+Forge SDLC includes pre-configured **GitHub Actions CI/CD workflows** for automated testing and zero-downtime npm releases.
+
+### 1. Set Up Your NPM Authentication Token
+1. Go to [npmjs.com](https://www.npmjs.com) $\rightarrow$ Profile $\rightarrow$ **Access Tokens** $\rightarrow$ Generate New Token (**Automation** or **Granular Access Token** with publish rights to `forge-sdlc`).
+2. Go to your GitHub repository: **Settings** $\rightarrow$ **Secrets and variables** $\rightarrow$ **Actions**.
+3. Click **New repository secret**:
+   - **Name:** `NPM_TOKEN`
+   - **Value:** `<your-npm-token>`
+
+### 2. Automatic Release on Git Tag / GitHub Release
+Pushing a SemVer git tag automatically runs the full test matrix on Node.js 18, 20, 22 (Ubuntu & Windows) and publishes the package with OIDC provenance:
+
+```bash
+# Bump version and tag:
+git tag v1.2.0
+git push origin v1.2.0
+```
+
+Or draft and publish a release in GitHub Releases.
+
+### 3. Manual Publish via GitHub Actions UI
+1. In your GitHub repository, navigate to **Actions** $\rightarrow$ **Publish to NPM**.
+2. Click **Run workflow**.
+3. Select version bump (`skip`, `patch`, `minor`, `major`) and click **Run workflow**.
 
 ---
 
 ## 🧮 Intelligent Multi-Factor Scoring
 
-Forge does **not** rely on hardcoded `if capability == 'architecture'` statements. Instead, candidate providers are evaluated dynamically using a multi-factor weighted scoring formula:
+Forge dynamically scores all candidate providers using a multi-factor weighted algorithm:
 
 $$\text{Score} = w_1 \cdot \text{Match} + w_2 \cdot \text{Spec} + w_3 \cdot \text{WorkflowFit} + w_4 \cdot \text{ArtifactFit} + w_5 \cdot \text{Context} + w_6 \cdot \text{Quality} + w_7 \cdot \text{UserPref}$$
 
-```
-Architecture Request
-        │
-        ├── BMAD Architecture
-        │     capability match  = 100
-        │     specialization     = 97
-        │     workflow fit       = 95
-        │     artifact fit       = 75
-        │     project context    = 85
-        │     provider quality   = 95
-        │     ─────────────────────────
-        │     Total Score        = 92/100  --> RECOMMENDED ✓
-        │
-        ├── Forge Internal
-        │     Total Score        = 88/100
-        │
-        └── Spec Kit Plan
-              Total Score        = 82/100
-```
+View provider scores and explainability for any capability:
 
-### Explainability ("Why" & Alternatives)
-
-Forge always explains why a provider was recommended and when to consider alternatives:
-
-```
-RECOMMENDED: BMAD ARCHITECTURE & SYSTEM DESIGN (Score: 92/100)
-
-Why:
-• Industry-leading specialization in Technical Architecture & System Design (97/100).
-• Specialized multi-tier architectural workflows
-• Deep pattern reasoning (Event-driven, Microservices, Hexagonal, Clean Arch)
-• Exhaustive trade-off matrices
-
-Alternative: Spec Kit Plan (Score: 82/100)
-Use alternative if:
-• You want architecture tightly coupled to SDD artifacts and prefer Spec Kit's plan -> tasks pipeline.
+```bash
+npx forge-sdlc recommend
+npx forge-sdlc matrix
 ```
 
 ---
 
-## 🔄 Sequential End-to-End SDLC Pipeline
+## 📦 Programmatic TypeScript / Node.js SDK
 
-Run a complete SDLC pipeline from discovery through release:
-
-```bash
-npx forge-sdlc workflow run full-sdlc
-```
-
-```
-DISCOVER  ──────►  SPECIFY  ──────►  CLARIFY  ──────►  ARCHITECTURE  ──────►  PLAN
- (BMAD)           (Spec Kit)         (BMAD)               (BMAD)             (Spec Kit)
-                                                                                  │
-                                                                                  ▼
-CONVERGE  ◄──────  SECURITY  ◄──────  REVIEW  ◄──────  TEST  ◄──────  IMPLEMENT  ◄──────  TASKS
-(Spec Kit)        (Internal)         (BMAD)          (Internal)      (BMAD/Spec)       (Spec Kit)
-   │
-   ▼
-RELEASE
-(Internal)
-```
-
----
-
-## 🤖 AI Editor Agents & Slash Commands
-
-Forge automatically configures native slash commands and specialized autonomous agent rules for **Cursor**, **Claude Code**, **Antigravity / Gemini**, **GitHub Copilot**, and **Windsurf**:
-
-### 🌟 Primary Autonomous Agents:
-- **/sdlc** (or `forge sdlc`): **Full SDLC Master Orchestrator** — Runs the complete 13-stage autonomous software lifecycle from initial discovery through production release.
-- **/implement** (or `forge implement`): **Autonomous Implementation Agent** — Ingests `spec.md`, `architecture.md`, and `tasks.md`, then autonomously writes typed code and automated tests (TDD), verifies quality gates, and checks off tasks.
-
-### ⚡ Available Slash Commands in your AI Chat:
-| Slash Command | Role & Capability | Engine / Provider | Target Artifact |
-| :--- | :--- | :--- | :--- |
-| **`/sdlc`** | 🚀 **Full SDLC Master Orchestrator** | Multi-Provider Pipeline | Complete Lifecycle |
-| **`/implement`** | 💻 **Autonomous Implementation Agent** | BMAD / Spec Kit / Internal | Source Code & Tests |
-| **`/brd`** | 📊 Business Requirements Document | BMAD | `.forge/artifacts/brd.md` |
-| **`/specify`** | 📐 Given-When-Then Specification | Spec Kit | `.forge/artifacts/spec.md` |
-| **`/clarify`** | 🔍 Ambiguity & Edge-Case Elicitation | BMAD | `.forge/artifacts/clarifications.md` |
-| **`/architecture`** | 🏗️ C4 Architecture & System Design | BMAD | `.forge/artifacts/architecture.md` |
-| **`/plan`** | 📅 Phased Technical Execution Plan | Spec Kit | `.forge/artifacts/plan.md` |
-| **`/tasks`** | ✅ Atomic Developer Tasks Breakdown | Spec Kit | `.forge/artifacts/tasks.md` |
-| **`/analyze`** | 🔬 Cross-Artifact Drift & Gap Analysis | Spec Kit | `.forge/artifacts/analysis.md` |
-| **`/test`** | 🧪 Automated Test Suite & Coverage | Forge Internal | `.forge/artifacts/test-report.md` |
-| **`/review`** | 🛡️ 5-Lens Multi-Perspective Review | BMAD (`bmad-review`) | `.forge/artifacts/review.md` |
-| **`/security`** | 🔒 STRIDE & OWASP Threat Audit | Forge Internal | `.forge/artifacts/security-audit.md` |
-| **`/converge`** | 🎯 Task Burndown & Release Readiness | Spec Kit | `.forge/artifacts/convergence.md` |
-| **`/release`** | 📦 KeepAChangelog & SemVer Packaging | Forge Internal | `CHANGELOG.md` |
-
-Initialize or update all agent rules in any project:
-```bash
-npx forge-sdlc init
-```
-
----
-
-## 📁 Artifact Pipeline & Quality Gates
-
-Artifacts are saved to `.forge/artifacts/` using standard Markdown contracts:
-
-```
-.forge/
-├── artifacts/
-│   ├── constitution.md     # Governance & invariants (Spec Kit)
-│   ├── spec.md             # Functional specification (Spec Kit)
-│   ├── clarifications.md   # Ambiguity decisions (BMAD)
-│   ├── architecture.md     # C4 architecture & system design (BMAD)
-│   ├── plan.md             # Milestone roadmap (Spec Kit)
-│   ├── tasks.md            # Actionable developer tasks (Spec Kit)
-│   ├── analysis.md         # Cross-artifact consistency audit (Spec Kit)
-│   ├── review.md           # 5-lens code review report (BMAD)
-│   ├── security-audit.md   # OWASP & STRIDE audit (Forge Internal)
-│   └── convergence.md      # Burndown & release readiness (Spec Kit)
-├── workflow-state.json     # Live stage tracking
-```
-
-Check the pipeline state at any time:
-
-```bash
-npx forge-sdlc status
-```
-
----
-
-## 🔐 Token Authentication & AI Models
-
-Forge provides built-in token authentication and verification across **OpenAI, Anthropic, Gemini, DeepSeek, OpenRouter, and Ollama**:
-
-### 1. Authenticate & Verify Your Token
-Test live connectivity, verify authorization (HTTP 200 OK), and check latency:
-
-```bash
-# Verify active token (from env, .env, or .forgerc.json)
-npx forge-sdlc auth
-
-# Or test a specific token directly
-npx forge-sdlc auth test sk-ant-api03-xxxxxxxxx
-```
-
-### 2. Configure Token & Active Model
-```bash
-# Set your active model
-npx forge-sdlc config set model claude-3-7-sonnet
-
-# Set your API token
-npx forge-sdlc config set token sk-ant-api03-xxxxxxxxx
-
-# View configuration status
-npx forge-sdlc config
-```
-
-### 3. List Supported Models
-```bash
-npx forge-sdlc models
-```
-
----
-
-## ⚙️ Configuration (`.forgerc.json`)
-
-Initialize configuration in any repository:
-
-```bash
-npx forge-sdlc init
-```
-
-`.forgerc.json` example:
-
-```json
-{
-  "version": "1.0.0",
-  "projectName": "my-saas-platform",
-  "providers": {
-    "enabled": ["bmad", "speckit", "internal"],
-    "overrides": {
-      "forge.architecture": "bmad",
-      "forge.specify": "speckit"
-    }
-  },
-  "qualityGates": {
-    "enforceStrictChecklists": true
-  },
-  "scoringWeights": {
-    "specialization": 0.30,
-    "artifactFit": 0.20
-  }
-}
-```
-
----
-
-## 📦 Programmatic SDK Usage
-
-Forge can be used as a TypeScript / JavaScript library:
+Forge is also available as a programmatic SDK:
 
 ```typescript
-import { CapabilityRouter, ScoringEngine, WorkflowEngine } from 'forge-sdlc';
+import { CapabilityRouter, WorkflowEngine, ArtifactManager } from 'forge-sdlc';
 
+// 1. Intelligent Capability Routing
 const router = new CapabilityRouter();
+const recommendation = await router.recommend('architecture');
+console.log(`Recommended Provider: ${recommendation.recommendedProvider.providerName}`);
 
-// 1. Get recommendation for a capability
-const rec = await router.recommend('architecture');
-console.log(`Recommended: ${rec.recommendedProvider.providerName}`);
-
-// 2. Execute capability
+// 2. Execute with Functionality Isolation
 const result = await router.execute({
-  capabilityId: 'architecture',
-  writeToRoot: true,
+  capabilityId: 'specify',
+  functionality: 'payment-gateway',
 });
-console.log(result.executionResult?.summary);
 
-// 3. Run full workflow
-const workflowEngine = new WorkflowEngine();
-const workflows = workflowEngine.getAvailableWorkflows();
-await workflowEngine.executeWorkflow(workflows[0]);
+// 3. Execute 14-Stage SDLC Pipeline
+const engine = new WorkflowEngine();
+const fullSdlc = engine.getAvailableWorkflows().find(w => w.id === 'full-sdlc');
+await engine.executeWorkflow(fullSdlc!, undefined, { functionality: 'payment-gateway' });
 ```
 
 ---
 
 ## 📜 License
 
-MIT © 2026 Forge SDLC Project.
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+---
+
+<div align="center">
+
+**Built with ⚡ by [Rahulrock-1](https://github.com/Rahulrock-1)**  
+*Universal Capability-Oriented SDLC Framework*
+
+</div>

@@ -25,6 +25,14 @@
     "test:watch": "vitest",
     "lint": "tsc --noEmit"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahulrock-1/forge-sdlc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rahulrock-1/forge-sdlc/issues"
+  },
+  "homepage": "https://github.com/Rahulrock-1/forge-sdlc#readme",
   "publishConfig": {
     "access": "public"
   },
