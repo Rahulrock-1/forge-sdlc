@@ -1,11 +1,12 @@
 name: Publish to NPM
 
 on:
-  release:
-    types: [published]
   push:
+    branches: [main]
     tags:
       - 'v*'
+  release:
+    types: [published]
   workflow_dispatch:
     inputs:
       bump:
@@ -27,9 +28,6 @@ jobs:
   publish:
     name: Build, Test & Publish to NPM
     runs-on: ubuntu-latest
-    environment:
-      name: npm-production
-      url: https://www.npmjs.com/package/forge-sdlc
 
     steps:
       - name: Checkout Repository
@@ -65,6 +63,15 @@ jobs:
         run: npm run build
 
       - name: Publish Package to NPM
-        run: npm publish --access public --provenance
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          NPM_VERSION=$(npm view forge-sdlc version 2>/dev/null || echo "0.0.0")
+          echo "Current package.json version: $CURRENT_VERSION"
+          echo "Published npm version: $NPM_VERSION"
+          if [ "$CURRENT_VERSION" != "$NPM_VERSION" ]; then
+            npm publish --access public --provenance
+          else
+            echo "Version $CURRENT_VERSION is already published to NPM. Skipping."
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
