@@ -42,6 +42,7 @@ export function handleGuideCommand(): void {
   });
 
   table.push(
+    ['0. Brainstorm & Ideation', 'forge brainstorm', '/brainstorm', chalk.magenta('BMAD Engine'), '.forge/artifacts/brainstorm.md'],
     ['1. Business Requirements', 'forge brd', '/brd', chalk.magenta('BMAD Engine'), '.forge/artifacts/brd.md'],
     ['2. Domain Discovery', 'forge discover', '/discover', chalk.magenta('BMAD Engine'), '.forge/artifacts/discovery.md'],
     ['3. Ambiguity Clarification', 'forge clarify', '/clarify', chalk.magenta('BMAD Engine'), '.forge/artifacts/clarifications.md'],
@@ -65,6 +66,7 @@ export function handleGuideCommand(): void {
     `${chalk.bold.hex('#F59E0B')('✨ HOW TO USE IN AI EDITORS (Cursor, Antigravity, Claude Code)')}\n\n` +
     `${chalk.white('1. Run ')}${chalk.yellow('forge init')}${chalk.white(' in your project folder.\n')}` +
     `${chalk.white('2. Open your AI Chat panel and type ')}${chalk.cyan.bold('/')}${chalk.white(' to autocomplete:\n\n')}` +
+    `   ${chalk.yellow('/brainstorm')}    → Explores feature ideas & feasibility options (BMAD)\n` +
     `   ${chalk.yellow('/brd')}          → Formulates Business Requirements Document & ROI\n` +
     `   ${chalk.yellow('/specify')}      → Formulates Given-When-Then functional user stories\n` +
     `   ${chalk.yellow('/architecture')} → Designs C4 architecture with Mermaid topology diagrams\n` +

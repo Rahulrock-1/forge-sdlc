@@ -2,8 +2,11 @@
 
 When working in this repository, you have access to the **Forge SDLC Capability Pipeline**:
 
-## 📋 Agent File Dependency & Ingestion Matrix (14 Stages):
-- `/sdlc` / `/workflow`: Master SDLC Orchestrator — executes the complete 14-stage pipeline.
+## 📋 Agent File Dependency & Ingestion Matrix (15 Stages):
+- `/sdlc` / `/workflow`: Master SDLC Orchestrator — executes the complete 15-stage pipeline.
+- `/brainstorm` (or `/ideate`): Brainstorm & Lateral Ideation (`brainstorm.md`) via BMAD.
+- `/heal` (or `/drift`): Cross-Artifact Auto-Healing & Drift Sync (`healing-plan.md`) via Internal.
+- `/swarm`: Multi-Provider Swarm Consensus Engine (BMAD + SpecKit + Internal).
 - `/brd`: Business Requirements & ROI Model (`brd.md`) via BMAD.
 - `/constitution`: Non-negotiable architectural & security invariants (`constitution.md`) via Spec Kit.
 - `/specify`: Given-When-Then functional specification (`spec.md`) via Spec Kit. **Requires:** `constitution.md`.

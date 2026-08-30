@@ -3,20 +3,20 @@
   "functionality": "core",
   "iteration": 5,
   "timestamp": "2026-08-24T18:49:59.310Z",
-  "updatedAt": "2026-08-24T19:04:55.052Z",
+  "updatedAt": "2026-08-30T07:59:32.137Z",
   "artifactCount": 2,
   "artifacts": [
     {
       "name": "test-spec.md",
       "path": ".forge\\functionalities\\core\\test-spec.md",
-      "summary": "test-spec.md for core (iteration 15)",
+      "summary": "test-spec.md for core (iteration 35)",
       "authorProvider": "speckit",
       "sizeBytes": 31
     },
     {
       "name": "test-arch.md",
       "path": ".forge\\functionalities\\core\\test-arch.md",
-      "summary": "test-arch.md for core (iteration 14)",
+      "summary": "test-arch.md for core (iteration 34)",
       "authorProvider": "speckit",
       "sizeBytes": 17
     }

@@ -17,6 +17,11 @@ import { handleConfigCommand } from './commands/config.js';
 import { handleModelsCommand } from './commands/models.js';
 import { handleAuthCommand } from './commands/auth.js';
 import { handleGuideCommand } from './commands/guide.js';
+import { handleMcpCommand } from './commands/mcp.js';
+import { handleHealCommand } from './commands/heal.js';
+import { handleSwarmCommand } from './commands/swarm.js';
+import { handleCiCommand } from './commands/ci.js';
+import { handleDashboardCommand } from './commands/dashboard.js';
 import { UIFormatter } from './ui/formatter.js';
 
 
@@ -193,6 +198,67 @@ export function createCliApp(): Command {
       handleGuideCommand();
     });
 
+  // 13. forge mcp [action]
+  program
+    .command('mcp [action]')
+    .description('Model Context Protocol (MCP) Server for Cursor, Claude Desktop, Antigravity, and Windsurf (start | config | install)')
+    .option('-w, --workspace <path>', 'Target workspace root')
+    .action(async (action, options) => {
+      await handleMcpCommand(action as any, options);
+    });
+
+  // 14. forge heal / drift
+  program
+    .command('heal')
+    .alias('sync')
+    .alias('drift')
+    .description('Cross-Artifact Auto-Healing Engine — audits drift between spec, arch, tasks, and auto-patches')
+    .option('-a, --apply', 'Automatically apply surgical patches to tasks.md and artifacts')
+    .option('-f, --functionality <name>', 'Target functionality folder (e.g. auth, core)')
+    .option('-w, --workspace <path>', 'Target workspace root')
+    .action(async (options) => {
+      await handleHealCommand(options);
+    });
+
+  // 15. forge swarm [capability]
+  program
+    .command('swarm [capability]')
+    .description('Multi-Provider Swarm Consensus — runs BMAD, Spec Kit, and Internal in parallel and synthesizes consensus')
+    .option('-p, --providers <names>', 'Comma-separated provider names (e.g. bmad,speckit,internal)')
+    .option('-f, --functionality <name>', 'Target functionality folder')
+    .option('-d, --dry-run', 'Perform dry-run without writing disk artifacts')
+    .option('-w, --workspace <path>', 'Target workspace root')
+    .action(async (capability, options) => {
+      const cap = capability || 'review';
+      await handleSwarmCommand(cap, options);
+    });
+
+  // 16. forge ci [action]
+  program
+    .command('ci [action]')
+    .alias('gate')
+    .description('CI/CD Quality Gate Runner & GitHub Actions Scaffolder (gate | init)')
+    .option('-m, --min-score <score>', 'Minimum required quality threshold (default: 85)', parseInt)
+    .option('-s, --strict', 'Exit with non-zero code on failure', true)
+    .option('-f, --functionality <name>', 'Target functionality folder')
+    .option('-w, --workspace <path>', 'Target workspace root')
+    .action(async (action, options) => {
+      const act = action || 'gate';
+      await handleCiCommand(act as any, options);
+    });
+
+  // 17. forge dashboard / cockpit / tui
+  program
+    .command('dashboard')
+    .alias('cockpit')
+    .alias('tui')
+    .description('Interactive Terminal Cockpit & Live SDLC Pipeline Dashboard')
+    .option('-f, --functionality <name>', 'Target functionality folder')
+    .option('-w, --workspace <path>', 'Target workspace root')
+    .action((options) => {
+      handleDashboardCommand(options);
+    });
+
   // ==========================================
   // Register Direct Capability Commands
   // e.g. forge architecture, forge specify, forge review, etc.
@@ -208,6 +274,8 @@ export function createCliApp(): Command {
       cmd.alias('arch');
     } else if (cap.name === 'specify') {
       cmd.alias('spec');
+    } else if (cap.name === 'brainstorm') {
+      cmd.alias('ideate');
     }
 
     cmd

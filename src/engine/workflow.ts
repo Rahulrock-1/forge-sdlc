@@ -10,9 +10,10 @@ import { WorkflowDefinition, WorkflowExecutionState, WorkflowStageExecution } fr
 
 export const DEFAULT_SDLC_WORKFLOW: WorkflowDefinition = {
   id: 'full-sdlc',
-  name: 'Standard SDLC Pipeline',
+  name: 'Standard 15-Stage SDLC Pipeline',
   description: 'Full-lifecycle sequential SDLC workflow routing to best specialized providers',
   stages: [
+    { id: 'brainstorm', capabilityId: 'forge.brainstorm', name: 'Brainstorm', description: 'Lateral Ideation & Feasibility Ranking', requiredInputs: [], expectedOutputs: ['brainstorm.md'] },
     { id: 'discover', capabilityId: 'forge.discover', name: 'Discovery', description: 'Domain & Context Discovery', requiredInputs: [], expectedOutputs: ['discovery.md'] },
     { id: 'constitution', capabilityId: 'forge.constitution', name: 'Constitution', description: 'Non-Negotiable Architectural & Quality Invariants (constitution.md)', requiredInputs: [], expectedOutputs: ['constitution.md'] },
     { id: 'specify', capabilityId: 'forge.specify', name: 'Specification', description: 'Functional Specification (spec.md)', requiredInputs: ['constitution.md'], expectedOutputs: ['spec.md'] },
@@ -45,10 +46,16 @@ export class WorkflowEngine {
     return [
       DEFAULT_SDLC_WORKFLOW,
       {
+        id: 'ideation-to-spec',
+        name: 'Ideation to Specification Pipeline',
+        description: 'Rapid product scoping from brainstorm to C4 architecture',
+        stages: DEFAULT_SDLC_WORKFLOW.stages.slice(0, 6),
+      },
+      {
         id: 'fast-design',
         name: 'Fast Design Pipeline',
         description: 'Rapid specification and architecture for early spikes',
-        stages: DEFAULT_SDLC_WORKFLOW.stages.slice(0, 5),
+        stages: DEFAULT_SDLC_WORKFLOW.stages.slice(1, 6),
       },
       {
         id: 'verification-gate',
@@ -56,6 +63,14 @@ export class WorkflowEngine {
         description: 'Comprehensive testing, multi-lens review, security audit, and convergence',
         stages: DEFAULT_SDLC_WORKFLOW.stages.filter((s) =>
           ['test', 'review', 'security', 'converge'].includes(s.id)
+        ),
+      },
+      {
+        id: 'hotfix-pipeline',
+        name: 'Production Hotfix & Release Pipeline',
+        description: 'Fast verification, regression testing, AppSec scan, and SemVer release',
+        stages: DEFAULT_SDLC_WORKFLOW.stages.filter((s) =>
+          ['test', 'review', 'security', 'release'].includes(s.id)
         ),
       },
     ];

@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 .pnp
 .pnp.js
@@ -48,3 +48,11 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Forge Ephemeral Run Traces
+.forge/runs/
+.forge/functionalities/test-*/
+.forge/iterations/iteration-1[0-9]/
+.forge/iterations/iteration-2[0-9]/
+.forge/iterations/iteration-3[0-9]/
+

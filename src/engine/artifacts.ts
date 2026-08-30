@@ -266,7 +266,45 @@ export class ArtifactManager {
     updateManifestFile(iterationDir, `iteration-${iteration}`);
     updateManifestFile(runDir, runId);
 
+    // Synchronize comprehensive Iteration Index documentation (ITERATIONS.md)
+    this.updateIterationIndex();
+
     return saved;
+  }
+
+  /**
+   * Save a single execution artifact
+   */
+  public saveArtifact(
+    artifact: ExecutionArtifact,
+    providerOrFunctionality: string = 'internal',
+    writeToRootFlag: boolean = false
+  ): void {
+    this.ensureArtifactsDir();
+    const isProvider = ['bmad', 'speckit', 'internal'].includes(providerOrFunctionality);
+    const providerId = isProvider ? providerOrFunctionality : 'internal';
+    const functionality = !isProvider ? providerOrFunctionality : 'core';
+
+    // Synchronous write of active artifact
+    const activeArtPath = path.join(this.artifactsDir, artifact.name);
+    fs.writeFileSync(activeArtPath, artifact.content, 'utf-8');
+
+    // Write into Functionality folder
+    const funcDir = path.join(this.functionalitiesDir, functionality);
+    if (!fs.existsSync(funcDir)) fs.mkdirSync(funcDir, { recursive: true });
+    fs.writeFileSync(path.join(funcDir, artifact.name), artifact.content, 'utf-8');
+
+    // Write into Iteration folder
+    const iterNum = this.getCurrentIterationNumber();
+    const iterDir = path.join(this.iterationsDir, `iteration-${iterNum}`);
+    if (!fs.existsSync(iterDir)) fs.mkdirSync(iterDir, { recursive: true });
+    fs.writeFileSync(path.join(iterDir, artifact.name), artifact.content, 'utf-8');
+
+    if (writeToRootFlag) {
+      fs.writeFileSync(path.join(this.workspaceRoot, artifact.name), artifact.content, 'utf-8');
+    }
+
+    this.updateIterationIndex();
   }
 
   /**
@@ -418,7 +456,58 @@ export class ArtifactManager {
     return map;
   }
 
-  public getArtifact(nameOrId: string): ArtifactFile | undefined {
+  /**
+   * List all artifacts, optionally scoped to a functionality folder
+   */
+  public listArtifacts(functionality?: string): ArtifactFile[] {
+    const map = this.loadArtifacts();
+    if (!functionality || functionality === 'core') {
+      return Object.values(map);
+    }
+
+    const funcDir = path.join(this.functionalitiesDir, functionality);
+    if (!fs.existsSync(funcDir)) return [];
+
+    const files = fs.readdirSync(funcDir).filter((f) => f.endsWith('.md'));
+    return files.map((file) => {
+      const fullPath = path.join(funcDir, file);
+      const content = fs.readFileSync(fullPath, 'utf-8');
+      const id = file.replace(/\.md$/, '');
+      return {
+        id,
+        filename: file,
+        path: fullPath,
+        title: file,
+        group: 'artifacts',
+        stage: 'completed',
+        version: 1,
+        lastUpdated: new Date().toISOString(),
+        content,
+      };
+    });
+  }
+
+  public getArtifact(nameOrId: string, functionality?: string): ArtifactFile | undefined {
+    if (functionality && functionality !== 'core') {
+      const funcDir = path.join(this.functionalitiesDir, functionality);
+      const cleanName = nameOrId.endsWith('.md') ? nameOrId : `${nameOrId}.md`;
+      const funcFilePath = path.join(funcDir, cleanName);
+      if (fs.existsSync(funcFilePath)) {
+        const content = fs.readFileSync(funcFilePath, 'utf-8');
+        return {
+          id: cleanName.replace(/\.md$/, ''),
+          filename: cleanName,
+          path: funcFilePath,
+          title: cleanName,
+          group: 'artifacts',
+          stage: 'completed',
+          version: 1,
+          lastUpdated: new Date().toISOString(),
+          content,
+        };
+      }
+    }
+
     const map = this.loadArtifacts();
     const cleanId = nameOrId.replace(/\.md$/, '').toLowerCase();
     return map[cleanId] || map[nameOrId];
@@ -479,6 +568,161 @@ export class ArtifactManager {
     }
 
     return history;
+  }
+
+  /**
+   * Automatically generate and synchronize the master Iteration Architecture & Log documentation (ITERATIONS.md)
+   */
+  public updateIterationIndex(): void {
+    this.ensureArtifactsDir();
+    const iterations = this.listIterations();
+    const functionalities = this.listFunctionalities();
+    const runs = this.listRuns();
+    const activeArtifacts = this.listArtifacts();
+
+    const markdown = this.generateIterationsLogMarkdown({
+      projectName: path.basename(this.workspaceRoot),
+      iterations,
+      functionalities,
+      runs,
+      activeArtifacts,
+    });
+
+    // Write to root ITERATIONS.md, .forge/ITERATIONS.md, and .forge/iterations/README.md
+    const rootIterationsFile = path.join(this.workspaceRoot, 'ITERATIONS.md');
+    const forgeIterationsFile = path.join(this.forgeDir, 'ITERATIONS.md');
+    const iterationsReadmeFile = path.join(this.iterationsDir, 'README.md');
+
+    fs.writeFileSync(rootIterationsFile, markdown, 'utf-8');
+    fs.writeFileSync(forgeIterationsFile, markdown, 'utf-8');
+    fs.writeFileSync(iterationsReadmeFile, markdown, 'utf-8');
+  }
+
+  private generateIterationsLogMarkdown(data: {
+    projectName: string;
+    iterations: Array<{ iteration: number; name: string; path: string; artifactCount: number; manifest?: RunManifest }>;
+    functionalities: Array<{ name: string; path: string; artifactCount: number; manifest?: RunManifest }>;
+    runs: Array<{ runId: string; path: string; manifest?: RunManifest }>;
+    activeArtifacts: ArtifactFile[];
+  }): string {
+    const totalIterations = data.iterations.length;
+    const latestIteration = totalIterations > 0 ? data.iterations[totalIterations - 1] : undefined;
+
+    const iterationRows = data.iterations.length > 0
+      ? data.iterations
+          .map((iter) => {
+            const date = iter.manifest?.updatedAt || iter.manifest?.timestamp || 'N/A';
+            const formattedDate = date !== 'N/A' ? new Date(date).toLocaleString() : 'N/A';
+            const func = iter.manifest?.functionality || 'core';
+            const authors = Array.from(new Set(iter.manifest?.artifacts?.map((a) => a.authorProvider) || ['Forge'])).join(', ');
+            const artifactList = iter.manifest?.artifacts?.map((a) => a.name).join(', ') || `${iter.artifactCount} files`;
+
+            return `| **Iteration ${iter.iteration}** | \`${iter.name}\` | \`${func}\` | ${iter.artifactCount} artifacts | \`${authors.toUpperCase()}\` | ${formattedDate} | \`.forge/iterations/${iter.name}/\` |`;
+          })
+          .join('\n')
+      : '| *No iterations executed yet.* | — | — | — | — | — | — |';
+
+    const functionalityRows = data.functionalities.length > 0
+      ? data.functionalities
+          .map((func) => `| **\`${func.name}\`** | ${func.artifactCount} artifacts | \`.forge/functionalities/${func.name}/\` | ${func.manifest?.updatedAt ? new Date(func.manifest.updatedAt).toLocaleString() : 'Active'} |`)
+          .join('\n')
+      : '| **`core`** | Active | `.forge/functionalities/core/` | Default |';
+
+    return `# 🔄 Forge SDLC — Unified Iteration & Documentation Architecture (ITERATIONS.md)
+
+> **Autonomous Iteration Ledger & Token-Cost Optimized Storage Engine**  
+> Tracks all sequential iteration cycles, multi-module feature folders, artifact history diffs, and token optimization metrics.
+
+---
+
+## 📁 1. Master Iteration & Documentation Folder Structure
+
+All iterations and SDLC outputs are stored in a unified, deterministic hierarchy under \`.forge/\`:
+
+\`\`\`
+.forge/
+├── artifacts/                           # Active workspace artifacts (latest synchronized state)
+│   ├── history/                         # Historical version archives (.v1.md, .v2.md, ...)
+│   │   ├── architecture.v1.md
+│   │   ├── spec.v1.md
+│   │   └── tasks.v1.md
+│   ├── brainstorm.md                    # Brainstorming & Lateral Ideation (BMAD)
+│   ├── brd.md                           # Business Requirements Document (BMAD)
+│   ├── constitution.md                  # Non-Negotiable Invariants (Spec Kit)
+│   ├── spec.md                          # Given-When-Then Specification (Spec Kit)
+│   ├── architecture.md                  # C4 Technical Architecture & ADRs (BMAD)
+│   ├── plan.md                          # Phased Milestone Execution Roadmap (Spec Kit)
+│   ├── tasks.md                         # Atomic Developer Checklist (Spec Kit)
+│   ├── analysis.md                      # Cross-Artifact Consistency Audit (Spec Kit)
+│   ├── test-report.md                   # Automated Test Suites (Internal)
+│   ├── review.md                        # 5-Lens Multi-Perspective Review (BMAD)
+│   ├── security-audit.md                # STRIDE & OWASP AppSec Audit (Internal)
+│   └── convergence.md                   # Release Readiness Burndown (Spec Kit)
+│
+├── iterations/                          # Immutable sequential iteration snapshots
+│   ├── README.md                        # Auto-generated iteration catalog
+│   ├── iteration-1/                     # Full snapshot of Iteration 1
+│   │   ├── manifest.json                # Execution metadata, provider authors, byte sizes
+│   │   └── ...                          # Complete artifact documents at Iteration 1
+│   ├── iteration-2/                     # Full snapshot of Iteration 2
+│   │   ├── manifest.json
+│   │   └── ...
+│   └── iteration-N/                     # Active iteration snapshot
+│
+├── functionalities/                     # Modular feature-scoped documentation
+│   ├── core/                            # Core foundational architecture & tasks
+│   │   ├── manifest.json
+│   │   └── ...
+│   ├── auth/                            # Authentication module specs & tasks
+│   └── billing/                         # Billing module specs & tasks
+│
+└── runs/                                # Granular execution run traces
+    └── run-<timestamp>-<workflowId>/    # Isolated per-run logs & stage diffs
+\`\`\`
+
+---
+
+## 📊 2. Chronological Iteration Ledger
+
+| Iteration # | Snapshot Folder | Feature Module | Artifacts Generated | Provider Engine(s) | Timestamp | Snapshot Directory |
+| :--- | :--- | :---: | :---: | :---: | :--- | :--- |
+${iterationRows}
+
+---
+
+## 📦 3. Feature / Functionality Modules
+
+| Feature Module | Artifacts Scoped | Storage Path | Last Synchronized |
+| :--- | :---: | :--- | :--- |
+${functionalityRows}
+
+---
+
+## 💰 4. Token Cost Optimization Architecture
+
+Forge enforces strict token optimization policies across every development iteration:
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      TOKEN CONSUMPTION CONTROL POLICIES                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  1. Zero-Token Offline Default   │ Deterministic AST analysis ($0.00 cost)  │
+│  2. Strict Dependency Ingestion  │ Only passes declared input files (0 bloat│
+│  3. Differential Iteration Diffs │ Passes surgical diffs, not 100k LOC code │
+│  4. Local Model Offloading       │ Routes bulk tasks to Ollama / DeepSeek   │
+│  5. Immutable Artifact Caching   │ Reuses cached artifacts when unchanged   │
+└─────────────────────────────────────────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## 🛠️ 5. Iteration Management Commands
+
+- **Inspect Iteration Status:** \`npx forge-sdlc status\` or \`forge dashboard\`
+- **Auto-Heal Documentation Drift:** \`npx forge-sdlc heal --apply\`
+- **Run Multi-Provider Consensus:** \`npx forge-sdlc swarm review\`
+- **Execute Next Iteration Workflow:** \`npx forge-sdlc workflow run full-sdlc --functionality <module>\`
+`;
   }
 }
 

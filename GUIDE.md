@@ -65,9 +65,13 @@ Open your AI Chat in your favorite editor and type **`/`**:
 ```
 Type "/" in AI Chat:
 ──────────────────────────────────────────────────────────────────────────────
-/sdlc           ★ Full SDLC Master Orchestrator (Complete 13-stage lifecycle)
+/sdlc           ★ Full SDLC Master Orchestrator (Complete 15-stage lifecycle)
 /implement      ★ Autonomous Implementation Agent (Writes code & TDD tests)
+/brainstorm     → Explores problem space, feature ideas & feasibility (BMAD)
+/heal           → Audits cross-artifact drift & auto-patches tasks (Internal)
+/swarm          → Multi-Provider Swarm Consensus engine (BMAD + SpecKit + Internal)
 /brd            → Formulates Business Requirements Document & ROI (BMAD)
+/constitution   → Establishes non-negotiable architectural invariants (Spec Kit)
 /specify        → Formulates Given-When-Then specification (Spec Kit)
 /clarify        → Probes hidden ambiguities & edge cases (BMAD)
 /architecture   → Designs C4 technical architecture & ADRs (BMAD)
@@ -90,6 +94,7 @@ Type "/" in AI Chat:
 
 | SDLC Stage | Terminal Command | Chat Slash Command | Provider Used | What it Generates in `.forge/artifacts/` |
 | :--- | :--- | :--- | :---: | :--- |
+| **0. Brainstorm & Ideation** | `forge brainstorm` | `/brainstorm` | **BMAD** | `brainstorm.md` (Feature candidates & feasibility) |
 | **1. Business Requirements** | `forge brd` | `/brd` | **BMAD** | `brd.md` (Stakeholder analysis, BPMN, ROI) |
 | **2. Domain Discovery** | `forge discover` | `/discover` | **BMAD** | `discovery.md` (Domain boundaries & actors) |
 | **3. Ambiguity Clarification** | `forge clarify` | `/clarify` | **BMAD** | `clarifications.md` (Probed edge cases) |
@@ -149,3 +154,67 @@ forge status
   # 3. Authenticate and test connection
   forge auth
   ```
+
+---
+
+## 🔌 8. Model Context Protocol (MCP) Server
+
+Connect Forge SDLC dynamically to **Cursor MCP**, **Claude Desktop**, **Antigravity**, and **Windsurf**:
+
+```bash
+# Auto-configure .cursor/mcp.json
+forge mcp install
+
+# Or start stdio JSON-RPC MCP server
+forge mcp start
+```
+
+---
+
+## 🩺 9. Cross-Artifact Auto-Healing & Drift Sync
+
+Detect requirement drift between `spec.md`, `architecture.md`, and `tasks.md`, and auto-patch developer tasks:
+
+```bash
+# Diagnose drift
+forge heal
+
+# Auto-apply surgical task patches
+forge heal --apply
+```
+
+---
+
+## 🐝 10. Multi-Provider Swarm Consensus
+
+Execute multiple independent engines concurrently (BMAD + Spec Kit + Internal) and synthesize a consensus-weighted master report:
+
+```bash
+forge swarm review
+forge swarm security
+```
+
+---
+
+## 🛡️ 11. CI/CD Quality Gate & GitHub Actions
+
+Enforce architectural invariants, test coverage, and drift thresholds on Pull Requests:
+
+```bash
+# Scaffold GitHub Action (.github/workflows/forge-quality-gate.yml)
+forge ci init
+
+# Execute gate validation in CI pipeline
+forge ci gate --min-score 85 --strict
+```
+
+---
+
+## 📊 12. Interactive Terminal Dashboard & Cockpit
+
+Launch the full-screen terminal dashboard displaying real-time SDLC pipeline progress and diagnostics:
+
+```bash
+forge dashboard
+```
+
