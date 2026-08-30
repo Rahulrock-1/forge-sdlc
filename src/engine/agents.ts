@@ -315,6 +315,35 @@ You are the specialized **Security Audit Agent** orchestrated by **Forge SDLC**.
 3. **Automated Remediation:**
    - Provide concrete code diffs to fix every identified vulnerability.
 `;
+      } else if (cap.name === 'brainstorm') {
+        mdcContent = `---
+description: Brainstorm & Lateral Ideation Agent (DISCOVERY) - Lateral ideation, divergent feature exploration, and feasibility ranking in brainstorm.md
+globs: *
+alwaysApply: false
+---
+
+# /brainstorm - Brainstorm & Lateral Ideation Agent
+
+You are the specialized **Brainstorm & Lateral Ideation Agent** orchestrated by **Forge SDLC**.
+
+## 📥 Ingestion & Dependency Checklist:
+- **Required Inputs:** problem_statement, constraints
+- **Target Output Artifact:** \`.forge/artifacts/brainstorm.md\`
+- **Recommended Provider:** **BMAD Ideation Engine**
+- **Recommended Next Step:** Run \`forge brd\` or \`forge specify\`.
+
+---
+
+## 💡 Advanced Ideation Protocol:
+1. **Divergent Lateral Thinking:**
+   - Explore solution space from multiple angles (User Delight, Architecture, Business Impact).
+2. **Feature Candidate Formulation:**
+   - Define concrete feature concepts with clear value propositions and technical trade-offs.
+3. **Feasibility & ROI Scoring Matrix:**
+   - Rank candidates across Feasibility (1-10), User Impact (1-10), and Engineering Effort.
+4. **Output Synthesis:**
+   - Save structured report to \`.forge/artifacts/brainstorm.md\`.
+`;
       } else {
         mdcContent = `---
 description: ${cap.displayName} (${cap.group.toUpperCase()}) - Runs optimal provider (${bestProv}) via Forge
@@ -355,6 +384,9 @@ You are the specialized **${cap.displayName} Agent** orchestrated by **Forge SDL
         cursorCount++;
       } else if (cap.name === 'specify') {
         fs.writeFileSync(path.join(cursorDir, 'forge-spec.mdc'), mdcContent.replace('/specify', '/spec'), 'utf-8');
+        cursorCount++;
+      } else if (cap.name === 'brainstorm') {
+        fs.writeFileSync(path.join(cursorDir, 'forge-ideate.mdc'), mdcContent.replace('/brainstorm', '/ideate'), 'utf-8');
         cursorCount++;
       } else if (cap.name === 'tasks') {
         fs.writeFileSync(path.join(cursorDir, 'forge-task.mdc'), mdcContent.replace('# /tasks', '# /task'), 'utf-8');
@@ -446,6 +478,23 @@ Execute Forge capability: **Project Constitution (/constitution)**
 2. Output to \`.forge/artifacts/constitution.md\`.
 3. Proceed to \`npx forge-sdlc specify\`.
 `;
+      } else if (cap.name === 'brainstorm') {
+        cmdContent = `---
+description: Brainstorm & Lateral Ideation Agent - Lateral ideation, divergent feature exploration, and feasibility ranking in brainstorm.md
+---
+
+Execute Forge capability: **Brainstorm & Lateral Ideation (/brainstorm, /ideate)**
+
+## 📥 Ingestion Checklist:
+- Inputs: Problem statement, vision, constraints
+- Target Output: \`.forge/artifacts/brainstorm.md\`
+
+## 💡 Instructions:
+1. Explore problem space using lateral thinking techniques.
+2. Synthesize feature candidates with feasibility scoring and ROI ranking.
+3. Output to \`.forge/artifacts/brainstorm.md\`.
+4. Proceed to \`npx forge-sdlc brd\` or \`npx forge-sdlc specify\`.
+`;
       } else if (cap.name === 'tasks') {
         cmdContent = `---
 description: Task Decomposition Agent - Decomposes plan & spec into atomic developer tasks in tasks.md
@@ -477,7 +526,10 @@ Run: \`npx forge-sdlc ${cap.name}\`
       fs.writeFileSync(filePath, cmdContent, 'utf-8');
       claudeCount++;
 
-      if (cap.name === 'tasks') {
+      if (cap.name === 'brainstorm') {
+        fs.writeFileSync(path.join(claudeDir, 'ideate.md'), cmdContent, 'utf-8');
+        claudeCount++;
+      } else if (cap.name === 'tasks') {
         fs.writeFileSync(path.join(claudeDir, 'task.md'), cmdContent, 'utf-8');
         fs.writeFileSync(path.join(claudeDir, 'task-decomposition.md'), cmdContent, 'utf-8');
         claudeCount += 2;
@@ -509,8 +561,11 @@ Run: \`npx forge-sdlc sdlc --functionality core\` or execute sequentially:
 
 When working in this repository, you have access to the **Forge SDLC Capability Pipeline**:
 
-## 📋 Agent File Dependency & Ingestion Matrix (14 Stages):
-- \`/sdlc\` / \`/workflow\`: Master SDLC Orchestrator — executes the complete 14-stage pipeline.
+## 📋 Agent File Dependency & Ingestion Matrix (15 Stages):
+- \`/sdlc\` / \`/workflow\`: Master SDLC Orchestrator — executes the complete 15-stage pipeline.
+- \`/brainstorm\` (or \`/ideate\`): Brainstorm & Lateral Ideation (\`brainstorm.md\`) via BMAD.
+- \`/heal\` (or \`/drift\`): Cross-Artifact Auto-Healing & Drift Sync (\`healing-plan.md\`) via Internal.
+- \`/swarm\`: Multi-Provider Swarm Consensus Engine (BMAD + SpecKit + Internal).
 - \`/brd\`: Business Requirements & ROI Model (\`brd.md\`) via BMAD.
 - \`/constitution\`: Non-negotiable architectural & security invariants (\`constitution.md\`) via Spec Kit.
 - \`/specify\`: Given-When-Then functional specification (\`spec.md\`) via Spec Kit. **Requires:** \`constitution.md\`.
@@ -537,6 +592,9 @@ Artifacts are located in \`.forge/artifacts/\` and \`.forge/functionalities/<fea
 
     const keyCapabilities = [
       { id: 'sdlc', name: 'sdlc', title: 'Full SDLC Master Orchestrator', desc: 'Execute end-to-end 14-stage SDLC workflow from discovery to release' },
+      { id: 'brainstorm', name: 'brainstorm', title: 'Brainstorm & Lateral Ideation', desc: 'Explore problem space, generate innovative feature ideas, and evaluate feasibility options (brainstorm.md)' },
+      { id: 'heal', name: 'heal', title: 'Cross-Artifact Auto-Healing & Drift Sync', desc: 'Audit drift across spec, architecture, and tasks, auto-generating surgical patches (healing-plan.md)' },
+      { id: 'swarm', name: 'swarm', title: 'Multi-Provider Swarm Consensus', desc: 'Execute BMAD, Spec Kit, and Internal concurrently, synthesizing consensus-weighted findings' },
       { id: 'brd', name: 'brd', title: 'Business Requirements (BRD)', desc: 'Formulate Business Requirements Document (brd.md) and ROI models' },
       { id: 'constitution', name: 'constitution', title: 'Constitution & Principles', desc: 'Formulate non-negotiable architectural invariants and code guardrails (constitution.md)' },
       { id: 'specify', name: 'specify', title: 'Software Specification (SDD)', desc: 'Formulate Given-When-Then specification (spec.md)' },
@@ -589,6 +647,55 @@ Use this skill when the user requests \`/implement\`, \`implement\`, or asks to 
 5. **Testing (TDD):** Automated unit and integration tests with >90% coverage.
 6. **Task Update:** Check off items in \`.forge/artifacts/tasks.md\` (\`- [x]\`).
 7. **Downstream Next:** Trigger \`npx forge-sdlc review\` for 5-Lens Multi-Perspective Review.
+`;
+        } else if (cap.id === 'brainstorm') {
+          skillBody = `---
+name: ${cap.id}
+description: ${cap.desc}
+---
+
+# ${cap.title} Agent (Forge SDLC)
+
+Use this skill when the user requests \`/brainstorm\`, \`brainstorm\`, \`/ideate\`, or asks to explore feature ideas, generate creative solutions, evaluate product feasibility, or brainstorm requirements.
+
+## 💡 Lateral Ideation & Brainstorming Protocol:
+1. Ingest existing vision, problem statements, and constraints.
+2. Generate divergent solution candidates and feature ideas across multiple angles (UX, Architecture, Business Impact).
+3. Evaluate feasibility, impact, complexity, and ROI ranking for each concept.
+4. Output structured markdown to \`.forge/artifacts/brainstorm.md\`.
+5. Recommended Next Step: Run \`forge brd\` or \`forge specify\`.
+`;
+        } else if (cap.id === 'heal') {
+          skillBody = `---
+name: ${cap.id}
+description: ${cap.desc}
+---
+
+# ${cap.title} Agent (Forge SDLC)
+
+Use this skill when the user requests \`/heal\`, \`heal\`, \`drift\`, or asks to audit requirement drift and auto-patch artifacts.
+
+## 🩺 Auto-Healing Protocol:
+1. Ingest \`spec.md\`, \`architecture.md\`, \`tasks.md\`, and \`constitution.md\`.
+2. Compute mathematical requirement-to-task traceability coverage.
+3. Identify orphaned requirements, rogue tasks, and architectural gaps.
+4. Synthesize surgical patch checklist into \`.forge/artifacts/healing-plan.md\`.
+5. Run \`forge heal --apply\` to automatically patch \`tasks.md\`.
+`;
+        } else if (cap.id === 'swarm') {
+          skillBody = `---
+name: ${cap.id}
+description: ${cap.desc}
+---
+
+# ${cap.title} Agent (Forge SDLC)
+
+Use this skill when the user requests \`/swarm\`, \`swarm\`, or asks for multi-agent consensus verification across BMAD, Spec Kit, and Internal engines.
+
+## 🐝 Swarm Consensus Protocol:
+1. Execute multiple candidate providers (BMAD, Spec Kit, Internal) concurrently for the target capability.
+2. Ingest independent verdicts and calculate mathematical consensus agreement percentage.
+3. Synthesize unified findings into \`.forge/artifacts/swarm-<capability>.md\`.
 `;
         } else if (cap.id === 'constitution') {
           skillBody = `---
@@ -689,15 +796,18 @@ Use this skill when the user requests \`${cap.id}\`, \`/${cap.id}\`, or ${cap.de
     }
     const masterSkillContent = `---
 name: forge-sdlc
-description: Universal Capability-Oriented SDLC Orchestrator for BMAD, Spec Kit, and Internal Providers. Includes /implement and /sdlc full runner agents.
+description: Universal Capability-Oriented SDLC Orchestrator for BMAD, Spec Kit, and Internal Providers. Includes /implement, /brainstorm, /heal, /swarm, and /sdlc full runner agents.
 ---
 
 # Forge SDLC Skill
 
-Use this skill when the user requests SDLC capabilities, autonomous code implementation, architecture, specification, code review, or full SDLC pipeline execution.
+Use this skill when the user requests SDLC capabilities, autonomous code implementation, architecture, specification, code review, auto-healing, swarm consensus, or full SDLC pipeline execution.
 
 ## Key Agents & Slash Commands:
-- \`/sdlc\`: Full SDLC Master Orchestrator (End-to-End 13 stages)
+- \`/sdlc\`: Full SDLC Master Orchestrator (End-to-End 15 stages)
+- \`/brainstorm\`: Brainstorm & Lateral Ideation (brainstorm.md) (BMAD)
+- \`/heal\`: Cross-Artifact Auto-Healing & Drift Sync (healing-plan.md) (Internal)
+- \`/swarm\`: Multi-Provider Swarm Consensus Engine (BMAD + SpecKit + Internal)
 - \`/implement\`: Autonomous Implementation Agent (Writes typed code & tests from tasks.md)
 - \`/brd\`: Business Requirements & ROI modeling (BMAD)
 - \`/specify\`: Given-When-Then Specification (spec.md) (Spec Kit)
@@ -722,7 +832,10 @@ Use this skill when the user requests SDLC capabilities, autonomous code impleme
 This project is governed by **Forge SDLC** (Universal Capability-Oriented SDLC Framework).
 
 ## 🚀 Active Agents & Slash Commands:
-- \`/sdlc\` (or \`forge sdlc\`): Full SDLC Master Orchestrator — runs all 13 stages from discovery to release.
+- \`/sdlc\` (or \`forge sdlc\`): Full SDLC Master Orchestrator — runs all 15 stages from discovery to release.
+- \`/brainstorm\` (or \`forge brainstorm\`, \`/ideate\`): Brainstorm & Lateral Ideation Agent (\`brainstorm.md\`) & Feasibility Ranking (BMAD)
+- \`/heal\` (or \`forge heal\`, \`/drift\`): Cross-Artifact Auto-Healing & Drift Sync Agent (\`healing-plan.md\`) (Internal)
+- \`/swarm\` (or \`forge swarm\`): Multi-Provider Swarm Consensus Engine (BMAD + SpecKit + Internal)
 - \`/implement\` (or \`forge implement\`): Autonomous Implementation Agent — implements production code & tests from \`tasks.md\`, \`spec.md\`, and \`architecture.md\`.
 - \`/brd\` (or \`forge brd\`): Business Requirements Document (\`brd.md\`) & ROI modeling (BMAD)
 - \`/specify\` (or \`forge specify\`): Functional Specification (\`spec.md\`) with Given-When-Then criteria (Spec Kit)

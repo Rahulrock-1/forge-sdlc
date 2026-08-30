@@ -218,6 +218,21 @@ export class InternalProvider extends BaseProvider {
         break;
       }
 
+      case 'brainstorm': {
+        logs.push('[Forge Internal Ideation] Generating structured feature candidates and feasibility scoring...');
+        const content = this.generateInternalBrainstormDoc(context);
+        artifacts.push({
+          name: 'brainstorm.md',
+          path: 'brainstorm.md',
+          content,
+          format: 'markdown',
+          summary: 'Forge Internal Structured Brainstorming & Ideation Report',
+        });
+        summary = 'Forge Brainstorming completed. Generated feature candidates with feasibility assessment.';
+        nextCap = 'forge.business-requirements';
+        break;
+      }
+
       default: {
         logs.push(`[Forge Internal] Synthesizing artifact for capability ${cap}...`);
         const content = `# Forge Internal Artifact: ${cap.toUpperCase()}\n\n**Project:** ${context.projectContext.projectName}\n**Capability:** ${context.capabilityId}\n**Generated:** ${new Date().toISOString()}\n\n## 1. Overview\nExecuted using Forge Internal Engine.\n\n## 2. Details\n- Automated deterministic synthesis completed.\n- Meets baseline quality standards.`;
@@ -490,6 +505,53 @@ Execute \`forge test\` to run Vitest suites across all synthesized modules, foll
 - **Zero Secrets in Git:** Secrets strictly injected via environment variables.
 - **OWASP Compliance:** Automated SAST scans on every pull request.
 - **Telemetry:** Structured JSON logging with Correlation IDs (\`traceId\`, \`spanId\`).
+`;
+  }
+
+  private generateInternalBrainstormDoc(context: ProviderExecutionContext): string {
+    const pName = context.projectContext.projectName || 'Software System';
+    return `# Forge Ideation & Feature Brainstorming Report
+
+**Project:** ${pName}  
+**Generated:** ${new Date().toISOString()}  
+**Capability:** forge.brainstorm (Forge Internal Engine)
+
+---
+
+## 1. Problem Space & Opportunity Exploration
+- **Core Problem Statement:** Systematic requirement decomposition and autonomous SDLC execution.
+- **Target Audience:** Engineering teams, technical architects, and autonomous coding agents.
+- **Key Value Drivers:** Developer velocity, zero hallucination rate, and automated quality gates.
+
+---
+
+## 2. Divergent Feature Concepts & Solution Candidates
+
+### 💡 Concept A: Interactive Terminal Visualizer (TUI Dashboard)
+- **Description:** Real-time terminal UI displaying live DAG execution, artifact burndown, and provider routing stats.
+- **Feasibility:** High | **Impact:** High | **Complexity:** Medium | **Priority:** P1
+
+### 💡 Concept B: Autonomous Cross-Artifact Self-Healing
+- **Description:** Auto-detect drift between \`spec.md\` and \`architecture.md\`, generating surgical delta pull requests.
+- **Feasibility:** High | **Impact:** Very High | **Complexity:** High | **Priority:** P1
+
+### 💡 Concept C: Multi-Agent Swarm Verification
+- **Description:** Concurrent multi-lens review swarming (Security, Performance, SOLID, Domain) with synthesis gating.
+- **Feasibility:** Medium | **Impact:** High | **Complexity:** Medium | **Priority:** P2
+
+---
+
+## 3. Feasibility & ROI Scoring Matrix
+| Candidate Concept | Feasibility (1-10) | User Value (1-10) | Engineering Effort | Recommended Action |
+| :--- | :---: | :---: | :---: | :--- |
+| **Interactive TUI Dashboard** | 9 | 8 | 3 days | **Approved for Discovery / BRD** |
+| **Cross-Artifact Self-Healing**| 8 | 10 | 5 days | **Approved for Architecture Spike** |
+| **Multi-Agent Swarm** | 7 | 8 | 4 days | **Backlog for Phase 2** |
+
+---
+
+## 4. Next Recommended Step
+Run \`forge brd\` to formulate Business Requirements Document or \`forge specify\` to write Given-When-Then specifications.
 `;
   }
 }

@@ -3,7 +3,10 @@
 This project is governed by **Forge SDLC** (Universal Capability-Oriented SDLC Framework).
 
 ## 🚀 Active Agents & Slash Commands:
-- `/sdlc` (or `forge sdlc`): Full SDLC Master Orchestrator — runs all 13 stages from discovery to release.
+- `/sdlc` (or `forge sdlc`): Full SDLC Master Orchestrator — runs all 15 stages from discovery to release.
+- `/brainstorm` (or `forge brainstorm`, `/ideate`): Brainstorm & Lateral Ideation Agent (`brainstorm.md`) & Feasibility Ranking (BMAD)
+- `/heal` (or `forge heal`, `/drift`): Cross-Artifact Auto-Healing & Drift Sync Agent (`healing-plan.md`) (Internal)
+- `/swarm` (or `forge swarm`): Multi-Provider Swarm Consensus Engine (BMAD + SpecKit + Internal)
 - `/implement` (or `forge implement`): Autonomous Implementation Agent — implements production code & tests from `tasks.md`, `spec.md`, and `architecture.md`.
 - `/brd` (or `forge brd`): Business Requirements Document (`brd.md`) & ROI modeling (BMAD)
 - `/specify` (or `forge specify`): Functional Specification (`spec.md`) with Given-When-Then criteria (Spec Kit)

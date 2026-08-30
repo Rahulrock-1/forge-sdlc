@@ -66,6 +66,28 @@ describe('CapabilityRouter', () => {
     expect(internalResult.selectedProviderId).toBe('internal');
     expect(internalResult.capabilityName).toBe('implement');
   });
+
+  it('should route brainstorm capability with BMAD as recommended provider and support internal execution', async () => {
+    const router = new CapabilityRouter();
+    const singleRec = await router.recommend('brainstorm');
+    expect(singleRec.recommendedProvider.providerId).toBe('bmad');
+
+    const bmadResult = await router.execute({
+      capabilityId: 'brainstorm',
+      providerOverride: 'bmad',
+      dryRun: true,
+    });
+    expect(bmadResult.selectedProviderId).toBe('bmad');
+    expect(bmadResult.capabilityName).toBe('brainstorm');
+
+    const internalResult = await router.execute({
+      capabilityId: 'brainstorm',
+      providerOverride: 'internal',
+      dryRun: true,
+    });
+    expect(internalResult.selectedProviderId).toBe('internal');
+    expect(internalResult.capabilityName).toBe('brainstorm');
+  });
 });
 
 

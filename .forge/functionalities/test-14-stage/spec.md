@@ -3,7 +3,7 @@
 **Feature / System:** forge-sdlc  
 **Format:** Spec Kit Spec-Driven Development (SDD)  
 **Status:** In Review  
-**Date:** 2026-08-24  
+**Date:** 2026-08-30  
 
 ---
 

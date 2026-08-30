@@ -18,4 +18,9 @@ export * from './engine/workflow.js';
 export * from './engine/context.js';
 export * from './engine/artifacts.js';
 export * from './engine/quality-gates.js';
+export * from './engine/healing.js';
+export * from './engine/swarm.js';
+export * from './mcp/server.js';
+export * from './mcp/types.js';
 export * from './cli/app.js';
+

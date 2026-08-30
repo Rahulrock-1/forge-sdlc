@@ -60,6 +60,10 @@ describe('WorkflowEngine', () => {
     const allIters = manager.listIterations();
     expect(allIters.some((i) => i.iteration === iterNum)).toBe(true);
     expect(allIters.some((i) => i.iteration === nextIterNum)).toBe(true);
+
+    // Check ITERATIONS.md existence
+    expect(fs.existsSync(path.join(process.cwd(), 'ITERATIONS.md'))).toBe(true);
+    expect(fs.existsSync(path.join(process.cwd(), '.forge', 'iterations', 'README.md'))).toBe(true);
   });
 
   it('should organize artifacts into dedicated functionality folders', async () => {
@@ -83,22 +87,32 @@ describe('WorkflowEngine', () => {
     expect(funcs.some((f) => f.name === testFunctionality)).toBe(true);
   });
 
-  it('should execute 14-stage full SDLC workflow including constitution stage', async () => {
+  it('should execute 15-stage full SDLC workflow including brainstorm and constitution stages', async () => {
     const engine = new WorkflowEngine();
     const fullSdlc = engine.getAvailableWorkflows().find((w) => w.id === 'full-sdlc');
     expect(fullSdlc).toBeDefined();
-    expect(fullSdlc?.stages.length).toBe(14);
+    expect(fullSdlc?.stages.length).toBe(15);
+    expect(fullSdlc?.stages.some((s) => s.id === 'brainstorm')).toBe(true);
     expect(fullSdlc?.stages.some((s) => s.id === 'constitution')).toBe(true);
 
-    const state = await engine.executeWorkflow(fullSdlc!, undefined, { functionality: 'test-14-stage' });
+    const state = await engine.executeWorkflow(fullSdlc!, undefined, { functionality: 'test-15-stage' });
     expect(state.status).toBe('completed');
-    expect(state.stages.length).toBe(14);
+    expect(state.stages.length).toBe(15);
+    expect(state.stages.some((s) => s.stageId === 'brainstorm' && s.status === 'completed')).toBe(true);
     expect(state.stages.some((s) => s.stageId === 'constitution' && s.status === 'completed')).toBe(true);
 
-    const funcDir = path.join(process.cwd(), '.forge', 'functionalities', 'test-14-stage');
+    const funcDir = path.join(process.cwd(), '.forge', 'functionalities', 'test-15-stage');
+    expect(fs.existsSync(path.join(funcDir, 'brainstorm.md'))).toBe(true);
     expect(fs.existsSync(path.join(funcDir, 'constitution.md'))).toBe(true);
     expect(fs.existsSync(path.join(funcDir, 'spec.md'))).toBe(true);
     expect(fs.existsSync(path.join(funcDir, 'implementation.md'))).toBe(true);
+  });
+
+  it('should support ideation-to-spec and hotfix-pipeline workflows', () => {
+    const engine = new WorkflowEngine();
+    const workflows = engine.getAvailableWorkflows();
+    expect(workflows.some((w) => w.id === 'ideation-to-spec')).toBe(true);
+    expect(workflows.some((w) => w.id === 'hotfix-pipeline')).toBe(true);
   });
 });
 

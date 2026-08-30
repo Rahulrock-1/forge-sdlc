@@ -86,8 +86,11 @@ npx forge-sdlc agent-rules
 
 | Slash Command | Agent Role | Specialized Provider | Mandatory Ingestion Files | Target Generated Artifact |
 | :--- | :--- | :---: | :--- | :--- |
-| **`/sdlc`** | 🚀 **Full SDLC Master Orchestrator** | Multi-Provider | Workspace Context | Complete 14-Stage Lifecycle |
+| **`/sdlc`** | 🚀 **Full SDLC Master Orchestrator** | Multi-Provider | Workspace Context | Complete 15-Stage Lifecycle |
 | **`/implement`** | 💻 **Senior Staff Implementation** | BMAD / Spec Kit | `tasks.md`, `spec.md`, `architecture.md` | Source Code in `src/`, `implementation.md` |
+| **`/brainstorm`** | 💡 **Lateral Ideation & Brainstorming** | BMAD | Problem Statement, Vision | `brainstorm.md` |
+| **`/heal`** | 🩺 **Auto-Healing & Drift Sync** | Internal | `spec.md`, `architecture.md`, `tasks.md` | `healing-plan.md`, `tasks.md` |
+| **`/swarm`** | 🐝 **Multi-Provider Swarm Consensus** | Multi-Provider | Codebase context | `swarm-<cap>.md` |
 | **`/brd`** | 📊 **Business Requirements & ROI** | BMAD | Goals & Context | `brd.md`, `discovery.md` |
 | **`/constitution`**| 🏛️ **Constitution & Invariants** | Spec Kit | Project Requirements | `constitution.md` |
 | **`/specify`** | 📐 **Given-When-Then Specification**| Spec Kit | `constitution.md`, `brd.md` | `spec.md` |

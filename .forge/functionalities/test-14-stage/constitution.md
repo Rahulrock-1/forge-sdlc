@@ -3,7 +3,7 @@
 **Project:** forge-sdlc  
 **Governing Standard:** Spec Kit Enterprise SDD Constitution (v2.4.0)  
 **Status:** Legally Binding Across All Agents & Developers  
-**Effective Date:** 2026-08-24  
+**Effective Date:** 2026-08-30  
 
 ---
 
