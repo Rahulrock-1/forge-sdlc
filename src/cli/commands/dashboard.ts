@@ -50,7 +50,7 @@ export function handleDashboardCommand(options: { functionality?: string; worksp
     style: { head: ['cyan'] },
   });
 
-  const existingArtifactNames = new Set(artifacts.map((a) => a.name));
+  const existingArtifactNames = new Set(artifacts.map((a) => a.filename || a.name || a.id));
 
   DEFAULT_SDLC_WORKFLOW.stages.forEach((stage, idx) => {
     const isCompleted = stage.expectedOutputs.some((out) => existingArtifactNames.has(out));

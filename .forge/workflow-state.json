@@ -1,7 +1,7 @@
 {
   "workflowId": "full-sdlc",
   "projectName": "Forge-package",
-  "startedAt": "2026-08-30T07:59:32.392Z",
+  "startedAt": "2026-08-30T08:08:20.403Z",
   "status": "completed",
   "stages": [
     {
@@ -9,7 +9,7 @@
       "capabilityId": "forge.brainstorm",
       "providerId": "bmad",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:32.392Z",
+      "startedAt": "2026-08-30T08:08:20.403Z",
       "result": {
         "success": true,
         "providerId": "bmad",
@@ -41,14 +41,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:32.519Z"
+      "completedAt": "2026-08-30T08:08:20.514Z"
     },
     {
       "stageId": "discover",
       "capabilityId": "forge.discover",
       "providerId": "bmad",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:32.519Z",
+      "startedAt": "2026-08-30T08:08:20.514Z",
       "result": {
         "success": true,
         "providerId": "bmad",
@@ -69,7 +69,7 @@
           "[BMAD Discovery] Mapping domain bounded contexts, actors, and service boundaries..."
         ],
         "metrics": {
-          "durationMs": 1,
+          "durationMs": 0,
           "tokensEstimated": 1450,
           "qualityPassed": true
         },
@@ -80,14 +80,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:32.644Z"
+      "completedAt": "2026-08-30T08:08:20.631Z"
     },
     {
       "stageId": "constitution",
       "capabilityId": "forge.constitution",
       "providerId": "speckit",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:32.644Z",
+      "startedAt": "2026-08-30T08:08:20.631Z",
       "result": {
         "success": true,
         "providerId": "speckit",
@@ -119,14 +119,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:32.762Z"
+      "completedAt": "2026-08-30T08:08:20.724Z"
     },
     {
       "stageId": "specify",
       "capabilityId": "forge.specify",
       "providerId": "speckit",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:32.762Z",
+      "startedAt": "2026-08-30T08:08:20.724Z",
       "result": {
         "success": true,
         "providerId": "speckit",
@@ -158,14 +158,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:32.870Z"
+      "completedAt": "2026-08-30T08:08:20.827Z"
     },
     {
       "stageId": "clarify",
       "capabilityId": "forge.clarify",
       "providerId": "speckit",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:32.870Z",
+      "startedAt": "2026-08-30T08:08:20.827Z",
       "result": {
         "success": true,
         "providerId": "speckit",
@@ -174,7 +174,7 @@
           {
             "name": "clarifications.md",
             "path": "clarifications.md",
-            "content": "# Spec Kit Structured Clarification Log\n\n**Project:** forge-sdlc  \n**Date:** 2026-08-30T07:59:32.894Z  \n\n---\n\n| Item ID | Question / Ambiguity | Decision / Resolution | Impacted Artifacts |\n| :--- | :--- | :--- | :--- |\n| **CLR-01** | Should `forge` support interactive terminal wizards? | Yes, interactive mode prompts users when required arguments are omitted. | `cli/app.ts`, `cli/ui/prompts.ts` |\n| **CLR-02** | Where should project artifacts be stored? | Defaults to `.forge/artifacts/` or project root if configured. | `engine/artifacts.ts` |\n| **CLR-03** | How should multi-agent workflows pass intermediate state? | Via standard Markdown artifacts with YAML frontmatter metadata. | `types/artifact.ts` |\n",
+            "content": "# Spec Kit Structured Clarification Log\n\n**Project:** forge-sdlc  \n**Date:** 2026-08-30T08:08:20.848Z  \n\n---\n\n| Item ID | Question / Ambiguity | Decision / Resolution | Impacted Artifacts |\n| :--- | :--- | :--- | :--- |\n| **CLR-01** | Should `forge` support interactive terminal wizards? | Yes, interactive mode prompts users when required arguments are omitted. | `cli/app.ts`, `cli/ui/prompts.ts` |\n| **CLR-02** | Where should project artifacts be stored? | Defaults to `.forge/artifacts/` or project root if configured. | `engine/artifacts.ts` |\n| **CLR-03** | How should multi-agent workflows pass intermediate state? | Via standard Markdown artifacts with YAML frontmatter metadata. | `types/artifact.ts` |\n",
             "format": "markdown",
             "summary": "Spec Kit Structured Clarification and Decision Records"
           }
@@ -197,14 +197,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:32.972Z"
+      "completedAt": "2026-08-30T08:08:20.925Z"
     },
     {
       "stageId": "architecture",
       "capabilityId": "forge.architecture",
       "providerId": "bmad",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:32.972Z",
+      "startedAt": "2026-08-30T08:08:20.925Z",
       "result": {
         "success": true,
         "providerId": "bmad",
@@ -213,7 +213,7 @@
           {
             "name": "architecture.md",
             "path": "architecture.md",
-            "content": "# Technical Architecture Document\n\n**Project:** forge-sdlc  \n**Authoring Engine:** BMAD Architecture Engine (v2.4.0)  \n**Status:** Approved  \n**Last Updated:** 2026-08-30T07:59:32.995Z  \n\n---\n\n## 1. Executive Summary & Architectural Goals\nThis document specifies the technical architecture for **forge-sdlc**. The design emphasizes high modularity, deterministic state boundaries, type safety, low latency, and zero circular dependencies.\n\n### Core Architectural Drivers\n- **Scalability & Concurrency:** Isolated stateless compute units with asynchronous execution pipelines.\n- **Maintainability:** Domain-Driven Design (DDD) with clean hexagonal / ports-and-adapters architecture.\n- **Extensibility:** Universal provider abstraction layer allowing hot-swappable plugins without core refactors.\n\n---\n\n## 2. System Context & C4 Architecture Diagrams\n\n```mermaid\nflowchart TD\n    User[\"👤 Developer / User\"]\n    CLI[\"⚡ Forge CLI / Orchestrator\"]\n    Router[\"🧠 Capability Router\"]\n    \n    subgraph ProviderAdapters [\"Universal Provider Adapters\"]\n        BMAD[\"BMAD Provider\n(Arch, Elicitation, Review)\"]\n        SpecKit[\"Spec Kit Provider\n(Spec, Plan, Tasks, Converge)\"]\n        Internal[\"Forge Internal\n(Security, Standards, Deploy)\"]\n    end\n    \n    subgraph ArtifactPipeline [\"Artifact & State Engine\"]\n        SpecDoc[\"spec.md\"]\n        ArchDoc[\"architecture.md\"]\n        PlanDoc[\"plan.md\"]\n        TasksDoc[\"tasks.md\"]\n    end\n\n    User -->|CLI Command| CLI\n    CLI --> Router\n    Router --> BMAD\n    Router --> SpecKit\n    Router --> Internal\n    BMAD --> ArchDoc\n    SpecKit --> SpecDoc\n    SpecKit --> PlanDoc\n    SpecKit --> TasksDoc\n```\n\n---\n\n## 3. Component Boundaries & Layering\n\n```\n┌──────────────────────────────────────────────────────────┐\n│                      Presentation Layer                  │\n│       CLI Commands, Interactive Prompts, TUI Tables      │\n└────────────────────────────┬─────────────────────────────┘\n                             │\n┌────────────────────────────▼─────────────────────────────┐\n│                    Orchestration Layer                   │\n│   Capability Router • Scoring Engine • Workflow Runner   │\n└────────────────────────────┬─────────────────────────────┘\n                             │\n┌────────────────────────────▼─────────────────────────────┐\n│                      Adapters Layer                      │\n│        BMAD Adapter  •  Spec Kit Adapter  •  Internal     │\n└────────────────────────────┬─────────────────────────────┘\n                             │\n┌────────────────────────────▼─────────────────────────────┐\n│                  Infrastructure & Storage                │\n│    File System Artifacts (.forge/) • Config & Templates  │\n└──────────────────────────────────────────────────────────┘\n```\n\n---\n\n## 4. Key Architectural Decisions (ADR Summary)\n\n| ADR ID | Decision | Justification | Alternatives Considered |\n| :--- | :--- | :--- | :--- |\n| **ADR-001** | Capability-First Abstraction | Decouples user intent from underlying tool vendors. | Vendor-locked skill scripts |\n| **ADR-002** | Multi-Factor Dynamic Scoring | Enables context-aware provider routing with zero hardcoding. | Static lookup tables |\n| **ADR-003** | Artifact Pipeline Contract | Standardized Markdown documents serve as universal inter-agent memory. | Proprietary binary databases |\n\n---\n\n## 5. Non-Functional Invariants & Cross-Cutting Concerns\n- **Idempotency:** Re-running architecture generation produces deterministic, consistent schemas.\n- **Observability:** Structured logging and timing metrics across all provider execution steps.\n- **Fail-Safe Fallbacks:** If a specialized provider is missing, automatic graceful degradation to Forge Internal.\n",
+            "content": "# Technical Architecture Document\n\n**Project:** forge-sdlc  \n**Authoring Engine:** BMAD Architecture Engine (v2.4.0)  \n**Status:** Approved  \n**Last Updated:** 2026-08-30T08:08:20.944Z  \n\n---\n\n## 1. Executive Summary & Architectural Goals\nThis document specifies the technical architecture for **forge-sdlc**. The design emphasizes high modularity, deterministic state boundaries, type safety, low latency, and zero circular dependencies.\n\n### Core Architectural Drivers\n- **Scalability & Concurrency:** Isolated stateless compute units with asynchronous execution pipelines.\n- **Maintainability:** Domain-Driven Design (DDD) with clean hexagonal / ports-and-adapters architecture.\n- **Extensibility:** Universal provider abstraction layer allowing hot-swappable plugins without core refactors.\n\n---\n\n## 2. System Context & C4 Architecture Diagrams\n\n```mermaid\nflowchart TD\n    User[\"👤 Developer / User\"]\n    CLI[\"⚡ Forge CLI / Orchestrator\"]\n    Router[\"🧠 Capability Router\"]\n    \n    subgraph ProviderAdapters [\"Universal Provider Adapters\"]\n        BMAD[\"BMAD Provider\n(Arch, Elicitation, Review)\"]\n        SpecKit[\"Spec Kit Provider\n(Spec, Plan, Tasks, Converge)\"]\n        Internal[\"Forge Internal\n(Security, Standards, Deploy)\"]\n    end\n    \n    subgraph ArtifactPipeline [\"Artifact & State Engine\"]\n        SpecDoc[\"spec.md\"]\n        ArchDoc[\"architecture.md\"]\n        PlanDoc[\"plan.md\"]\n        TasksDoc[\"tasks.md\"]\n    end\n\n    User -->|CLI Command| CLI\n    CLI --> Router\n    Router --> BMAD\n    Router --> SpecKit\n    Router --> Internal\n    BMAD --> ArchDoc\n    SpecKit --> SpecDoc\n    SpecKit --> PlanDoc\n    SpecKit --> TasksDoc\n```\n\n---\n\n## 3. Component Boundaries & Layering\n\n```\n┌──────────────────────────────────────────────────────────┐\n│                      Presentation Layer                  │\n│       CLI Commands, Interactive Prompts, TUI Tables      │\n└────────────────────────────┬─────────────────────────────┘\n                             │\n┌────────────────────────────▼─────────────────────────────┐\n│                    Orchestration Layer                   │\n│   Capability Router • Scoring Engine • Workflow Runner   │\n└────────────────────────────┬─────────────────────────────┘\n                             │\n┌────────────────────────────▼─────────────────────────────┐\n│                      Adapters Layer                      │\n│        BMAD Adapter  •  Spec Kit Adapter  •  Internal     │\n└────────────────────────────┬─────────────────────────────┘\n                             │\n┌────────────────────────────▼─────────────────────────────┐\n│                  Infrastructure & Storage                │\n│    File System Artifacts (.forge/) • Config & Templates  │\n└──────────────────────────────────────────────────────────┘\n```\n\n---\n\n## 4. Key Architectural Decisions (ADR Summary)\n\n| ADR ID | Decision | Justification | Alternatives Considered |\n| :--- | :--- | :--- | :--- |\n| **ADR-001** | Capability-First Abstraction | Decouples user intent from underlying tool vendors. | Vendor-locked skill scripts |\n| **ADR-002** | Multi-Factor Dynamic Scoring | Enables context-aware provider routing with zero hardcoding. | Static lookup tables |\n| **ADR-003** | Artifact Pipeline Contract | Standardized Markdown documents serve as universal inter-agent memory. | Proprietary binary databases |\n\n---\n\n## 5. Non-Functional Invariants & Cross-Cutting Concerns\n- **Idempotency:** Re-running architecture generation produces deterministic, consistent schemas.\n- **Observability:** Structured logging and timing metrics across all provider execution steps.\n- **Fail-Safe Fallbacks:** If a specialized provider is missing, automatic graceful degradation to Forge Internal.\n",
             "format": "markdown",
             "summary": "BMAD Technical Architecture Document with C4 diagrams and trade-off matrices"
           }
@@ -236,14 +236,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.087Z"
+      "completedAt": "2026-08-30T08:08:21.011Z"
     },
     {
       "stageId": "plan",
       "capabilityId": "forge.plan",
       "providerId": "speckit",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.087Z",
+      "startedAt": "2026-08-30T08:08:21.011Z",
       "result": {
         "success": true,
         "providerId": "speckit",
@@ -252,7 +252,7 @@
           {
             "name": "plan.md",
             "path": "plan.md",
-            "content": "# Technical Execution Plan (plan.md)\n\n**Project:** forge-sdlc  \n**Standard:** Spec Kit SDD Technical Plan  \n**Last Updated:** 2026-08-30T07:59:33.109Z  \n\n---\n\n## 1. Architecture Alignment & Technology Decisions\n- **Runtime:** Node.js 18+ (ESM modules)\n- **CLI Framework:** Commander.js + Chalk + Inquirer + Cli-Table3\n- **Bundle Strategy:** Single fast bundle via `tsup` targeting `dist/bin.js`\n- **Zero-Config Execution:** Works instantly via `npx forge-sdlc`\n\n---\n\n## 2. Phased Execution Roadmap\n\n### Phase 1: Core Types & Capability Catalog\n- **Goal:** Establish universal SDLC capability manifests and scoring models.\n- **Contract:** Produces `types/` and `catalog/` modules.\n\n### Phase 2: Scoring & Recommendation Engine\n- **Goal:** Multi-factor scoring formula with explainability (\"Why\" and alternatives).\n- **Contract:** Produces `scoring/engine.ts` and `scoring/explainer.ts`.\n\n### Phase 3: Provider Adapters (BMAD, Spec Kit, Internal)\n- **Goal:** Universal adapter interface connecting BMAD, Spec Kit, and Forge Internal.\n- **Contract:** Produces `providers/` subsystem.\n\n### Phase 4: CLI Experience & Workflow Runner\n- **Goal:** Comprehensive CLI commands (`forge <capability>`, `forge recommend`, `forge matrix`, `forge workflow`).\n- **Contract:** Produces `cli/` and `bin.ts`.\n",
+            "content": "# Technical Execution Plan (plan.md)\n\n**Project:** forge-sdlc  \n**Standard:** Spec Kit SDD Technical Plan  \n**Last Updated:** 2026-08-30T08:08:21.030Z  \n\n---\n\n## 1. Architecture Alignment & Technology Decisions\n- **Runtime:** Node.js 18+ (ESM modules)\n- **CLI Framework:** Commander.js + Chalk + Inquirer + Cli-Table3\n- **Bundle Strategy:** Single fast bundle via `tsup` targeting `dist/bin.js`\n- **Zero-Config Execution:** Works instantly via `npx forge-sdlc`\n\n---\n\n## 2. Phased Execution Roadmap\n\n### Phase 1: Core Types & Capability Catalog\n- **Goal:** Establish universal SDLC capability manifests and scoring models.\n- **Contract:** Produces `types/` and `catalog/` modules.\n\n### Phase 2: Scoring & Recommendation Engine\n- **Goal:** Multi-factor scoring formula with explainability (\"Why\" and alternatives).\n- **Contract:** Produces `scoring/engine.ts` and `scoring/explainer.ts`.\n\n### Phase 3: Provider Adapters (BMAD, Spec Kit, Internal)\n- **Goal:** Universal adapter interface connecting BMAD, Spec Kit, and Forge Internal.\n- **Contract:** Produces `providers/` subsystem.\n\n### Phase 4: CLI Experience & Workflow Runner\n- **Goal:** Comprehensive CLI commands (`forge <capability>`, `forge recommend`, `forge matrix`, `forge workflow`).\n- **Contract:** Produces `cli/` and `bin.ts`.\n",
             "format": "markdown",
             "summary": "Spec Kit Technical Execution Plan (plan.md) with phase milestones and input/output contracts"
           }
@@ -275,14 +275,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.186Z"
+      "completedAt": "2026-08-30T08:08:21.102Z"
     },
     {
       "stageId": "tasks",
       "capabilityId": "forge.task-decomposition",
       "providerId": "speckit",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.186Z",
+      "startedAt": "2026-08-30T08:08:21.102Z",
       "result": {
         "success": true,
         "providerId": "speckit",
@@ -314,14 +314,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.280Z"
+      "completedAt": "2026-08-30T08:08:21.199Z"
     },
     {
       "stageId": "analyze",
       "capabilityId": "forge.analyze",
       "providerId": "speckit",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.280Z",
+      "startedAt": "2026-08-30T08:08:21.199Z",
       "result": {
         "success": true,
         "providerId": "speckit",
@@ -330,7 +330,7 @@
           {
             "name": "analysis.md",
             "path": "analysis.md",
-            "content": "# Spec Kit Cross-Artifact Consistency Analysis (analysis.md)\n\n**Project:** forge-sdlc  \n**Audit Engine:** Spec Kit Analyze Engine (v1.8.2)  \n**Timestamp:** 2026-08-30T07:59:33.301Z  \n**Status:** **100% CONSISTENT (No Drift Detected)**\n\n---\n\n## 1. Traceability Matrix\n\n| Artifact A (Source) | Artifact B (Target) | Consistency Score | Traceability Status |\n| :--- | :--- | :---: | :---: |\n| **constitution.md** | **spec.md** | 100% | ✅ All core invariants reflected |\n| **spec.md** | **architecture.md** | 98% | ✅ Component boundaries cover all user stories |\n| **architecture.md** | **plan.md** | 100% | ✅ Phased milestones match architectural layers |\n| **plan.md** | **tasks.md** | 100% | ✅ 100% of plan phases mapped to atomic tasks |\n\n---\n\n## 2. Gap & Drift Detection Log\n- **Requirement Drift:** 0% (All acceptance criteria mapped).\n- **Orphaned Tasks:** None.\n- **Unverified Constraints:** None.\n\n---\n\n## 3. Verdict\nThe project artifacts form a watertight, bi-directionally traceable execution pipeline. Proceed with `forge implement` or `forge test`.\n",
+            "content": "# Spec Kit Cross-Artifact Consistency Analysis (analysis.md)\n\n**Project:** forge-sdlc  \n**Audit Engine:** Spec Kit Analyze Engine (v1.8.2)  \n**Timestamp:** 2026-08-30T08:08:21.221Z  \n**Status:** **100% CONSISTENT (No Drift Detected)**\n\n---\n\n## 1. Traceability Matrix\n\n| Artifact A (Source) | Artifact B (Target) | Consistency Score | Traceability Status |\n| :--- | :--- | :---: | :---: |\n| **constitution.md** | **spec.md** | 100% | ✅ All core invariants reflected |\n| **spec.md** | **architecture.md** | 98% | ✅ Component boundaries cover all user stories |\n| **architecture.md** | **plan.md** | 100% | ✅ Phased milestones match architectural layers |\n| **plan.md** | **tasks.md** | 100% | ✅ 100% of plan phases mapped to atomic tasks |\n\n---\n\n## 2. Gap & Drift Detection Log\n- **Requirement Drift:** 0% (All acceptance criteria mapped).\n- **Orphaned Tasks:** None.\n- **Unverified Constraints:** None.\n\n---\n\n## 3. Verdict\nThe project artifacts form a watertight, bi-directionally traceable execution pipeline. Proceed with `forge implement` or `forge test`.\n",
             "format": "markdown",
             "summary": "Spec Kit Cross-Artifact Consistency Analysis & Drift Detection Report"
           }
@@ -353,14 +353,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.375Z"
+      "completedAt": "2026-08-30T08:08:21.300Z"
     },
     {
       "stageId": "implement",
       "capabilityId": "forge.implement",
       "providerId": "bmad",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.375Z",
+      "startedAt": "2026-08-30T08:08:21.300Z",
       "result": {
         "success": true,
         "providerId": "bmad",
@@ -369,7 +369,7 @@
           {
             "name": "implementation.md",
             "path": "implementation.md",
-            "content": "# Enterprise Implementation Blueprint (Senior Staff / Principal AI Engineer)\n\n**Project:** forge-sdlc  \n**Authoring Engine:** BMAD Advanced Agentic Developer (v2.4.0)  \n**Status:** Ready for Execution  \n**Generated At:** 2026-08-30T07:59:33.396Z  \n\n---\n\n## 1. Architectural Invariants & High-Level Problem Solving\n\n### 🏛️ Hexagonal & Clean Layering Architecture\n- **Pure Domain Core:** Business logic and entities remain completely free of external dependencies (zero framework or database imports).\n- **Ports & Adapters (Dependency Inversion):** Infrastructure modules (HTTP clients, database repositories, CLI interfaces) implement domain interfaces (Ports).\n- **Domain-Driven Design (DDD):** Aggregates, Entities, Value Objects, and Domain Events enforce business invariants at compile-time and runtime.\n\n### 🛡️ Type-Safety & Exhaustive Schema Validations\n- **Strict TypeScript Typing:** Generics, Discriminated Unions, Branded Types, and `never` exhaustiveness checks.\n- **Runtime Schema Validation:** All external DTOs, API payloads, and config values are parsed using Zod/Valibot schemas before ingestion.\n- **Zero `any`:** Strong type definitions throughout; typed error envelopes with correlation identifiers.\n\n### ⚡ Fault-Tolerance, Resiliency & Concurrency\n- **Idempotency:** Mutating operations support distributed idempotency keys to prevent duplicate executions.\n- **Exponential Backoff with Jitter:** External I/O retries employ exponential backoff with full randomized jitter ($T_{wait} = \text{random}(0, min(T_{max}, T_{base} \times 2^{attempt}))$).\n- **Circuit Breakers:** External integrations isolate cascading failures via 3-state Circuit Breakers (CLOSED, OPEN, HALF-OPEN).\n- **Thread & Async Safety:** Concurrent operations employ atomic state mutations or mutex locks where needed.\n\n### 📊 Telemetry, Analytics & Observability\n- **Structured JSON Logging:** Logs emit structured JSON with Correlation IDs (`traceId`, `spanId`, `userId`, `timestamp`).\n- **OpenTelemetry Instrumentation:** Service entrypoints record trace spans, latency histograms, and transaction counters.\n- **Audit Analytics:** State transitions generate immutable audit event records.\n\n---\n\n## 2. Implementation Layer Matrix\n\n| Layer | Directory | Primary Pattern | Security & Invariants | Verification Gate |\n| :--- | :--- | :--- | :--- | :--- |\n| **Domain Entities** | `src/types/*` | Immutable Value Objects & DTOs | Branded Types, Discriminated Unions | Type Check (`tsc --noEmit`) |\n| **Domain Services** | `src/engine/*` | Strategy, Pipeline & Ports | Pure Logic, Zero Side-Effects | Unit Tests (>90% Coverage) |\n| **Infrastructure Adapters** | `src/providers/*` | Hexagonal Adapters / Circuit Breaker | Exponential Backoff, Idempotency | Mocked Integration Tests |\n| **Presentation / CLI** | `src/cli/*` | Command Pattern & Formatter | Input Sanitization, Error Envelopes | End-to-End CLI Tests |\n\n---\n\n## 3. Autonomous Execution Protocol\n\n1. **Ingest Existing Artifacts:** Ingest `.forge/artifacts/spec.md`, `.forge/artifacts/architecture.md`, and `.forge/artifacts/tasks.md`.\n2. **Execute Tasks Sequentially:** Implement atomic tasks with comprehensive unit and integration tests (TDD).\n3. **Run Verification Gates:** Execute test suite (`npm test`) and lint checks (`npm run lint`).\n4. **Trigger Downstream Review:** Run `forge test` and `forge review` (5-Lens Multi-Perspective Review).\n",
+            "content": "# Enterprise Implementation Blueprint (Senior Staff / Principal AI Engineer)\n\n**Project:** forge-sdlc  \n**Authoring Engine:** BMAD Advanced Agentic Developer (v2.4.0)  \n**Status:** Ready for Execution  \n**Generated At:** 2026-08-30T08:08:21.339Z  \n\n---\n\n## 1. Architectural Invariants & High-Level Problem Solving\n\n### 🏛️ Hexagonal & Clean Layering Architecture\n- **Pure Domain Core:** Business logic and entities remain completely free of external dependencies (zero framework or database imports).\n- **Ports & Adapters (Dependency Inversion):** Infrastructure modules (HTTP clients, database repositories, CLI interfaces) implement domain interfaces (Ports).\n- **Domain-Driven Design (DDD):** Aggregates, Entities, Value Objects, and Domain Events enforce business invariants at compile-time and runtime.\n\n### 🛡️ Type-Safety & Exhaustive Schema Validations\n- **Strict TypeScript Typing:** Generics, Discriminated Unions, Branded Types, and `never` exhaustiveness checks.\n- **Runtime Schema Validation:** All external DTOs, API payloads, and config values are parsed using Zod/Valibot schemas before ingestion.\n- **Zero `any`:** Strong type definitions throughout; typed error envelopes with correlation identifiers.\n\n### ⚡ Fault-Tolerance, Resiliency & Concurrency\n- **Idempotency:** Mutating operations support distributed idempotency keys to prevent duplicate executions.\n- **Exponential Backoff with Jitter:** External I/O retries employ exponential backoff with full randomized jitter ($T_{wait} = \text{random}(0, min(T_{max}, T_{base} \times 2^{attempt}))$).\n- **Circuit Breakers:** External integrations isolate cascading failures via 3-state Circuit Breakers (CLOSED, OPEN, HALF-OPEN).\n- **Thread & Async Safety:** Concurrent operations employ atomic state mutations or mutex locks where needed.\n\n### 📊 Telemetry, Analytics & Observability\n- **Structured JSON Logging:** Logs emit structured JSON with Correlation IDs (`traceId`, `spanId`, `userId`, `timestamp`).\n- **OpenTelemetry Instrumentation:** Service entrypoints record trace spans, latency histograms, and transaction counters.\n- **Audit Analytics:** State transitions generate immutable audit event records.\n\n---\n\n## 2. Implementation Layer Matrix\n\n| Layer | Directory | Primary Pattern | Security & Invariants | Verification Gate |\n| :--- | :--- | :--- | :--- | :--- |\n| **Domain Entities** | `src/types/*` | Immutable Value Objects & DTOs | Branded Types, Discriminated Unions | Type Check (`tsc --noEmit`) |\n| **Domain Services** | `src/engine/*` | Strategy, Pipeline & Ports | Pure Logic, Zero Side-Effects | Unit Tests (>90% Coverage) |\n| **Infrastructure Adapters** | `src/providers/*` | Hexagonal Adapters / Circuit Breaker | Exponential Backoff, Idempotency | Mocked Integration Tests |\n| **Presentation / CLI** | `src/cli/*` | Command Pattern & Formatter | Input Sanitization, Error Envelopes | End-to-End CLI Tests |\n\n---\n\n## 3. Autonomous Execution Protocol\n\n1. **Ingest Existing Artifacts:** Ingest `.forge/artifacts/spec.md`, `.forge/artifacts/architecture.md`, and `.forge/artifacts/tasks.md`.\n2. **Execute Tasks Sequentially:** Implement atomic tasks with comprehensive unit and integration tests (TDD).\n3. **Run Verification Gates:** Execute test suite (`npm test`) and lint checks (`npm run lint`).\n4. **Trigger Downstream Review:** Run `forge test` and `forge review` (5-Lens Multi-Perspective Review).\n",
             "format": "markdown",
             "summary": "BMAD Implementation Architecture & Component Synthesis Report"
           }
@@ -392,14 +392,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.464Z"
+      "completedAt": "2026-08-30T08:08:21.425Z"
     },
     {
       "stageId": "test",
       "capabilityId": "forge.test",
       "providerId": "internal",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.464Z",
+      "startedAt": "2026-08-30T08:08:21.425Z",
       "result": {
         "success": true,
         "providerId": "internal",
@@ -408,7 +408,7 @@
           {
             "name": "test-report.md",
             "path": "test-report.md",
-            "content": "# Test Automation & Verification Report\n\n**Project:** forge-sdlc  \n**Date:** 2026-08-30T07:59:33.484Z  \n**Framework:** Vitest 3.x  \n**Results:** **ALL 14 TESTS PASSED (100% Pass Rate)**\n\n---\n\n## Test Suites Summary\n\n| Suite Name | Total Tests | Passed | Failed | Coverage |\n| :--- | :---: | :---: | :---: | :---: |\n| `ScoringEngine.test.ts` | 5 | 5 | 0 | 98.4% |\n| `CapabilityRouter.test.ts` | 4 | 4 | 0 | 96.2% |\n| `WorkflowEngine.test.ts` | 3 | 3 | 0 | 95.0% |\n| `ArtifactManager.test.ts` | 2 | 2 | 0 | 100% |\n\n**Total Execution Time:** 142ms\n",
+            "content": "# Test Automation & Verification Report\n\n**Project:** forge-sdlc  \n**Date:** 2026-08-30T08:08:21.444Z  \n**Framework:** Vitest 3.x  \n**Results:** **ALL 14 TESTS PASSED (100% Pass Rate)**\n\n---\n\n## Test Suites Summary\n\n| Suite Name | Total Tests | Passed | Failed | Coverage |\n| :--- | :---: | :---: | :---: | :---: |\n| `ScoringEngine.test.ts` | 5 | 5 | 0 | 98.4% |\n| `CapabilityRouter.test.ts` | 4 | 4 | 0 | 96.2% |\n| `WorkflowEngine.test.ts` | 3 | 3 | 0 | 95.0% |\n| `ArtifactManager.test.ts` | 2 | 2 | 0 | 100% |\n\n**Total Execution Time:** 142ms\n",
             "format": "markdown",
             "summary": "Forge Automated Test Suite & Coverage Verification Report"
           }
@@ -420,7 +420,7 @@
           "[Forge Internal Test Engine] Synthesizing automated test fixtures and coverage assertions..."
         ],
         "metrics": {
-          "durationMs": 1,
+          "durationMs": 0,
           "tokensEstimated": 1100,
           "qualityPassed": true
         },
@@ -431,14 +431,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.554Z"
+      "completedAt": "2026-08-30T08:08:21.524Z"
     },
     {
       "stageId": "review",
       "capabilityId": "forge.review",
       "providerId": "bmad",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.554Z",
+      "startedAt": "2026-08-30T08:08:21.524Z",
       "result": {
         "success": true,
         "providerId": "bmad",
@@ -447,7 +447,7 @@
           {
             "name": "review.md",
             "path": "review.md",
-            "content": "# BMAD Multi-Lens Code & Architecture Review\n\n**Target:** forge-sdlc  \n**Review Engine:** BMAD Multi-Lens Review (bmad-review)  \n**Timestamp:** 2026-08-30T07:59:33.579Z  \n**Verdict:** **PASSED (with 3 minor recommendations)**\n\n---\n\n## Review Matrix Summary\n\n| Lens | Reviewer Persona | Status | Critical Findings | Minor Findings |\n| :--- | :--- | :---: | :---: | :---: |\n| 🏗️ **Architecture** | Principal Systems Architect | ✅ PASSED | 0 | 1 |\n| 🛡️ **Security** | AppSec Specialist | ✅ PASSED | 0 | 0 |\n| 🧪 **QA & Reliability** | QA Automation Lead | ✅ PASSED | 0 | 1 |\n| 🧹 **Maintainability** | Clean Code Reviewer | ✅ PASSED | 0 | 1 |\n| ⚡ **Performance** | Performance Engineer | ✅ PASSED | 0 | 0 |\n\n---\n\n## Detailed Lens Evaluations\n\n### 1. 🏗️ Architectural Lens\n- **Strengths:** Clean separation between capability manifests, provider adapters, and scoring engine.\n- **Recommendation (Minor):** Ensure custom third-party provider adapters support dynamic ES module imports asynchronously.\n\n### 2. 🛡️ Security Lens\n- **Strengths:** No hardcoded credentials, zero unsanitized `eval()` execution, strict path normalization preventing directory traversal.\n- **Verdict:** Clean.\n\n### 3. 🧪 QA & Reliability Lens\n- **Strengths:** Deterministic fallback mechanism when provider returns non-zero status.\n- **Recommendation (Minor):** Add unit tests for extreme scoring weight normalization edge cases.\n\n### 4. 🧹 Maintainability Lens\n- **Strengths:** Strict TypeScript typing across all core interfaces, descriptive JSDoc comments.\n- **Recommendation (Minor):** Keep capability manifestations organized into dedicated group folders if catalog exceeds 50 entries.\n\n### 5. ⚡ Performance Lens\n- **Strengths:** Scoring computation runs in < 2ms without heavy dependencies. Fast cold startup.\n\n---\n\n## Next Steps\nProceed with `forge security` or execute `forge converge` to verify task completion.\n",
+            "content": "# BMAD Multi-Lens Code & Architecture Review\n\n**Target:** forge-sdlc  \n**Review Engine:** BMAD Multi-Lens Review (bmad-review)  \n**Timestamp:** 2026-08-30T08:08:21.547Z  \n**Verdict:** **PASSED (with 3 minor recommendations)**\n\n---\n\n## Review Matrix Summary\n\n| Lens | Reviewer Persona | Status | Critical Findings | Minor Findings |\n| :--- | :--- | :---: | :---: | :---: |\n| 🏗️ **Architecture** | Principal Systems Architect | ✅ PASSED | 0 | 1 |\n| 🛡️ **Security** | AppSec Specialist | ✅ PASSED | 0 | 0 |\n| 🧪 **QA & Reliability** | QA Automation Lead | ✅ PASSED | 0 | 1 |\n| 🧹 **Maintainability** | Clean Code Reviewer | ✅ PASSED | 0 | 1 |\n| ⚡ **Performance** | Performance Engineer | ✅ PASSED | 0 | 0 |\n\n---\n\n## Detailed Lens Evaluations\n\n### 1. 🏗️ Architectural Lens\n- **Strengths:** Clean separation between capability manifests, provider adapters, and scoring engine.\n- **Recommendation (Minor):** Ensure custom third-party provider adapters support dynamic ES module imports asynchronously.\n\n### 2. 🛡️ Security Lens\n- **Strengths:** No hardcoded credentials, zero unsanitized `eval()` execution, strict path normalization preventing directory traversal.\n- **Verdict:** Clean.\n\n### 3. 🧪 QA & Reliability Lens\n- **Strengths:** Deterministic fallback mechanism when provider returns non-zero status.\n- **Recommendation (Minor):** Add unit tests for extreme scoring weight normalization edge cases.\n\n### 4. 🧹 Maintainability Lens\n- **Strengths:** Strict TypeScript typing across all core interfaces, descriptive JSDoc comments.\n- **Recommendation (Minor):** Keep capability manifestations organized into dedicated group folders if catalog exceeds 50 entries.\n\n### 5. ⚡ Performance Lens\n- **Strengths:** Scoring computation runs in < 2ms without heavy dependencies. Fast cold startup.\n\n---\n\n## Next Steps\nProceed with `forge security` or execute `forge converge` to verify task completion.\n",
             "format": "markdown",
             "summary": "BMAD Multi-Lens Code & Architecture Review Report"
           }
@@ -470,14 +470,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.654Z"
+      "completedAt": "2026-08-30T08:08:21.646Z"
     },
     {
       "stageId": "security",
       "capabilityId": "forge.security-review",
       "providerId": "internal",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.654Z",
+      "startedAt": "2026-08-30T08:08:21.646Z",
       "result": {
         "success": true,
         "providerId": "internal",
@@ -486,7 +486,7 @@
           {
             "name": "security-audit.md",
             "path": "security-audit.md",
-            "content": "# Forge Security Audit & Vulnerability Assessment\n\n**Project:** forge-sdlc  \n**Timestamp:** 2026-08-30T07:59:33.672Z  \n**Engine:** Forge Security SAST (v1.0.0)  \n**Security Status:** **PASSED (0 High / 0 Critical)**\n\n---\n\n## 1. Vulnerability Findings Summary\n\n| Severity | Category | Count | Status |\n| :--- | :--- | :---: | :---: |\n| 🔴 **Critical** | Remote Code Execution / SQLi / Auth Bypass | 0 | ✅ CLEAN |\n| 🟠 **High** | Privilege Escalation / Unsafe Deserialization | 0 | ✅ CLEAN |\n| 🟡 **Medium** | Missing Rate Limiting / Permissive CORS | 0 | ✅ CLEAN |\n| 🟢 **Low** | Verbose Error Headers | 0 | ✅ CLEAN |\n\n---\n\n## 2. OWASP Top 10 Verification\n- **A01 Broken Access Control:** Verified. Strict permission guards in place.\n- **A02 Cryptographic Failures:** Verified. No hardcoded private keys or secrets.\n- **A03 Injection:** Verified. Safe parameterization used.\n- **A05 Security Misconfiguration:** Verified. Strict TypeScript compiler flags enabled.\n\n---\n\n## 3. Dependency Supply Chain Audit\n- Total Dependencies Audited: 8\n- Known CVEs in tree: 0\n",
+            "content": "# Forge Security Audit & Vulnerability Assessment\n\n**Project:** forge-sdlc  \n**Timestamp:** 2026-08-30T08:08:21.670Z  \n**Engine:** Forge Security SAST (v1.0.0)  \n**Security Status:** **PASSED (0 High / 0 Critical)**\n\n---\n\n## 1. Vulnerability Findings Summary\n\n| Severity | Category | Count | Status |\n| :--- | :--- | :---: | :---: |\n| 🔴 **Critical** | Remote Code Execution / SQLi / Auth Bypass | 0 | ✅ CLEAN |\n| 🟠 **High** | Privilege Escalation / Unsafe Deserialization | 0 | ✅ CLEAN |\n| 🟡 **Medium** | Missing Rate Limiting / Permissive CORS | 0 | ✅ CLEAN |\n| 🟢 **Low** | Verbose Error Headers | 0 | ✅ CLEAN |\n\n---\n\n## 2. OWASP Top 10 Verification\n- **A01 Broken Access Control:** Verified. Strict permission guards in place.\n- **A02 Cryptographic Failures:** Verified. No hardcoded private keys or secrets.\n- **A03 Injection:** Verified. Safe parameterization used.\n- **A05 Security Misconfiguration:** Verified. Strict TypeScript compiler flags enabled.\n\n---\n\n## 3. Dependency Supply Chain Audit\n- Total Dependencies Audited: 8\n- Known CVEs in tree: 0\n",
             "format": "markdown",
             "summary": "Forge Security Audit & Vulnerability Assessment Report"
           }
@@ -509,14 +509,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.780Z"
+      "completedAt": "2026-08-30T08:08:21.752Z"
     },
     {
       "stageId": "converge",
       "capabilityId": "forge.converge",
       "providerId": "speckit",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.780Z",
+      "startedAt": "2026-08-30T08:08:21.752Z",
       "result": {
         "success": true,
         "providerId": "speckit",
@@ -525,7 +525,7 @@
           {
             "name": "convergence.md",
             "path": "convergence.md",
-            "content": "# Spec Kit Convergence Report (convergence.md)\n\n**Project:** forge-sdlc  \n**Date:** 2026-08-30T07:59:33.798Z  \n**Readiness Level:** **RELEASE CANDIDATE READY (100% Tasks Complete)**\n\n---\n\n## 1. Task Burndown Summary\n- **Total Tasks in tasks.md:** 8\n- **Completed Tasks:** 8 (100%)\n- **Open / In-Progress Tasks:** 0 (0%)\n\n## 2. Quality Gate Verification\n- [x] All Given-When-Then acceptance scenarios validated.\n- [x] Cross-artifact analysis passes with 0 drift warnings.\n- [x] Security audit reports 0 critical vulnerabilities.\n- [x] Multi-lens review verdict is PASSED.\n\n## 3. Release Recommendation\nThe feature has converged to release readiness. Execute `forge release` to finalize changelogs and publish.\n",
+            "content": "# Spec Kit Convergence Report (convergence.md)\n\n**Project:** forge-sdlc  \n**Date:** 2026-08-30T08:08:21.775Z  \n**Readiness Level:** **RELEASE CANDIDATE READY (100% Tasks Complete)**\n\n---\n\n## 1. Task Burndown Summary\n- **Total Tasks in tasks.md:** 8\n- **Completed Tasks:** 8 (100%)\n- **Open / In-Progress Tasks:** 0 (0%)\n\n## 2. Quality Gate Verification\n- [x] All Given-When-Then acceptance scenarios validated.\n- [x] Cross-artifact analysis passes with 0 drift warnings.\n- [x] Security audit reports 0 critical vulnerabilities.\n- [x] Multi-lens review verdict is PASSED.\n\n## 3. Release Recommendation\nThe feature has converged to release readiness. Execute `forge release` to finalize changelogs and publish.\n",
             "format": "markdown",
             "summary": "Spec Kit Convergence & Release Readiness Audit"
           }
@@ -548,14 +548,14 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.878Z"
+      "completedAt": "2026-08-30T08:08:21.863Z"
     },
     {
       "stageId": "release",
       "capabilityId": "forge.release",
       "providerId": "internal",
       "status": "completed",
-      "startedAt": "2026-08-30T07:59:33.878Z",
+      "startedAt": "2026-08-30T08:08:21.863Z",
       "result": {
         "success": true,
         "providerId": "internal",
@@ -594,15 +594,15 @@
         ]
       },
       "gatePassed": true,
-      "completedAt": "2026-08-30T07:59:33.980Z"
+      "completedAt": "2026-08-30T08:08:21.971Z"
     }
   ],
   "currentStageIndex": 14,
-  "runId": "run-2026-08-30T07-59-32-full-sdlc",
-  "runDir": "D:\\Forge-package\\.forge\\runs\\run-2026-08-30T07-59-32-full-sdlc",
-  "iteration": 36,
-  "iterationDir": "D:\\Forge-package\\.forge\\iterations\\iteration-36",
+  "runId": "run-2026-08-30T08-08-20-full-sdlc",
+  "runDir": "D:\\Forge-package\\.forge\\runs\\run-2026-08-30T08-08-20-full-sdlc",
+  "iteration": 39,
+  "iterationDir": "D:\\Forge-package\\.forge\\iterations\\iteration-39",
   "functionality": "test-15-stage",
   "functionalityDir": "D:\\Forge-package\\.forge\\functionalities\\test-15-stage",
-  "completedAt": "2026-08-30T07:59:33.980Z"
+  "completedAt": "2026-08-30T08:08:21.971Z"
 }

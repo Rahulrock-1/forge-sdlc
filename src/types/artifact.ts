@@ -5,6 +5,7 @@
 export interface ArtifactFile {
   id: string;              // e.g. "spec", "architecture", "plan", "tasks"
   filename: string;        // e.g. "spec.md", "architecture.md"
+  name?: string;           // Optional alias for filename
   path: string;            // Absolute or workspace relative path
   title: string;
   group: string;
