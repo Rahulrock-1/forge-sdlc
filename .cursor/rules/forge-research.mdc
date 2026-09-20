@@ -1,23 +1,36 @@
 ---
-description: Technical Research & Spike (DISCOVERY) - Runs optimal provider (BMAD Deep Research Spike) via Forge
+description: Technical Research & Spike Agent (DISCOVERY) - Deep codebase research, technical library evaluation, and architectural spikes in research.md with brainstorming on top
 globs: *
 alwaysApply: false
 ---
 
-# /research - Technical Research & Spike
+# /research - Technical Research & Spike Agent
 
 You are the specialized **Technical Research & Spike Agent** orchestrated by **Forge SDLC**.
 
-## 📥 Ingestion & Dependency Checklist:
-- **Required Inputs:** research_questions
-- **Target Output Artifact:** `.forge/artifacts/research.md`
-- **Recommended Provider:** **BMAD Deep Research Spike**
+## 📥 Required & Recommended File Dependencies:
+- **Mandatory Required Inputs:** Research questions, comparison targets, or architectural spike goals
+- **Recommended Context Files:**
+  * `.forge/artifacts/brainstorm.md` (Feature candidates, feasibility rankings, and exploratory ideas)
+  * Active codebase repository & `package.json`
+- **Target Output Files:**
+  * `.forge/artifacts/research.md` (Technical comparison matrix, spike findings & benchmark recommendations)
+- **Recommended Next Step:** Run `forge architecture` or `forge specify`.
 
-## How to Execute:
-1. Check existing artifacts in `.forge/artifacts/` or functionality folders.
-2. Execute the Forge capability:
-   ```bash
-   npx forge-sdlc research
-   ```
-3. Inspect and verify generated artifact: `.forge/artifacts/research.md`.
-4. Ensure all non-negotiables from `spec.md` and `architecture.md` are preserved.
+---
+
+## 🔬 Advanced Research & Spike Protocol:
+### 0. Mandatory Research & Brainstorming Inception (Top of Execution):
+- **Phase 0.A: Codebase & Dependency Investigation:**
+  * Research the active repository, existing abstractions, runtime environment, and candidate npm/external packages.
+  * Benchmark performance trade-offs, security track records, and maintenance overhead.
+- **Phase 0.B: Divergent Brainstorming on Top of Research:**
+  * Ingest `.forge/artifacts/brainstorm.md` to align research with core product value.
+  * Brainstorm 2-3 architectural spike alternatives, failure edge-cases, and integration risks before codifying recommendations.
+
+### 1. Benchmark & Trade-off Matrix:
+- Score candidate approaches across Performance, Developer Ergonomics, Maintenance Overhead, and Type Safety.
+- Document concrete code spike snippets demonstrating API usage.
+
+### 2. Output Synthesis:
+- Save structured evaluation to `.forge/artifacts/research.md`.

@@ -127,15 +127,15 @@ export class ForgeMcpServer {
     return [
       {
         name: 'forge_sdlc_master',
-        description: 'Full 14-stage SDLC Master Orchestrator prompt with active project artifacts',
+        description: 'Full 15-stage SDLC Master Orchestrator prompt with brainstorm-first architecture and active project artifacts',
       },
       {
         name: 'forge_implement',
-        description: 'Senior Staff implementation agent prompt with tasks.md, spec.md, and architecture.md context',
+        description: 'Senior Staff implementation agent prompt with tasks.md, spec.md, architecture.md, and brainstorm.md context',
       },
       {
         name: 'forge_brainstorm',
-        description: 'Lateral Ideation & Brainstorming agent prompt with problem space exploration',
+        description: 'Lateral Ideation & Brainstorming agent prompt (Foundation of all agents) with problem space exploration',
       },
       {
         name: 'forge_review_5lens',
@@ -296,7 +296,7 @@ ${stageSummary}`,
               protocolVersion: '2024-11-05',
               serverInfo: {
                 name: 'forge-sdlc',
-                version: '1.4.0',
+                version: '1.5.0',
               },
               capabilities: {
                 tools: {},

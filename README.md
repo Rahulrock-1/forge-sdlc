@@ -82,26 +82,29 @@ npx forge-sdlc init
 npx forge-sdlc agent-rules
 ```
 
-### 🌟 Active Agents in your AI Chat:
+#### 🌟 Active Agents in your AI Chat:
+
+> 🧠 **Universal Brainstorm-First Architecture (All Agents)**:  
+> Every single agent in Forge operates with brainstorming on top. Before generating code or artifacts, each agent ingests `.forge/artifacts/brainstorm.md`, explores alternative solutions, evaluates edge cases and architectural trade-offs, and then converges on the optimal result.
 
 | Slash Command | Agent Role | Specialized Provider | Mandatory Ingestion Files | Target Generated Artifact |
 | :--- | :--- | :---: | :--- | :--- |
+| **`/brainstorm`** | 💡 **Stage 0: Brainstorm & Lateral Ideation** | BMAD | Problem Statement, Vision | `brainstorm.md` (Foundation for All Agents) |
 | **`/sdlc`** | 🚀 **Full SDLC Master Orchestrator** | Multi-Provider | Workspace Context | Complete 15-Stage Lifecycle |
-| **`/implement`** | 💻 **Senior Staff Implementation** | BMAD / Spec Kit | `tasks.md`, `spec.md`, `architecture.md` | Source Code in `src/`, `implementation.md` |
-| **`/brainstorm`** | 💡 **Lateral Ideation & Brainstorming** | BMAD | Problem Statement, Vision | `brainstorm.md` |
+| **`/implement`** | 💻 **Senior Staff Implementation** | BMAD / Spec Kit | `tasks.md`, `spec.md`, `architecture.md` | Source Code in `src/`, `implementation.md` (Brainstorm on Top) |
 | **`/heal`** | 🩺 **Auto-Healing & Drift Sync** | Internal | `spec.md`, `architecture.md`, `tasks.md` | `healing-plan.md`, `tasks.md` |
 | **`/swarm`** | 🐝 **Multi-Provider Swarm Consensus** | Multi-Provider | Codebase context | `swarm-<cap>.md` |
-| **`/brd`** | 📊 **Business Requirements & ROI** | BMAD | Goals & Context | `brd.md`, `discovery.md` |
-| **`/constitution`**| 🏛️ **Constitution & Invariants** | Spec Kit | Project Requirements | `constitution.md` |
-| **`/specify`** | 📐 **Given-When-Then Specification**| Spec Kit | `constitution.md`, `brd.md` | `spec.md` |
-| **`/clarify`** | 🔍 **Ambiguity Elicitation** | BMAD | `spec.md` | `clarifications.md` |
-| **`/architecture`**| 🏗️ **C4 System Design & ADRs** | BMAD | `spec.md`, `constitution.md` | `architecture.md`, `data-model.md` |
-| **`/plan`** | 📅 **Phased Milestone Roadmap** | Spec Kit | `spec.md`, `architecture.md` | `plan.md` |
-| **`/tasks`** | ✅ **Atomic Developer Checklist** | Spec Kit | `plan.md`, `spec.md`, `constitution.md`| `tasks.md` |
-| **`/analyze`** | 🔬 **Cross-Artifact Drift Audit** | Spec Kit | `spec.md`, `architecture.md`, `tasks.md`| `analysis.md` |
+| **`/brd`** | 📊 **Business Requirements & ROI** | BMAD | Goals & Context, `brainstorm.md` | `brd.md`, `discovery.md` |
+| **`/constitution`**| 🏛️ **Constitution & Invariants** | Spec Kit | Project Requirements, `brainstorm.md` | `constitution.md` |
+| **`/specify`** | 📐 **Given-When-Then Specification**| Spec Kit | `constitution.md`, `brd.md`, `brainstorm.md` | `spec.md` |
+| **`/clarify`** | 🔍 **Ambiguity Elicitation** | BMAD | `spec.md`, `brainstorm.md` | `clarifications.md` |
+| **`/architecture`**| 🏗️ **C4 System Design & ADRs** | BMAD | `spec.md`, `constitution.md`, `brainstorm.md` | `architecture.md`, `data-model.md` |
+| **`/plan`** | 📅 **Phased Milestone Roadmap** | Spec Kit | `spec.md`, `architecture.md`, `brainstorm.md` | `plan.md` |
+| **`/tasks`** | ✅ **Atomic Developer Checklist** | Spec Kit | `plan.md`, `spec.md`, `constitution.md`, `brainstorm.md`| `tasks.md` |
+| **`/analyze`** | 🔬 **Cross-Artifact Drift Audit** | Spec Kit | `spec.md`, `architecture.md`, `tasks.md`, `brainstorm.md`| `analysis.md` |
 | **`/test`** | 🧪 **Automated QA & Test Suites** | Internal | Source Code, `spec.md` | `test-report.md`, tests in `tests/` |
-| **`/review`** | 🛡️ **5-Lens Code Review** | BMAD (`bmad-review`) | Source Code, `architecture.md` | `review.md` |
-| **`/security`** | 🔒 **STRIDE & OWASP SAST Scan** | Internal | Source Code, `package.json` | `security-audit.md`, `threat-model.md` |
+| **`/review`** | 🛡️ **5-Lens Code Review** | BMAD (`bmad-review`) | Source Code, `architecture.md`, `brainstorm.md` | `review.md` |
+| **`/security`** | 🔒 **STRIDE & OWASP SAST Scan** | Internal | Source Code, `package.json`, `brainstorm.md` | `security-audit.md`, `threat-model.md` |
 | **`/converge`** | 🎯 **Release Readiness Burndown** | Spec Kit | `tasks.md`, `test-report.md`, `review.md`| `convergence.md` |
 | **`/release`** | 📦 **KeepAChangelog & SemVer Bump** | Internal | `convergence.md`, Git history | `CHANGELOG.md`, `RELEASE_NOTES.md` |
 
@@ -114,6 +117,7 @@ Forge organizes all agent outputs into self-contained **Functionality / Feature 
 ```
 .forge/
 ├── artifacts/                           # Active workspace artifacts (latest synchronized)
+│   ├── brainstorm.md                    # 💡 Lateral Ideation & Feasibility (BMAD)
 │   ├── discovery.md
 │   ├── brd.md
 │   ├── constitution.md
@@ -132,7 +136,8 @@ Forge organizes all agent outputs into self-contained **Functionality / Feature 
 │   └── RELEASE_NOTES.md
 │
 ├── functionalities/                     # 📂 DEDICATED FUNCTIONALITY MODULES
-│   ├── authentication/                  # Full 14-Agent Suite for 'authentication'
+│   ├── authentication/                  # Full 15-Agent Suite for 'authentication'
+│   │   ├── brainstorm.md
 │   │   ├── constitution.md
 │   │   ├── spec.md
 │   │   ├── architecture.md
@@ -141,7 +146,7 @@ Forge organizes all agent outputs into self-contained **Functionality / Feature 
 │   │   ├── manifest.json
 │   │   └── workflow-state.json
 │   │
-│   ├── billing-module/                  # Full 14-Agent Suite for 'billing-module'
+│   ├── billing-module/                  # Full 15-Agent Suite for 'billing-module'
 │   └── core/                            # Default core functionality suite
 │
 ├── iterations/                          # Historical SDLC iteration snapshots

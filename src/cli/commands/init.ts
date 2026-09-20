@@ -24,7 +24,9 @@ export function handleInitCommand(options: { workspace?: string; name?: string }
       version: '1.0.0',
       projectName: options.name || path.basename(root),
       defaultWorkflow: [
+        'brainstorm',
         'discover',
+        'constitution',
         'specify',
         'clarify',
         'architecture',
@@ -73,9 +75,9 @@ export function handleInitCommand(options: { workspace?: string; name?: string }
   const slashBox = boxen(
     `${chalk.bold.hex('#F59E0B')('✨ Slash Commands (/agent) Ready in your IDE!')}\n\n` +
     `${chalk.white('Open your AI Chat (Cursor, Antigravity, Claude Code, Copilot) and type ')}${chalk.cyan.bold('/')}${chalk.white(':\n\n')}` +
-    `  ${chalk.bold.yellow('/sdlc')}            ${chalk.green('★ Full SDLC Master Orchestrator (End-to-End 14 Stages)')}\n` +
+    `  ${chalk.bold.yellow('/brainstorm')}      ${chalk.green('★ Stage 0: Lateral Ideation & Brainstorming on Top (BMAD)')}\n` +
+    `  ${chalk.bold.yellow('/sdlc')}            ${chalk.green('★ Full SDLC Master Orchestrator (End-to-End 15 Stages)')}\n` +
     `  ${chalk.bold.yellow('/implement')}       ${chalk.green('★ Autonomous Implementation Agent (Code & Tests)')}\n` +
-    `  ${chalk.yellow('/brainstorm')}      ${chalk.dim('→ Explores feature ideas & feasibility options (BMAD)')}\n` +
     `  ${chalk.yellow('/brd')}            ${chalk.dim('→ Formulates Business Requirements Document & ROI (BMAD)')}\n` +
     `  ${chalk.yellow('/constitution')}   ${chalk.dim('→ Establishes non-negotiable architectural invariants (Spec Kit)')}\n` +
     `  ${chalk.yellow('/specify')}        ${chalk.dim('→ Formulates Given-When-Then specification (Spec Kit)')}\n` +
