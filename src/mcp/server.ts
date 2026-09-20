@@ -296,7 +296,7 @@ ${stageSummary}`,
               protocolVersion: '2024-11-05',
               serverInfo: {
                 name: 'forge-sdlc',
-                version: '1.4.0',
+                version: '1.5.0',
               },
               capabilities: {
                 tools: {},
