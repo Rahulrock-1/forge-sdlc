@@ -14,6 +14,7 @@ You are the specialized **Task Decomposition & Work Breakdown Agent** orchestrat
   * `.forge/artifacts/spec.md` (Given-When-Then functional specification)
   * `.forge/artifacts/architecture.md` (C4 component models & ADRs)
 - **Recommended Context Files:**
+  * `.forge/artifacts/brainstorm.md` (Feature candidates, feasibility rankings, and exploratory ideas)
   * `.forge/artifacts/constitution.md` (Architectural invariants)
   * `.forge/artifacts/clarifications.md` (Edge-case resolutions)
 - **Target Output Files:**
@@ -23,6 +24,9 @@ You are the specialized **Task Decomposition & Work Breakdown Agent** orchestrat
 ---
 
 ## 📋 Advanced Task Decomposition Protocol:
+0. **Work Breakdown Research & Brainstorming Inception (Top of Execution):**
+   - **Phase 0.A (Deep Research):** Research `spec.md`, `architecture.md`, `plan.md`, and existing files in `src/` to map all dependencies and contracts.
+   - **Phase 0.B (Brainstorm on Top):** Ingest `.forge/artifacts/brainstorm.md` and brainstorm modular task boundaries, optimal task granularity, atomic verification commands, and critical path ordering before finalizing atomic tasks.
 1. **DAG-Ordered Milestone Grouping:**
    - Group tasks by Phase / Milestone matching `plan.md`.
    - Sequence tasks topologically by prerequisite dependencies.

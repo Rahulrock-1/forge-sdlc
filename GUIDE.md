@@ -113,20 +113,22 @@ Type "/" in AI Chat:
 
 ## ⚡ 5. Automated 1-Command Full Workflow
 
-To run the entire 13-stage software development lifecycle sequentially:
+To run the entire 15-stage software development lifecycle sequentially with Brainstorming on Top:
 
 ```bash
 forge workflow run full-sdlc
 ```
 
 ```
-BRD  ────►  SPECIFY  ────►  CLARIFY  ────►  ARCHITECTURE  ────►  PLAN  ────►  TASKS
-(BMAD)     (Spec Kit)        (BMAD)             (BMAD)          (Spec Kit)    (Spec Kit)
-                                                                                  │
-                                                                                  ▼
-RELEASE  ◄────  CONVERGE  ◄────  SECURITY  ◄────  REVIEW  ◄────  TEST  ◄────  IMPLEMENT
-(Internal)      (Spec Kit)       (Internal)       (BMAD)       (Internal)     (BMAD/Spec)
+BRAINSTORM  ────►  DISCOVER  ────►  CONSTITUTION  ────►  SPECIFY  ────►  CLARIFY  ────►  ARCHITECTURE  ────►  PLAN  ────►  TASKS
+  (BMAD)             (BMAD)          (Spec Kit)        (Spec Kit)        (BMAD)             (BMAD)          (Spec Kit)    (Spec Kit)
+                                                                                                                          │
+                                                                                                                          ▼
+RELEASE  ◄────  CONVERGE  ◄────  SECURITY  ◄────  REVIEW  ◄────  TEST  ◄────  IMPLEMENT  ◄────  ANALYZE
+(Internal)      (Spec Kit)       (Internal)       (BMAD)       (Internal)     (BMAD/Spec)       (Spec Kit)
 ```
+
+> 🧠 **Brainstorm-First Architecture**: Every agent in the Forge pipeline is designed with brainstorming on top. Before generating artifacts or code, each agent ingests `.forge/artifacts/brainstorm.md`, explores divergent solutions, evaluates edge cases and architectural trade-offs, and then converges on the optimal implementation.
 
 ---
 

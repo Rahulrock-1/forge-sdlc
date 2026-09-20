@@ -87,9 +87,9 @@ export function handleGuideCommand(): void {
 
   // Section 4: Workflow Runner
   console.log(chalk.bold.cyan('🔄 3. SEQUENTIAL SDLC WORKFLOW RUNNER\n'));
-  console.log(`  Run the complete 13-stage software lifecycle sequentially:`);
+  console.log(`  Run the complete 15-stage software lifecycle sequentially with Brainstorming on Top:`);
   console.log(`  ${chalk.yellow.bold('npx forge-sdlc workflow run full-sdlc')}\n`);
-  console.log(chalk.dim('  BRD ──► SPECIFY ──► CLARIFY ──► ARCHITECTURE ──► PLAN ──► TASKS ──► IMPLEMENT ──► TEST ──► REVIEW ──► SECURITY ──► CONVERGE ──► RELEASE\n'));
+  console.log(chalk.dim('  BRAINSTORM ──► DISCOVER ──► CONSTITUTION ──► SPECIFY ──► CLARIFY ──► ARCHITECTURE ──► PLAN ──► TASKS ──► ANALYZE ──► IMPLEMENT ──► TEST ──► REVIEW ──► SECURITY ──► CONVERGE ──► RELEASE\n'));
 
   // Section 5: Offline & Token info
   console.log(chalk.bold.cyan('🔐 4. ZERO-TOKEN OFFLINE DEFAULT MODE\n'));

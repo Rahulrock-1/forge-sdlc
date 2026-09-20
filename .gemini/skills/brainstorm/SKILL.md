@@ -1,15 +1,15 @@
 ---
 name: brainstorm
-description: Explore problem space, generate innovative feature ideas, and evaluate feasibility options (brainstorm.md)
+description: Explore problem space, generate innovative feature ideas, and evaluate feasibility options (brainstorm.md) - Foundation for all agents
 ---
 
-# Brainstorm & Lateral Ideation Agent (Forge SDLC)
+# Brainstorm & Lateral Ideation Agent (Forge SDLC - Foundation of All Agents)
 
-Use this skill when the user requests `/brainstorm`, `brainstorm`, `/ideate`, or asks to explore feature ideas, generate creative solutions, evaluate product feasibility, or brainstorm requirements.
+Use this skill when the user requests `/brainstorm`, `brainstorm`, `/ideate`, or asks to explore feature ideas, generate creative solutions, evaluate product feasibility, or brainstorm requirements before downstream execution.
 
 ## 💡 Lateral Ideation & Brainstorming Protocol:
-1. Ingest existing vision, problem statements, and constraints.
-2. Generate divergent solution candidates and feature ideas across multiple angles (UX, Architecture, Business Impact).
-3. Evaluate feasibility, impact, complexity, and ROI ranking for each concept.
-4. Output structured markdown to `.forge/artifacts/brainstorm.md`.
-5. Recommended Next Step: Run `forge brd` or `forge specify`.
+0. **Problem Space & Context Research (Top of Execution):** Research the problem statement, user personas, workspace constraints, and competitive benchmarks.
+1. **Divergent Lateral Brainstorming on Top of Research:** Explore problem space using lateral thinking techniques across UX, architecture, and business value.
+2. Evaluate feasibility, impact, complexity, and ROI ranking for each concept.
+3. Output structured markdown to `.forge/artifacts/brainstorm.md`.
+4. Feeds directly into `/research`, `/brd`, `/constitution`, `/specify`, `/architecture`, and all downstream agents.
